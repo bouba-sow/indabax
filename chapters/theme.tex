@@ -1,0 +1,81 @@
+% ---------------------------------------------------------------
+%  Thème : sobre et moderne, palette tirée des logos (LSCP, ENS, CNRS)
+% ---------------------------------------------------------------
+\IfFileExists{roboto.sty}{\usepackage[sfdefault]{roboto}}{}
+\usefonttheme{professionalfonts}
+
+\definecolor{navy}{HTML}{0B2A4A}
+\definecolor{lscp}{HTML}{F5B800}
+\definecolor{ink}{HTML}{1F2933}
+\definecolor{softgray}{HTML}{6B7785}
+
+\setbeamersize{text margin left=1.2cm, text margin right=1.2cm}
+\setbeamertemplate{navigation symbols}{}
+\setbeamercovered{dynamic}
+
+% Couleurs
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{normal text}{fg=ink,bg=white}
+\setbeamercolor{structure}{fg=navy}
+\setbeamercolor{alerted text}{fg=navy}
+\setbeamercolor{section in toc}{fg=ink}
+\setbeamercolor{block title}{bg=navy,fg=white}
+\setbeamercolor{block body}{bg=navy!6,fg=ink}
+\setbeamercolor{block title alerted}{bg=lscp,fg=navy}
+\setbeamercolor{block body alerted}{bg=lscp!15,fg=ink}
+\setbeamercolor{block title example}{bg=blue2,fg=white}
+\setbeamercolor{block body example}{bg=blue2!8,fg=ink}
+
+% Puces
+\setbeamertemplate{itemize item}{\color{lscp}\raisebox{0.15ex}{\scriptsize$\blacksquare$}}
+\setbeamertemplate{itemize subitem}{\color{navy}\tiny$\blacktriangleright$}
+\setbeamertemplate{enumerate item}{\color{navy}\bfseries\insertenumlabel.}
+\setbeamertemplate{enumerate subitem}{\color{navy}\insertenumlabel.\insertsubenumlabel}
+\setlength{\leftmargini}{1.3em}
+
+% Blocs arrondis, sans ombre
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+% Titre de slide : texte marine et petit trait jaune
+\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
+\setbeamertemplate{frametitle}{%
+    \vspace{0.7em}%
+    {\color{navy}\usebeamerfont{frametitle}\insertframetitle\par}%
+    \vspace{-0.1em}%
+    {\color{lscp}\rule{2.2cm}{2.5pt}}\par%
+}
+
+% Pied de page minimal
+\setbeamertemplate{footline}{%
+    \leavevmode\hbox to\paperwidth{%
+        \hskip1.2cm{\fontsize{6}{7}\selectfont\color{softgray}\insertshortauthor\ \textbar\ \insertshorttitle}%
+        \hfill{\fontsize{6}{7}\selectfont\color{softgray}\insertframenumber}\hskip1.2cm}%
+    \vskip3.5mm}
+
+% Page de titre
+\setbeamertemplate{title page}{%
+    \vspace*{0.3cm}%
+    {\color{navy}\bfseries\fontsize{24}{28}\selectfont\inserttitle\par}%
+    \vspace{0.3em}{\color{lscp}\rule{3cm}{3pt}}\par%
+    \vspace{0.5em}{\Large\color{softgray}\insertsubtitle\par}%
+    \vspace{1em}{\large\bfseries\color{navy}\insertauthor\par}%
+    \vspace{0.2em}{\small\color{ink}\insertinstitute\par}%
+    \vspace{0.6em}{\small\color{softgray}\insertdate\par}%
+    \vfill{\inserttitlegraphic}\vspace{0.4cm}%
+}
+
+% Pages de section : fond marine, texte blanc
+\setbeamertemplate{section page}{%
+    \vspace*{2.2cm}%
+    {\color{lscp}\bfseries\fontsize{40}{44}\selectfont\thesection\par}%
+    \vspace{0.2em}{\color{white}\bfseries\fontsize{24}{28}\selectfont\insertsection\par}%
+    \vspace{0.6em}{\color{lscp}\rule{3cm}{3pt}}\par%
+}
+\AtBeginSection[]{%
+    {\setbeamercolor{background canvas}{bg=navy}%
+     \begin{frame}[plain,noframenumbering]\sectionpage\end{frame}}%
+}
+
+% Table des matières
+\setbeamertemplate{section in toc}{%
+    {\color{lscp}\bfseries\inserttocsectionnumber}\hspace{0.7em}\inserttocsection\par\vspace{0.3em}}

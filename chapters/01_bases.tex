@@ -1,5 +1,4 @@
 \section{Les bases, sans prérequis}
-\frame{\sectionpage}
 
 \begin{frame}{Le langage dans le cerveau}
 \begin{itemize}
@@ -14,7 +13,7 @@
 \begin{frame}{Comment « écouter » le cerveau ?}
 \centering\small
 \begin{tabular}{lcccc}
-    \textcolor{darkred}{Méthode} & \textcolor{darkred}{Espace} & \textcolor{darkred}{Temps} & \textcolor{darkred}{Invasif ?} \\
+    \textcolor{navy}{Méthode} & \textcolor{navy}{Espace} & \textcolor{navy}{Temps} & \textcolor{navy}{Invasif ?} \\
     \hline
     IRM fonctionnelle (fMRI) & millimètres & secondes & non \\
     EEG / MEG & centimètres & millisecondes & non \\
@@ -39,9 +38,10 @@ L'intracrânien se fait chez des patients épileptiques implantés pour raisons 
 
 \begin{frame}{Comparer un modèle à un cerveau}
 \centering
+\resizebox{0.95\textwidth}{!}{%
 \begin{tikzpicture}[
-    box/.style={draw=darkred, rounded corners, fill=darkred, text=white, align=center, minimum height=1.1cm, font=\small},
-    arr/.style={-{Stealth}, thick, darkred}]
+    box/.style={draw=navy, rounded corners, fill=navy, text=white, align=center, minimum height=1.1cm, font=\small},
+    arr/.style={-{Stealth}, thick, lscp}]
     \node[box] (txt) at (0,0) {Texte\\{\footnotesize « Le chat dort… »}};
     \node[box] (lm) at (4.6,1.1) {Modèle de langage\\{\footnotesize activations}};
     \node[box] (br) at (4.6,-1.1) {Cerveau\\{\footnotesize fMRI / EEG / iEEG}};
@@ -52,7 +52,8 @@ L'intracrânien se fait chez des patients épileptiques implantés pour raisons 
     \draw[arr] (lm) -- (reg);
     \draw[arr] (br) -- (reg);
     \draw[arr] (reg) -- (sc);
-\end{tikzpicture}
+\end{tikzpicture}%
+}
 
 \vspace{1em}
 \begin{itemize}

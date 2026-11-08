@@ -1,25 +1,25 @@
-\documentclass[aspectratio=169,14pt]{beamer}
+\documentclass[aspectratio=169,12pt,t]{beamer}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
 \input{chapters/preamble}
+\input{chapters/theme}
 \usetikzlibrary{positioning,calc,arrows.meta}
 
 % Petite macro : source / référence en bas de slide
-\newcommand{\src}[1]{\par\vfill{\scriptsize\textcolor{gray!70}{#1}}}
+\newcommand{\src}[1]{\par\vfill{\scriptsize\textcolor{softgray}{#1}}}
 
 \title{IA et neurosciences du langage}
 \subtitle{Ce que les modèles nous apprennent sur le cerveau, et inversement}
-\author[B. Sow]{\textcolor{darkred}{Boubacar Sow}}
-\institute[LSCP]{
-    \textcolor{gray}{Doctorant, Laboratoire de Sciences Cognitives et Psycholinguistique}%
-    \\%
-    \textcolor{gray}{ENS-PSL \& CNRS}%
+\author[B. Sow]{Boubacar Sow}
+\institute[LSCP]{%
+    Doctorant, Laboratoire de Sciences Cognitives et Psycholinguistique\\
+    ENS-PSL \& CNRS%
 }
 \titlegraphic{%
-    \includegraphics[height=1.1cm]{images/lscp.png}\hspace{1.2cm}%
-    \includegraphics[height=1.4cm]{images/ens_psl.png}\hspace{1.2cm}%
-    \includegraphics[height=1.1cm]{images/cnrs.png}%
+    \includegraphics[height=0.9cm]{images/lscp.png}\hspace{1.2cm}%
+    \includegraphics[height=1.2cm]{images/ens_psl.png}\hspace{1.2cm}%
+    \includegraphics[height=0.9cm]{images/cnrs.png}%
 }
 \date{IndabaX Guinée 2026} % TODO : date exacte
 %\logo{\includegraphics[width= 0.05\textwidth]{images/logo.png}}
