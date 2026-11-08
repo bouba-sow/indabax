@@ -1,0 +1,72 @@
+\section{Les bases, sans prérequis}
+\frame{\sectionpage}
+
+\begin{frame}{Le langage dans le cerveau}
+\begin{itemize}
+    \item Un \textbf{réseau du langage} fronto-temporal, principalement dans l'hémisphère gauche
+    \item Il répond à la langue, écrite ou parlée, et peu à autre chose
+    \item Il est distinct du réseau de la pensée abstraite et du raisonnement
+\end{itemize}
+% IMAGE : cerveau avec le réseau du langage (à ajouter)
+\src{Fedorenko et al. ; Fedorenko, Open Encyclopedia of Cognitive Science, 2025}
+\end{frame}
+
+\begin{frame}{Comment « écouter » le cerveau ?}
+\centering\small
+\begin{tabular}{lcccc}
+    \textcolor{yellow}{Méthode} & \textcolor{yellow}{Espace} & \textcolor{yellow}{Temps} & \textcolor{yellow}{Invasif ?} \\
+    \hline
+    IRM fonctionnelle (fMRI) & millimètres & secondes & non \\
+    EEG / MEG & centimètres & millisecondes & non \\
+    Intracrânien (iEEG, sEEG) & millimètres--cm & millisecondes & oui \\
+    Neurones uniques & micromètres & millisecondes & oui \\
+\end{tabular}
+\vspace{1em}
+
+\normalsize
+L'intracrânien se fait chez des patients épileptiques implantés pour raisons cliniques.
+% IMAGE : schémas des méthodes (à ajouter)
+\end{frame}
+
+\begin{frame}{Le protocole type}
+\begin{enumerate}
+    \item Un participant lit ou écoute un texte (souvent une histoire naturelle)
+    \item On enregistre son activité cérébrale mot par mot
+    \item On donne le même texte à un modèle de langage
+    \item On compare les deux
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Comparer un modèle à un cerveau}
+\centering
+\begin{tikzpicture}[
+    box/.style={draw=yellow, rounded corners, fill=darkred, text=white, align=center, minimum height=1.1cm, font=\small},
+    arr/.style={-{Stealth}, thick, yellow}]
+    \node[box] (txt) at (0,0) {Texte\\{\footnotesize « Le chat dort… »}};
+    \node[box] (lm) at (4.6,1.1) {Modèle de langage\\{\footnotesize activations}};
+    \node[box] (br) at (4.6,-1.1) {Cerveau\\{\footnotesize fMRI / EEG / iEEG}};
+    \node[box] (reg) at (9.2,0) {Régression\\linéaire};
+    \node[box] (sc) at (12.2,0) {Score\\d'alignement};
+    \draw[arr] (txt) -- (lm);
+    \draw[arr] (txt) -- (br);
+    \draw[arr] (lm) -- (reg);
+    \draw[arr] (br) -- (reg);
+    \draw[arr] (reg) -- (sc);
+\end{tikzpicture}
+
+\vspace{1em}
+\begin{itemize}
+    \item On prédit le signal cérébral à partir des activations du modèle
+    \item Le score est mesuré sur des données \textbf{non vues} pendant l'ajustement
+    \item On le compare à un \textbf{plafond de bruit} (la variabilité entre participants)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Deux outils à retenir}
+\begin{block}{Modèle d'encodage}
+    Régression des activations du modèle vers le signal cérébral (utilisé dans Brain-Score).
+\end{block}
+\begin{block}{Analyse de similarité représentationnelle (RSA)}
+    On compare les distances entre stimuli dans le modèle à celles mesurées dans le cerveau.
+\end{block}
+\end{frame}

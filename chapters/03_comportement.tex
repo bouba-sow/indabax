@@ -1,0 +1,56 @@
+\section{Q2 : expliquent-ils le comportement humain ?}
+\frame{\sectionpage}
+
+\begin{frame}{La surprise d'un mot}
+\[
+    s(w_t) = -\log p(w_t \mid w_1,\dots,w_{t-1})
+\]
+\begin{itemize}
+    \item Un mot improbable est plus « surprenant »
+    \item Les humains lisent plus lentement les mots surprenants
+    \item Un modèle de langage fournit directement cette probabilité
+\end{itemize}
+\src{Levy, Cognition 2008 ; Smith \& Levy, Cognition 2013}
+\end{frame}
+
+\begin{frame}{Pourquoi les humains oublient parfois}
+\begin{itemize}
+    \item La mémoire est limitée : on ne garde pas tout le contexte
+    \item Théorie de la \textbf{surprise à contexte dégradé} (lossy-context surprisal)
+    \item Explique pourquoi les langues rapprochent les mots liés syntaxiquement
+\end{itemize}
+% TODO : vérifier les références de Futrell (2015 PNAS dependency length ; 2020 Cognitive Science)
+\src{Futrell, Gibson \& Levy, Cognitive Science 2020}
+\end{frame}
+
+\begin{frame}{La surprise explique le N400}
+\begin{itemize}
+    \item Le \textbf{N400} : une onde EEG ($\sim$400 ms) qui augmente quand un mot est inattendu
+    \item La surprise de modèles de langage explique de nombreux effets du N400
+    \item Reste des cas où l'humain et le modèle divergent
+\end{itemize}
+% IMAGE : exemple d'onde N400 (à ajouter)
+% TODO : vérifier la référence (Michaelov et al., Neurobiology of Language 2024)
+\src{Michaelov, Bardolph, Van Petten, Bergen \& Coulson, 2024}
+\end{frame}
+
+\begin{frame}{Un meilleur modèle est-il plus humain ?}
+\begin{itemize}
+    \item Hypothèse admise en anglais : plus la perplexité est basse, plus le modèle prédit les temps de lecture
+    \item En japonais, cette règle ne tient pas : \textbf{une perplexité plus basse n'est pas toujours plus humaine}
+    \item Il faut évaluer les modèles sur plusieurs langues
+\end{itemize}
+\begin{block}{Message}
+    Plus gros n'est pas automatiquement plus proche de l'humain.
+\end{block}
+\src{Kuribayashi, Oseki, Ito, Yoshida, Asahara \& Inui, ACL 2021}
+\end{frame}
+
+\begin{frame}{Comment le sens se compose}
+\begin{itemize}
+    \item « maison de chien » $\neq$ « chien de maison »
+    \item Des modèles simples de composition sémantique sont testés sur des données fMRI
+    \item Une composition apparaît dans le gyrus frontal inférieur gauche, avec un modèle explicite de la combinaison
+\end{itemize}
+\src{Ciapparelli, Marelli, Graves \& Reverberi, Cerebral Cortex 2025}
+\end{frame}

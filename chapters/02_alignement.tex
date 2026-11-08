@@ -1,0 +1,88 @@
+\section{Q1 : modèles et cerveau calculent-ils pareil ?}
+\frame{\sectionpage}
+
+\begin{frame}{Les modèles prédisent le réseau du langage}
+\begin{itemize}
+    \item Des dizaines de modèles de langage comparés à des données fMRI, ECoG et EEG/MEG
+    \item Les meilleurs modèles sont ceux qui prédisent le mieux le mot suivant
+    \item Certains approchent le plafond de bruit sur des phrases
+\end{itemize}
+\vspace{0.5em}
+\begin{block}{Idée clé}
+    Prédire le prochain mot suffit à produire des représentations proches de celles du cerveau.
+\end{block}
+% TODO : vérifier les chiffres exacts avant d'ajouter (Schrimpf 2021)
+\src{Schrimpf et al., PNAS 2021 ; Caucheteux \& King, 2022}
+\end{frame}
+
+\begin{frame}{Le cerveau prédit aussi}
+Enregistrements intracrâniens (ECoG) pendant une conversation naturelle :
+\begin{itemize}
+    \item Le cerveau \textbf{anticipe} le mot suivant avant qu'il soit prononcé
+    \item Il réagit à la \textbf{surprise} après le mot
+    \item Les mots sont représentés par des plongements contextuels, comme dans un modèle
+\end{itemize}
+% IMAGE : figure d'encodage temporel (à ajouter, avec autorisation de la figure)
+\src{Goldstein et al., Nature Neuroscience 2022}
+\end{frame}
+
+\begin{frame}{Des données naturelles, à grande échelle}
+\begin{itemize}
+    \item \textbf{Narratives} : fMRI de centaines de participants qui écoutent des histoires
+    \item Permet de séparer ce qui est lexical, syntaxique ou compositionnel
+    \item Résultat : syntaxe et sémantique partagent un substrat distribué plutôt que des modules séparés
+\end{itemize}
+% TODO : vérifier la citation exacte du jeu de données (Nastase et al., 2021)
+\src{Nastase et al., Narratives ; Caucheteux, Gramfort \& King, ICML 2021}
+\end{frame}
+
+\begin{frame}{Combien de données faut-il ?}
+\begin{itemize}
+    \item Critique fréquente : les modèles voient bien plus de texte qu'un enfant
+    \item Réponse : environ \textbf{100 millions de mots} suffisent pour prédire presque au maximum les réponses fMRI à des phrases
+    \item Un enfant en entend environ ce volume au cours de ses 10 premières années
+\end{itemize}
+\src{Hosseini, Schrimpf, Zhang, Bowman, Zaslavsky \& Fedorenko, Neurobiology of Language 2024}
+\end{frame}
+
+\begin{frame}{Piloter le cerveau avec un modèle}
+\begin{itemize}
+    \item Un modèle de type GPT ajusté sur les réponses fMRI à 1\,000 phrases
+    \item Il sert à \textbf{choisir de nouvelles phrases} qui augmentent ou suppriment l'activité du réseau du langage
+    \item L'expérience confirme les prédictions chez de nouveaux participants
+\end{itemize}
+\vspace{0.5em}
+\begin{block}{Pourquoi c'est important}
+    On passe de la corrélation à un contrôle de l'activité cérébrale.
+\end{block}
+\src{Tuckute et al., Nature Human Behaviour 2024}
+\end{frame}
+
+\begin{frame}{Faire mieux avec le cerveau comme guide}
+\begin{itemize}
+    \item Utiliser des enregistrements cérébraux comme signal pour améliorer les modèles de langage
+    \item Un modèle entraîné à mieux comprendre les récits devient plus aligné au cerveau
+\end{itemize}
+% TODO : vérifier et choisir 1 ou 2 articles de Toneva (Toneva \& Wehbe 2019 ; Aw \& Toneva 2023)
+\src{Toneva \& Wehbe, NeurIPS 2019 ; Aw \& Toneva, ICLR 2023}
+\end{frame}
+
+\begin{frame}{L'instruction-tuning aligne-t-il au cerveau ?}
+\begin{itemize}
+    \item 25 modèles comparés (bruts et ajustés par instructions), 3 jeux de données
+    \item L'instruction-tuning augmente l'alignement cérébral d'environ \textbf{6\%} en moyenne
+    \item L'alignement suit la taille du modèle et ses connaissances du monde
+    \item Mais il n'améliore pas l'alignement avec les temps de lecture
+\end{itemize}
+\src{Aw, Montariol, AlKhamissi, Schrimpf \& Bosselut, 2023}
+\end{frame}
+
+\begin{frame}{Langage et pensée ne sont pas la même chose}
+\begin{itemize}
+    \item Compétence \textbf{formelle} : grammaire, bonnes phrases (les LLM excellent)
+    \item Compétence \textbf{fonctionnelle} : raisonner, planifier, comprendre le monde (plus fragile)
+    \item Chez l'humain, ces deux compétences reposent sur des réseaux cérébraux différents
+\end{itemize}
+% TODO : vérifier la référence (Mahowald et al., Trends in Cognitive Sciences 2024)
+\src{Mahowald, Ivanova, Blank, Kanwisher, Tenenbaum \& Fedorenko, 2024}
+\end{frame}
