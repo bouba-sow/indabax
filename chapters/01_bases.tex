@@ -14,7 +14,7 @@
 \begin{frame}{Comment « écouter » le cerveau ?}
 \centering\small
 \begin{tabular}{lcccc}
-    \textcolor{yellow}{Méthode} & \textcolor{yellow}{Espace} & \textcolor{yellow}{Temps} & \textcolor{yellow}{Invasif ?} \\
+    \textcolor{darkred}{Méthode} & \textcolor{darkred}{Espace} & \textcolor{darkred}{Temps} & \textcolor{darkred}{Invasif ?} \\
     \hline
     IRM fonctionnelle (fMRI) & millimètres & secondes & non \\
     EEG / MEG & centimètres & millisecondes & non \\
@@ -40,8 +40,8 @@ L'intracrânien se fait chez des patients épileptiques implantés pour raisons 
 \begin{frame}{Comparer un modèle à un cerveau}
 \centering
 \begin{tikzpicture}[
-    box/.style={draw=yellow, rounded corners, fill=darkred, text=white, align=center, minimum height=1.1cm, font=\small},
-    arr/.style={-{Stealth}, thick, yellow}]
+    box/.style={draw=darkred, rounded corners, fill=darkred, text=white, align=center, minimum height=1.1cm, font=\small},
+    arr/.style={-{Stealth}, thick, darkred}]
     \node[box] (txt) at (0,0) {Texte\\{\footnotesize « Le chat dort… »}};
     \node[box] (lm) at (4.6,1.1) {Modèle de langage\\{\footnotesize activations}};
     \node[box] (br) at (4.6,-1.1) {Cerveau\\{\footnotesize fMRI / EEG / iEEG}};
