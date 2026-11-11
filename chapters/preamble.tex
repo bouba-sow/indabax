@@ -1,72 +1,11 @@
-\usepackage{amsthm}
-\usepackage{amsfonts}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{mathtools}
-\usepackage{bbm}
-\usepackage{pgfplots}
+% ---------------------------------------------------------------
+%  Paquets
+% ---------------------------------------------------------------
+\usepackage{amsmath,amssymb,mathtools}
 \usepackage{tikz}
-\usepackage{physics}
-\usepackage{calligra}
-\usepackage{csquotes}
-\usepackage{tensor}
-\usepackage[thicklines]{cancel}
+\usetikzlibrary{positioning,calc,arrows.meta,shapes.geometric,fit,backgrounds,babel}
 \usepackage{tcolorbox}
-\usepackage{pstricks}
-\usepackage[backend=biber, bibstyle=nature, sorting=nty, citestyle=numeric-comp]{biblatex} %Custom bibliography
-    \addbibresource{bib.bib} %Load references
-
-
-\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
-\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
-\newcommand{\scriptr}{\mathcalligra{r}\,}
-\newcommand{\boldscriptr}{\pmb{\mathcalligra{r}}\,}
-\def\rc{\scriptr}
-\def\brc{\boldscriptr}
-\def\hrc{\hat\brc}
-\newcommand{\ie}{\emph{i.e.}} %id est
-\newcommand{\eg}{\emph{e.g.}} %exempli gratia
-\newcommand{\rtd}[1]{\ensuremath{\left\lfloor #1 \right\rfloor}}
-\newcommand{\dirac}[1]{\ensuremath{\delta \left( #1 \right)}}
-\newcommand{\diract}[1]{\ensuremath{\delta^3 \left( #1 \right)}}
-\newcommand{\e}{\ensuremath{\epsilon_0}}
-\newcommand{\m}{\ensuremath{\mu_0}}
-\newcommand{\V}{\ensuremath{\mathcal{V}}}
-\newcommand{\prnt}[1]{\ensuremath{\left(#1\right)}} %parentheses
-\newcommand{\colch}[1]{\ensuremath{\left[#1\right]}} %square brackets
-\newcommand{\chave}[1]{\ensuremath{\left\{#1\right\}}}  %curly brackets
-\newcommand\eqdef{\stackrel{\mathclap{\normalfont \tiny\mbox{\textrm{def}}}}{=}}
-
-
-\definecolor{blue2}{HTML}{045FB4}
-\definecolor{green2}{HTML}{46C235}
-\definecolor{red2}{HTML}{EE4848}
-\definecolor{violet2}{HTML}{A647E5}
-\definecolor{orange2}{HTML}{FF7425}
-\definecolor{darkred}{HTML}{5C2020}
-\definecolor{gray}{HTML}{303030}
-\definecolor{yellow}{HTML}{f0be52}
-\definecolor{lightdarkgold}{HTML}{EEBC1D}
-
-\renewcommand{\CancelColor}{\color{darkred}}
-
-\makeatletter
-\newcommand{\mybox}[1]{%
-  \setbox0=\hbox{#1}%
-  \setlength{\@tempdima}{\dimexpr\wd0+13pt}%
-  \begin{tcolorbox}[colback=darkred,colframe=darkred,boxrule=0.5pt,arc=4pt,
-      left=6pt,right=6pt,top=6pt,bottom=6pt,boxsep=0pt,width=\@tempdima]
-    \textcolor{yellow}{#1}
-  \end{tcolorbox}
-}
-\makeatother
-
-
-\pgfplotsset{my style/.append style={axis x line=middle, axis y line=
-middle, xlabel={$x$}, ylabel={$y$}, axis equal }}
-
-
-% Le thème visuel est dans chapters/theme.tex
-
-\newcommand{\hlight}[1]{\colorbox{violet!50}{#1}}
-\newcommand{\hlighta}[1]{\colorbox{darkred!50}{#1}}
+\tcbuselibrary{skins}
+\usepackage{csquotes}
+\usepackage{booktabs}
+\usepackage{xcolor}

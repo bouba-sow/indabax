@@ -11,3 +11,7 @@
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+handout.*
+build.log
+hb.log
+main.pdf

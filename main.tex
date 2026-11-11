@@ -1,56 +1,36 @@
-\documentclass[aspectratio=169,12pt,t]{beamer}
+\documentclass[aspectratio=169,11pt]{beamer}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage[scaled=0.95]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
 \input{chapters/preamble}
 \input{chapters/theme}
-\usetikzlibrary{positioning,calc,arrows.meta}
 
-% Petite macro : source / référence en bas de slide
-% Carte de domaine : ce qu'on peut faire / ce qu'on fait vraiment
-\newcommand{\domaincard}[3]{%
-\begin{frame}{#1}
-\begin{columns}[T]
-    \column{.48\textwidth}
-    {\color{navy}\bfseries Potentiel}\par\vspace{0.3em}
-    #2
-    \column{.48\textwidth}
-    {\color{navy}\bfseries État actuel}\par\vspace{0.3em}
-    #3
-\end{columns}
-\end{frame}}
-
-\newcommand{\src}[1]{\par\vfill{\scriptsize\textcolor{softgray}{#1}}}
-
-\title[IA et cerveau]{L'intelligence artificielle à la rencontre du cerveau humain}
-\subtitle{Modèle, outil et source d'inspiration pour les neurosciences}
+\title{L'intelligence artificielle à la rencontre du cerveau humain}
+\subtitle{Comment l'IA nous aide à comprendre le langage, la mémoire et la pensée}
 \author[B. Sow]{Boubacar Sow}
-\institute[LSCP]{%
-    Doctorant, Laboratoire de Sciences Cognitives et Psycholinguistique\\
-    ENS-PSL \& CNRS%
-}
+\institute{Doctorant, Laboratoire de Sciences Cognitives et Psycholinguistique (LSCP)\\ENS-PSL \& CNRS, Paris}
+\date[IndabaX Guinée 2026]{IndabaX Guinée 2026} % TODO : date exacte
 \titlegraphic{%
-    \includegraphics[height=0.9cm]{images/lscp.png}\hspace{1.2cm}%
-    \includegraphics[height=1.2cm]{images/ens_psl.png}\hspace{1.2cm}%
-    \includegraphics[height=0.9cm]{images/cnrs.png}%
-}
-\date{IndabaX Guinée 2026} % TODO : date exacte
-%\logo{\includegraphics[width= 0.05\textwidth]{images/logo.png}}
+  \setlength{\fboxsep}{6pt}\colorbox{white}{%
+    \includegraphics[height=0.75cm]{images/lscp.png}\hspace{0.6cm}%
+    \includegraphics[height=1.0cm]{images/ens_psl.png}\hspace{0.6cm}%
+    \includegraphics[height=0.8cm]{images/cnrs.png}}}
 
 \begin{document}
 
-    \frame{\titlepage}
+\begin{frame}[plain,noframenumbering]
+  \titlepage
+\end{frame}
 
-    \begin{frame}{Plan}
-        \tableofcontents
-    \end{frame}
-
-    \input{chapters/00_intro}
-    \input{chapters/01_bases}
-    \input{chapters/02_modele}
-    \input{chapters/03_outils}
-    \input{chapters/04_inspiration}
-    \input{chapters/05_labo}
-    \input{chapters/06_conclusion}
+\input{chapters/00_intro}        % ~5 min  accroche, idée centrale, plan
+\input{chapters/01_bases}        % ~7 min  modèle de langage, cerveau, mesures
+\input{chapters/02_modele}       % ~9 min  Marr, méthode, résultats langage
+\input{chapters/03_mecanismes}   % ~9 min  syntaxe, mémoire, pensée
+\input{chapters/04_contribution} % ~4 min  mon travail
+\input{chapters/05_outils}       % ~3 min  décodage
+\input{chapters/06_conclusion}   % ~3 min  bilan, Guinée, merci
 
 \end{document}

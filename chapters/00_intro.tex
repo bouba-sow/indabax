@@ -1,173 +1,84 @@
-\section{Un exemple pour commencer : redonner la parole}
+% =====================================================================
+%  Introduction (~5 min) : l'IA n'est pas seulement ChatGPT
+% =====================================================================
 
-\begin{frame}{Décoder la parole tentée}
-\centering
-\resizebox{0.95\textwidth}{!}{%
-\begin{tikzpicture}[
-    box/.style={draw=navy, rounded corners, fill=navy, text=white, align=center, minimum height=1.3cm, minimum width=3.2cm, font=\small},
-    obox/.style={draw=lscp, rounded corners, fill=lscp!20, text=navy, align=center, minimum height=0.9cm, minimum width=2.6cm, font=\small},
-    arr/.style={-{Stealth}, thick, lscp}]
-    \node[box] (c) at (0,0) {Cortex de la parole\\{\footnotesize 253 électrodes (ECoG)}};
-    \node[box] (n) at (5,0) {Réseau de neurones\\{\footnotesize profond}};
-    \node[obox] (t) at (10,1.2) {Texte};
-    \node[obox] (v) at (10,0) {Voix synthétique};
-    \node[obox] (a) at (10,-1.2) {Avatar};
-    \draw[arr] (c)--(n);
-    \draw[arr] (n)--(t); \draw[arr] (n)--(v); \draw[arr] (n)--(a);
-\end{tikzpicture}%
-}
+\begin{frame}{Quand on dit « intelligence artificielle »\dots}
+  \centering
+  \begin{tikzpicture}[
+      bulle/.style={rounded corners=8pt, fill=fondclair, text=texte, text width=7.2cm, inner sep=8pt, font=\small}]
+    \node[bulle, anchor=west] (q) at (0,0) {\textbf{Vous :} Explique-moi comment fonctionne le cerveau.};
+    \node[bulle, fill=bordeaux, anchor=east, text width=7.6cm] (r) at (12.6,-1.35)
+      {\textbf{ChatGPT :} Le cerveau est un organe composé d'environ 86 milliards de neurones\dots};
+  \end{tikzpicture}
 
-\vspace{0.8em}
-Participante paralysée après un AVC du tronc cérébral : elle tente de prononcer des phrases sans émettre de son.
-% IMAGE : photo du dispositif ou figure 1 de l'article (à ajouter, avec autorisation)
-\src{Metzger et al., Nature 2023}
+  \vspace{0.8em}
+  \visible<2->{%
+  {\large \dots on pense presque toujours à \jaun{\textbf{ChatGPT}}.}\\[0.6em]
+  }
+  \visible<3->{%
+  Mais les chatbots ne sont qu'\textbf{une} application d'une idée beaucoup plus large :\\
+  \jaun{des systèmes qui apprennent à partir de données}.
+  }
 \end{frame}
 
-\begin{frame}{Vers la vitesse de la conversation}
-\centering
-\begin{tikzpicture}[
-    bar/.style={fill=navy, minimum height=0.55cm, anchor=west, inner sep=0pt},
-    lab/.style={anchor=east, font=\small, text width=6.2cm, align=right}]
-    \def\sc{0.042}
-    \node[lab] at (0,2.4) {Sélection de lettres (technologie d'assistance)};
-    \node[bar, minimum width={14*\sc cm}] at (0.15,2.4) {};
-    \node[anchor=west, font=\small] at ({14*\sc+0.3},2.4) {14};
-    \node[lab] at (0,1.5) {Willett et al., 2023 (implants intracorticaux)};
-    \node[bar, minimum width={62*\sc cm}] at (0.15,1.5) {};
-    \node[anchor=west, font=\small] at ({62*\sc+0.3},1.5) {62};
-    \node[lab] at (0,0.6) {Metzger et al., 2023 (ECoG, médiane)};
-    \node[bar, minimum width={78*\sc cm}] at (0.15,0.6) {};
-    \node[anchor=west, font=\small] at ({78*\sc+0.3},0.6) {78};
-    \node[lab] at (0,-0.3) {Conversation naturelle};
-    \node[bar, fill=lscp, minimum width={160*\sc cm}] at (0.15,-0.3) {};
-    \node[anchor=west, font=\small] at ({160*\sc+0.3},-0.3) {160};
-    \node[font=\small\itshape] at (5.5,-1.1) {mots par minute};
-\end{tikzpicture}
-\src{Willett et al. ; Metzger et al., Nature 2023}
+\begin{frame}{L'IA est aussi un instrument scientifique}
+  \begin{columns}[T,onlytextwidth]
+    \column{.32\textwidth}
+    \carte[vert]{Biologie}{%
+      \textbf{AlphaFold} prédit la forme 3D des protéines à partir de leur séquence.\\[0.4em]
+      {\color{gris}Prix Nobel de chimie 2024.}}
+    \column{.32\textwidth}
+    \visible<2->{\carte[bleu]{Médecine}{%
+      Un réseau de neurones transforme l'activité cérébrale d'une patiente paralysée en \textbf{texte et en voix}.\\[0.4em]
+      {\color{gris}Metzger et al., \emph{Nature} 2023.}}}
+    \column{.32\textwidth}
+    \visible<3->{\carte[orange]{Sciences cognitives}{%
+      Les modèles de langage servent de \textbf{modèles du cerveau} : des hypothèses que l'on peut tester.\\[0.4em]
+      {\color{gris}Le sujet de cet exposé.}}}
+  \end{columns}
+  \vspace{0.5em}
+  \visible<4->{\cle{Comme le télescope pour l'astronomie, l'IA devient un outil pour étudier l'esprit humain.}}
 \end{frame}
 
-\begin{frame}{Trois rôles de l'IA en neurosciences}
-\begin{columns}[T]
-    \column{.31\textwidth}
-    \begin{block}{Modèle du cerveau}
-        \small
-        Tester des hypothèses sur le calcul cérébral\\[0.3em]
-        Vision, récompense, langage, comportement, mécanismes
-    \end{block}
-    \column{.31\textwidth}
-    \begin{block}{Outil}
-        \small
-        Décoder le langage depuis le cerveau\\[0.3em]
-        Interfaces cerveau-machine, décodage non invasif
-    \end{block}
-    \column{.31\textwidth}
-    \begin{block}{Inspiration}
-        \small
-        Le cerveau guide la conception de l'IA\\[0.3em]
-        Signal cérébral, apprentissage à échelle développementale
-    \end{block}
-\end{columns}
-\vspace{0.8em}
-Pour chaque domaine : \textbf{potentiel} et \textbf{état actuel} des résultats.
-\end{frame}
-
-\section{Cadre théorique : les niveaux de Marr}
-
-\begin{frame}{Les trois niveaux de Marr}
-\begin{columns}[T]
+\begin{frame}{Pourquoi un modèle aide à comprendre}
+  \begin{columns}[c,onlytextwidth]
     \column{.52\textwidth}
-    \begin{itemize}
-        \item<1-> \textbf{Computationnel} : \emph{quel problème} est résolu ?\\
-              {\small ex. : une addition}
-        \item<2-> \textbf{Algorithmique} : \emph{quelles représentations et quelles procédures} ?\\
-              {\small ex. : chiffres arabes et retenue}
-        \item<3-> \textbf{Implémentationnel} : \emph{substrat} physique\\
-              {\small ex. : neurones, transistors}
-    \end{itemize}
-    \column{.46\textwidth}
     \centering
-    \resizebox{\linewidth}{!}{%
     \begin{tikzpicture}[
-        n/.style={circle, draw=navy, fill=navy!15, minimum size=0.42cm, inner sep=0pt},
-        e/.style={navy, thick},
-        lab/.style={font=\small\bfseries, text=navy, anchor=west}]
-        \node<1->[n] (c) at (0,0) {};
-        \node<1->[lab] at (2.4,0) {Computationnel};
-        \node<2->[n] (a1) at (-1.2,-1.4) {};
-        \node<2->[n] (a2) at (0,-1.4) {};
-        \node<2->[n] (a3) at (1.2,-1.4) {};
-        \node<2->[lab] at (2.4,-1.4) {Algorithmique};
-        \draw<2->[e] (c)--(a1); \draw<2->[e] (c)--(a2); \draw<2->[e] (c)--(a3);
-        \foreach \x/\i in {-1.8/1,-0.6/2,0.6/3,1.8/4}{
-            \node<3->[n] (i\i) at (\x,-2.8) {};
-            \draw<3->[e] (a2)--(i\i);}
-        \node<3->[lab] at (2.4,-2.8) {Implémentation};
-        \node<3->[font=\small\bfseries, text=navy] at (0,-3.5) {Relation un-à-plusieurs};
-    \end{tikzpicture}}
-\end{columns}
+        bx/.style={rounded corners=5pt, minimum width=2.7cm, minimum height=1.4cm, align=center, font=\small\bfseries},
+        ar/.style={-{Stealth[length=3mm]}, line width=1.2pt, gris}]
+      \node[font=\small, text=texte, align=center] (in) at (0.3,0) {« Le chat\\dort »};
+      \node[bx, fill=bleu!25!fondclair, draw=bleu, text=bleu] (br) at (3.2,1.15) {Cerveau\\{\scriptsize\normalfont boîte noire}};
+      \node[bx, fill=orange!25!fondclair, draw=orange, text=orange] (md) at (3.2,-1.15) {Modèle d'IA\\{\scriptsize\normalfont boîte transparente}};
+      \draw[ar] (in) -- (br.west);
+      \draw[ar] (in) -- (md.west);
+      \visible<2->{
+      \node[font=\small, text=jaune, align=center] (cmp) at (5.9,0) {Comparer\\les réponses};
+      \draw[ar, jaune] (br.east) -- (cmp);
+      \draw[ar, jaune] (md.east) -- (cmp);}
+    \end{tikzpicture}
+    \column{.42\textwidth}
+    \small
+    \begin{itemize}
+      \item<1-> On ne peut pas enregistrer chacun des 86 milliards de neurones d'un être humain.
+      \item<2-> Un modèle, lui, s'ouvre entièrement : chaque unité se \textbf{mesure} et se \textbf{modifie}.
+      \item<3-> S'il se comporte comme le cerveau, il devient une \jaun{hypothèse explicite} sur le calcul cérébral.
+    \end{itemize}
+  \end{columns}
+  \vspace{0.6em}
+  \visible<4->{\cle{Un modèle d'IA est une théorie que l'on peut faire tourner, interroger et casser.}}
 \end{frame}
 
-\begin{frame}{Marr : humains et modèles de langage}
-\centering
-\resizebox{\textwidth}{!}{%
-\begin{tikzpicture}[
-    n/.style={circle, draw=navy, fill=navy!15, minimum size=0.42cm, inner sep=0pt},
-    e/.style={navy, thick},
-    lab/.style={font=\small\bfseries, text=navy, anchor=west}]
-    \node[n] (c) at (0,0) {};
-    \foreach \x/\i in {-4/1,-2/2,0/3,2/4,4/5}{\node[n] (a\i) at (\x,-1.5) {};}
-    \foreach \i in {2,3,4}{\draw[e] (c)--(a\i);}
-    \draw[lscp, ultra thick] (c)--(a1);
-    \draw[blue2, ultra thick] (c)--(a5);
-    \foreach \x/\i in {-5.2/1,-4.4/2,-3.6/3,-2.8/4}{\node[n] (m\i) at (\x,-3.2) {}; \draw[e] (a1)--(m\i);}
-    \foreach \x/\i in {2.8/1,3.6/2,4.4/3,5.2/4}{\node[n] (h\i) at (\x,-3.2) {}; \draw[e] (a5)--(h\i);}
-    \node[lab, text=lscp!70!black] at (-5.2,-3.9) {Modèles de langage};
-    \node[lab, text=blue2] at (2.6,-3.9) {Cerveaux humains};
-    \node[lab] at (6.2,0) {Computationnel};
-    \node[lab] at (6.2,-1.5) {Algorithmique};
-    \node[lab] at (6.2,-3.2) {Implémentation};
-\end{tikzpicture}}
+\begin{frame}{Le fil de l'exposé}
+  \centering
+  \vspace{0.3em}
+  {\large Le cerveau et l'IA traitent-ils le langage \jaun{de la même façon} ?\\[0.2em]
+  Et que nous apprend la comparaison ?}
 
-\vspace{0.4em}
-\textbf{Hypothèse de divergence} : implémentations très différentes, éventuellement objectifs différents ; les algorithmes diffèrent.
+  \vspace{1.2em}
+  \roadmap{0}
+
+  \vspace{1.0em}
+  \small\color{gris}
+  On part des \textbf{bases}, on apprend à \textbf{comparer}, puis on regarde \textbf{à l'intérieur}.
 \end{frame}
-
-\begin{frame}{Marr : humains et modèles de langage}
-\centering
-\resizebox{\textwidth}{!}{%
-\begin{tikzpicture}[
-    n/.style={circle, draw=navy, fill=navy!15, minimum size=0.42cm, inner sep=0pt},
-    e/.style={navy, thick},
-    lab/.style={font=\small\bfseries, text=navy, anchor=west}]
-    \node[n] (c) at (0,0) {};
-    \foreach \x/\i in {-4/1,-2/2,0/3,2/4,4/5}{\node[n] (a\i) at (\x,-1.5) {};}
-    \foreach \i in {1,2,4,5}{\draw[e] (c)--(a\i);}
-    \draw[lscp, ultra thick] (c) to[bend right=28] (a3);
-    \draw[blue2, ultra thick] (c) to[bend left=28] (a3);
-    \foreach \x/\i in {-5.2/1,-4.4/2,-3.6/3,-2.8/4}{\node[n] (m\i) at (\x,-3.2) {}; \draw[e] (a3)--(m\i);}
-    \foreach \x/\i in {2.8/1,3.6/2,4.4/3,5.2/4}{\node[n] (h\i) at (\x,-3.2) {}; \draw[e] (a3)--(h\i);}
-    \node[lab, text=lscp!70!black] at (-5.2,-3.9) {Modèles de langage};
-    \node[lab, text=blue2] at (2.6,-3.9) {Cerveaux humains};
-    \node[lab] at (6.2,0) {Computationnel};
-    \node[lab] at (6.2,-1.5) {Algorithmique};
-    \node[lab] at (6.2,-3.2) {Implémentation};
-\end{tikzpicture}}
-
-\vspace{0.4em}
-\textbf{Hypothèse de convergence} : un \emph{même} algorithme, implémenté sur deux substrats différents.
-\end{frame}
-
-\begin{frame}{Inférer le niveau algorithmique}
-\begin{itemize}
-    \item L'algorithme n'est pas directement observable : il est \textbf{inféré}
-    \item \textbf{Comportement} : temps de lecture (lecture auto-rythmée, oculométrie)
-    \item \textbf{Activité cérébrale} : motifs d'activité reflétant les représentations utilisées
-    \item On compare donc modèles et humains \textbf{au niveau algorithmique}
-\end{itemize}
-\vspace{0.4em}
-\begin{block}{Intérêt des modèles d'IA}
-    Sous l'hypothèse de convergence, un modèle est une hypothèse explicite sur l'algorithme cérébral, entièrement observable et manipulable (ablation, intervention), ce que le cerveau permet peu.
-\end{block}
-\src{Marr, Vision, 1982}
-\end{frame}
-

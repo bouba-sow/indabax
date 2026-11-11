@@ -1,0 +1,62 @@
+% =====================================================================
+%  Partie 5 (~3 min) : l'IA comme outil -- décoder le cerveau
+% =====================================================================
+\partie{L'IA comme outil}{L'IA comme outil : décoder le cerveau}
+
+% ---------------------------------------------------------------------
+\begin{frame}{Redonner la parole}
+  \begin{columns}[c,onlytextwidth]
+    \column{.50\textwidth}
+    \centering
+    \begin{tikzpicture}[
+        bx/.style={rounded corners=4pt, fill=bordeaux, text=white, align=center, minimum height=1.0cm, text width=2.4cm, font=\small},
+        ob/.style={rounded corners=4pt, fill=fondclair, draw=jaune, text=jaune, align=center, minimum height=0.6cm, minimum width=2.0cm, font=\scriptsize},
+        ar/.style={-{Stealth}, jaune, line width=1pt}]
+      \node[bx] (c) at (0,0.2) {Cortex moteur\\{\scriptsize 253 électrodes}};
+      \node[bx, fill=orange!50!fondclair] (n) at (0,-1.6) {Réseau de neurones};
+      \node[ob] (t) at (-2.3,-3.0) {texte};
+      \node[ob] (v) at (0,-3.0) {voix};
+      \node[ob] (a) at (2.3,-3.0) {avatar};
+      \draw[ar] (c)--(n); \draw[ar] (n)--(t); \draw[ar] (n)--(v); \draw[ar] (n)--(a);
+    \end{tikzpicture}
+    \column{.48\textwidth}
+    \small
+    \begin{itemize}
+      \item<1-> Une patiente paralysée \textbf{tente} de parler, sans émettre de son.
+      \item<2-> Le décodeur reconnaît des \textbf{phonèmes}, puis un modèle de langage choisit les phrases les plus probables.
+      \item<3-> On retrouve les deux ingrédients de cet exposé : réseaux de neurones et \textbf{prédiction du mot suivant}.
+    \end{itemize}
+  \end{columns}
+  \vspace{0.5em}
+  \visible<4->{%
+  \hspace*{3.6cm}\begin{tikzpicture}[x=0.042cm,
+      lab/.style={anchor=east, font=\scriptsize, text=texte},
+      val/.style={anchor=west, font=\scriptsize, text=gris}]
+    \foreach \l/\v/\y/\c in {{Avant (sélection de lettres)}/14/0/gris, {Willett et al. 2023}/62/-0.42/orange, {Metzger et al. 2023}/78/-0.84/orange, {Conversation naturelle}/160/-1.26/jaune}{
+      \node[lab] at (-2,\y) {\l};
+      \fill[\c] (0,\y-0.15) rectangle (\v,\y+0.15);
+      \node[val] at (\v+2,\y) {\v};}
+    \node[font=\scriptsize, text=gris, anchor=west] at (95,-0.2) {mots par minute};
+  \end{tikzpicture}}
+  \src{Metzger et al., \emph{Nature} 2023 ; Willett et al., \emph{Nature} 2023}
+\end{frame}
+
+% ---------------------------------------------------------------------
+\begin{frame}{Décoder sans chirurgie ?}
+  \begin{columns}[T,onlytextwidth]
+    \column{.48\textwidth}
+    \carte[bleu]{IRMf : le sens d'une histoire}{%
+      Un décodeur retrouve \textbf{l'idée générale} d'une histoire entendue ou imaginée, pas les mots exacts.\\[0.3em]
+      {\color{gris}16 h d'enregistrement par personne ; ne marche que si la personne coopère.}\\[0.2em]
+      {\scriptsize\color{gris}Tang et al., \emph{Nat. Neurosci.} 2023}}
+    \column{.48\textwidth}
+    \visible<2->{\carte[bleu]{MEG / EEG : la frappe au clavier}{%
+      Décodage des phrases tapées par 35 volontaires.\\[0.3em]
+      {\color{gris}Erreur sur les caractères : 32\,\% en MEG, 67\,\% en EEG.}\\[0.2em]
+      {\scriptsize\color{gris}Lévy et al. (Meta), 2025}}}
+  \end{columns}
+  \vspace{0.6em}
+  \visible<3->{\small\textbf{Questions éthiques} : consentement, \textbf{vie privée mentale}, accès équitable à ces technologies.}
+  \vspace{0.3em}
+  \visible<4->{\cle{Des résultats réels, mais encore loin de « lire dans les pensées ».}}
+\end{frame}

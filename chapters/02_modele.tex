@@ -1,180 +1,232 @@
-\section{L'IA comme modèle du système cognitif}
+% =====================================================================
+%  Partie 2 (~9 min) : comparer le modèle au cerveau
+% =====================================================================
+\partie{Comparer}{Comparer le modèle au cerveau}
 
-\begin{frame}{Vision et récompense}
-\begin{itemize}
-    \item \textbf{Vision} : des réseaux optimisés pour la reconnaissance d'objets prédisent l'activité du cortex visuel des primates
-    \item \textbf{Récompense} : l'apprentissage par renforcement \emph{distributionnel}, issu de l'IA, prédit une diversité d'optimisme entre neurones dopaminergiques
-    \item Cette prédiction est confirmée par des enregistrements de neurones uniques chez la souris
-\end{itemize}
-\src{Yamins et al., PNAS 2014 ; Dabney et al., Nature 2020}
+% Arbres de Marr (style Linguae)
+\tikzset{mn/.style={circle, draw=white!55, fill=white!85!black, line width=0.9pt, minimum size=0.5cm, inner sep=0pt},
+         ma/.style={-{Stealth}, line width=1pt, white!60},
+         mlab/.style={text=jaune, font=\small\bfseries, anchor=west, align=left}}
+
+% ---------------------------------------------------------------------
+\begin{frame}{Trois niveaux pour décrire un système qui calcule}
+  \begin{columns}[c,onlytextwidth]
+    \column{.52\textwidth}
+    \small
+    \begin{itemize}
+      \item<1-> \jaun{\textbf{Computationnel}} : \emph{quel problème} est résolu ?\\
+            {\color{gris}ex. : additionner deux nombres}
+      \item<2-> \jaun{\textbf{Algorithmique}} : \emph{quelle procédure} ?\\
+            {\color{gris}ex. : chiffres arabes et retenue, ou bâtonnets}
+      \item<3-> \jaun{\textbf{Implémentation}} : \emph{quel support physique} ?\\
+            {\color{gris}ex. : neurones, transistors, boulier}
+    \end{itemize}
+    \vspace{0.4em}
+    \visible<4->{\small Un même problème admet \textbf{plusieurs} algorithmes, et un même algorithme \textbf{plusieurs} supports.}
+    \column{.46\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.82, every node/.style={transform shape}]
+      \useasboundingbox (-2.2,0.6) rectangle (5.6,-5.4);
+      \node[mn] (c) at (0,0) {};
+      \node[mlab] at (1.0,0) {Computationnel};
+      \visible<2->{
+        \foreach \i/\x in {1/-1,2/0,3/1} {\node[mn] (a\i) at (\x,-2.2) {}; \draw[ma] (c) -- (a\i);}
+        \node[mlab] at (1.5,-2.2) {Algorithmique};}
+      \visible<3->{
+        \foreach \i/\x in {1/-1.5,2/-0.5,3/0.5,4/1.5} {\node[mn] (i\i) at (\x,-4.4) {}; \draw[ma] (a2) -- (i\i);}
+        \node[mlab] at (2.0,-4.4) {Implémentation};}
+    \end{tikzpicture}
+  \end{columns}
+  \src{Marr, \emph{Vision}, 1982}
 \end{frame}
 
-% ---------- Langage : alignement ----------
-\begin{frame}{Prédiction du réseau du langage}
-\begin{itemize}
-    \item Des dizaines de modèles comparés à des données fMRI, ECoG et EEG/MEG
-    \item Les modèles les plus performants en prédiction du mot suivant sont les mieux alignés
-    \item Pour certains jeux de données, les meilleurs modèles approchent le plafond de bruit
-\end{itemize}
-\vspace{0.5em}
-\begin{block}{Résultat clé}
-    Des modèles entraînés à prédire le mot suivant développent des représentations qui permettent de prédire une partie de l'activité cérébrale liée au langage.
-\end{block}
-% TODO : vérifier les chiffres exacts (Schrimpf 2021)
-\src{Schrimpf et al., PNAS 2021 ; Caucheteux \& King, 2022}
+% ---------------------------------------------------------------------
+\begin{frame}{Humains et modèles : même algorithme ?}
+  \centering
+  \begin{tikzpicture}[scale=0.68, every node/.style={transform shape}]
+    \useasboundingbox (-5.2,0.7) rectangle (7.6,-5.4);
+    \node[mn] (c) at (0,0) {};
+    \node[mlab] at (5.4,0) {Computationnel};
+    \node[mlab] at (5.4,-2.2) {Algorithmique};
+    \node[mlab] at (5.4,-4.4) {Implémentation};
+    \foreach \i/\x in {1/-3,2/-1.5,3/0,4/1.5,5/3} {\node[mn] (a\i) at (\x,-2.2) {};}
+    \only<1>{
+      \foreach \i in {2,3,4} {\draw[ma, white!30] (c) -- (a\i);}
+      \draw[-{Stealth}, line width=2.4pt, orange] (c) -- (a1);
+      \draw[-{Stealth}, line width=2.4pt, bleu] (c) -- (a5);
+      \foreach \j/\x in {1/-4.5,2/-3.5,3/-2.5,4/-1.5} {\node[mn] at (\x,-4.4) {}; \draw[ma] (a1) -- (\x,-4.15);}
+      \foreach \j/\x in {1/1.5,2/2.5,3/3.5,4/4.5} {\node[mn] at (\x,-4.4) {}; \draw[ma] (a5) -- (\x,-4.15);}}
+    \only<2->{
+      \foreach \i in {1,2,4,5} {\draw[ma, white!30] (c) -- (a\i);}
+      \draw[-{Stealth}, line width=2.4pt, orange] (c.south west) to[bend right=28] (a3.north west);
+      \draw[-{Stealth}, line width=2.4pt, bleu] (c.south east) to[bend left=28] (a3.north east);
+      \foreach \j/\x in {1/-4.5,2/-3.5,3/-2.5,4/-1.5} {\node[mn] at (\x,-4.4) {}; \draw[ma] (a3) -- (\x,-4.15);}
+      \foreach \j/\x in {1/1.5,2/2.5,3/3.5,4/4.5} {\node[mn] at (\x,-4.4) {}; \draw[ma] (a3) -- (\x,-4.15);}}
+    \node[text=orange, font=\small\bfseries] at (-3,-5.1) {Modèles de langage};
+    \node[text=bleu, font=\small\bfseries] at (3,-5.1) {Cerveaux humains};
+  \end{tikzpicture}
+
+  \only<1>{\small\textcolor{rouge}{\textbf{Divergence}} : supports différents, procédures différentes. Le modèle ne nous apprend rien sur le cerveau.}%
+  \only<2>{\small\textcolor{vert}{\textbf{Convergence}} : une \textbf{même procédure} sur deux supports. Le modèle devient une loupe sur le cerveau.}%
+  \only<3>{\cle{On ne voit pas l'algorithme directement : on l'infère en comparant les réponses, mot par mot.}}
 \end{frame}
 
-\begin{frame}{Prédiction dans le cerveau}
-Enregistrements intracrâniens (ECoG) pendant une conversation naturelle :
-\begin{itemize}
-    \item \textbf{Prédiction} du mot suivant avant son occurrence
-    \item Signal de \textbf{surprise} après le mot
-    \item Représentation des mots par des plongements contextuels, comme dans un modèle
-\end{itemize}
-% IMAGE : figure d'encodage temporel (à ajouter, avec autorisation)
-\src{Goldstein et al., Nature Neuroscience 2022}
+% ---------------------------------------------------------------------
+\begin{frame}{La méthode : prédire le cerveau à partir du modèle}
+  \centering
+  \begin{tikzpicture}[
+      bx/.style={rounded corners=4pt, align=center, minimum height=1.0cm, font=\small, text=white, inner sep=4pt},
+      ar/.style={-{Stealth}, line width=1pt, gris}]
+    \node[bx, fill=fondclair, text=texte] (st) at (0,0) {Même histoire\\{\scriptsize lue ou écoutée}};
+    \node[bx, fill=orange!45!fondclair] (lm) at (3.8,0.85) {Modèle : $X$\\{\scriptsize activations}};
+    \node[bx, fill=bleu!45!fondclair] (br) at (3.8,-0.85) {Cerveau : $y$\\{\scriptsize IRMf, MEG, ECoG}};
+    \node[bx, fill=bordeaux] (rg) at (7.6,0) {Régression\\{\scriptsize $\hat y = X w$}};
+    \node[bx, fill=fondclair, text=jaune] (sc) at (10.9,0) {\textbf{Score}\\{\scriptsize corrélation}};
+    \draw[ar] (st) -- (lm.west); \draw[ar] (st) -- (br.west);
+    \draw[ar] (lm.east) -- (rg); \draw[ar] (br.east) -- (rg); \draw[ar] (rg) -- (sc);
+  \end{tikzpicture}
+
+  \vspace{0.7em}
+  \begin{columns}[T,onlytextwidth]
+    \column{.50\textwidth}
+    \visible<2->{%
+    \[\hat w = \arg\min_w \;\underbrace{\lVert y - Xw \rVert^2}_{\text{erreur}} + \lambda \underbrace{\lVert w \rVert^2}_{\text{régularisation}}\]}
+    \column{.48\textwidth}
+    \small
+    \begin{itemize}
+      \item<3-> On apprend $w$ sur une partie des données, on \textbf{teste sur des phrases jamais vues}.
+      \item<4-> On divise par le \jaun{plafond de bruit} : ce qu'un autre humain prédit du même cerveau.
+    \end{itemize}
+  \end{columns}
+  \vspace{0.3em}
+  \visible<5->{\cle{Score = 1 : le modèle prédit le cerveau aussi bien que le permet le bruit de mesure.}}
 \end{frame}
 
-\begin{frame}{Quantité de données et saturation de l'alignement}
-\begin{itemize}
-    \item $\sim$\textbf{100 millions de mots} suffisent pour prédire presque au maximum les réponses fMRI à des phrases, ce qui correspond à l'exposition d'un enfant sur une dizaine d'années
-    \item L'alignement ne croît pas indéfiniment : sur huit modèles Pythia, il augmente rapidement, atteint un pic vers 8 milliards de mots, puis sature
-\end{itemize}
-\src{Hosseini et al., Neurobiology of Language 2024 ; AlKhamissi et al., EMNLP 2025}
+% ---------------------------------------------------------------------
+\begin{frame}{Résultat 1 : prédire les mots, c'est prédire le cerveau}
+  \begin{columns}[c,onlytextwidth]
+    \column{.50\textwidth}
+    \centering
+    \begin{tikzpicture}[x=4.6cm, y=3.4cm]
+      \draw[-{Stealth}, gris] (0,0) -- (1.08,0) node[below left, font=\scriptsize, text=gris, align=right] {performance de prédiction\\du mot suivant};
+      \draw[-{Stealth}, gris] (0,0) -- (0,1.08) node[above right, font=\scriptsize, text=gris] {score cerveau};
+      \draw[dashed, jaune] (0,0.92) -- (1.02,0.92) node[right, font=\scriptsize, text=jaune] {plafond};
+      \foreach \x/\y in {0.08/0.12, 0.15/0.2, 0.22/0.18, 0.3/0.33, 0.38/0.4, 0.44/0.36, 0.52/0.5, 0.58/0.55, 0.63/0.62, 0.7/0.66, 0.76/0.72, 0.82/0.78, 0.9/0.86, 0.95/0.9}{
+        \fill[orange] (\x,\y) circle (2.2pt);}
+      \visible<2->{\draw[jaune, line width=1pt] (0.05,0.08) -- (0.98,0.92);}
+    \end{tikzpicture}\\
+    {\scriptsize\color{gris}schéma d'après Schrimpf et al. 2021 (43 modèles)}
+    \column{.48\textwidth}
+    \small
+    \begin{itemize}
+      \item<1-> Des dizaines de modèles comparés à l'IRMf, l'ECoG et le comportement.
+      \item<2-> Plus un modèle prédit bien le mot suivant, mieux il prédit le \textbf{réseau du langage}.
+      \item<3-> Les meilleurs approchent le \textbf{plafond de bruit} sur certains jeux de données.
+      \item<4-> $\sim$\textbf{100 millions de mots} d'entraînement suffisent presque : l'ordre de ce qu'entend un enfant.
+    \end{itemize}
+  \end{columns}
+  \src{Schrimpf et al., \emph{PNAS} 2021 ; Caucheteux \& King, \emph{Commun. Biol.} 2022 ; Hosseini et al., \emph{Neurobiol. Lang.} 2024}
 \end{frame}
 
-% ---------- Comportement ----------
-\begin{frame}{Surprise lexicale et difficulté de traitement}
-\[
-    s(w_t) = -\log p(w_t \mid w_1,\dots,w_{t-1})
-\]
-\begin{itemize}
-    \item La surprise est corrélée au temps de lecture : un mot improbable est traité plus lentement
-    \item Un modèle de langage fournit directement cette probabilité
-    \item La \textbf{surprise à contexte dégradé} intègre une mémoire limitée et explique la minimisation de la distance de dépendance
-\end{itemize}
-% TODO : vérifier la référence de Futrell (Cognitive Science 2020)
-\src{Levy, Cognition 2008 ; Smith \& Levy, Cognition 2013 ; Futrell, Gibson \& Levy, 2020}
+% ---------------------------------------------------------------------
+\begin{frame}{Résultat 2 : le cerveau aussi prédit le mot suivant}
+  \centering
+  \begin{tikzpicture}[x=1.2cm]
+    \draw[-{Stealth}, gris, line width=0.9pt] (-5,0) -- (5.3,0) node[below left, font=\scriptsize, text=gris] {temps};
+    \draw[jaune, line width=1.5pt] (0,-0.3) -- (0,2.1) node[above, font=\small\bfseries, text=jaune] {le mot est entendu};
+    \foreach \x/\l in {-4/$-800$ ms, -2/$-400$ ms, 0/0, 2/$+400$ ms, 4/$+800$ ms}{\node[below, font=\scriptsize, text=gris] at (\x,-0.05) {\l};}
+    \visible<2->{
+      \draw[bleu, line width=1.4pt] plot[smooth] coordinates {(-4.5,0.15) (-3,0.25) (-1.6,0.6) (-0.6,1.2) (0,1.35)};
+      \node[font=\small, text=bleu, align=center] at (-2.9,1.25) {\textbf{prédiction}\\avant le mot};}
+    \visible<3->{
+      \draw[orange, line width=1.4pt] plot[smooth] coordinates {(0,0.2) (0.8,0.5) (1.8,1.5) (2.6,0.9) (4.5,0.2)};
+      \node[font=\small, text=orange, align=center] at (3.6,1.55) {\textbf{surprise}\\après le mot};}
+  \end{tikzpicture}
+
+  \vspace{0.4em}
+  \small
+  \begin{itemize}
+    \item<1-> Patients implantés (ECoG) écoutant un podcast de 30 minutes.
+    \item<2-> L'activité \textbf{avant} chaque mot contient déjà de l'information sur ce mot.
+    \item<3-> Après le mot, la réponse cérébrale suit la \textbf{surprise} calculée par GPT-2.
+    \item<4-> Le cerveau représente les mots dans leur contexte, comme les \textbf{vecteurs} du modèle.
+  \end{itemize}
+  \src{Goldstein et al., \emph{Nature Neuroscience} 2022}
 \end{frame}
 
-\begin{frame}{Surprise et N400}
-\begin{itemize}
-    \item \textbf{N400} : composante EEG ($\sim$400 ms) dont l'amplitude augmente pour un mot inattendu
-    \item La surprise de modèles de langage explique de nombreux effets du N400
-    \item Des cas de divergence entre humain et modèle subsistent
-\end{itemize}
-% IMAGE : exemple d'onde N400 (à ajouter)
-% TODO : vérifier la référence (Michaelov et al., Neurobiology of Language 2024)
-\src{Michaelov, Bardolph, Van Petten, Bergen \& Coulson, 2024}
+% ---------------------------------------------------------------------
+\begin{frame}{Résultat 3 : la surprise prédit lecture et EEG}
+  \begin{columns}[c,onlytextwidth]
+    \column{.48\textwidth}
+    \centering
+    \begin{tikzpicture}[x=1.15cm, y=1.0cm]
+      \draw[-{Stealth}, gris] (0,0) -- (5.2,0) node[below left, font=\scriptsize, text=gris] {ms après le mot};
+      \draw[gris] (0,-1.7) -- (0,0.9);
+      \foreach \x/\l in {1/200, 2/400, 3/600, 4/800}{\node[below, font=\scriptsize, text=gris] at (\x,-1.75) {\l};}
+      \draw[bleu, line width=1.3pt] plot[smooth] coordinates {(0,0) (0.5,0.3) (1,0.1) (1.6,-0.25) (2,-0.35) (2.6,-0.15) (3.4,0.05) (4.5,0)};
+      \visible<2->{\draw[jaune, line width=1.6pt] plot[smooth] coordinates {(0,0) (0.5,0.3) (1,0.0) (1.6,-0.9) (2,-1.35) (2.6,-0.8) (3.4,-0.1) (4.5,0)};
+      \node[font=\scriptsize\bfseries, text=jaune, anchor=west] at (2.25,-1.3) {N400};}
+      \draw[bleu, line width=1.3pt] (0.2,1.25) -- (0.6,1.25) node[right, font=\scriptsize, text=bleu] {mot attendu};
+      \visible<2->{\draw[jaune, line width=1.6pt] (2.6,1.25) -- (3.0,1.25) node[right, font=\scriptsize, text=jaune] {mot surprenant};}
+    \end{tikzpicture}\\
+    {\scriptsize\color{gris}schéma ; négatif vers le bas}
+    \column{.50\textwidth}
+    \small
+    \begin{itemize}
+      \item<1-> \textbf{N400} : onde EEG négative, $\sim$400 ms après un mot.
+      \item<2-> Elle est plus ample quand le mot est \textbf{inattendu} :\\
+            « Il beurre son pain avec des \jaun{chaussettes} ».
+      \item<3-> La surprise d'un modèle de langage prédit l'amplitude de la N400 \textbf{et} les temps de lecture.
+    \end{itemize}
+  \end{columns}
+  \vspace{0.5em}
+  \visible<4->{\cle{Un seul nombre par mot, calculé par une IA, rend compte de mesures humaines très différentes.}}
+  \src{Kutas \& Hillyard, \emph{Science} 1980 ; Smith \& Levy, \emph{Cognition} 2013 ; Michaelov et al., \emph{Neurobiol. Lang.} 2024}
 \end{frame}
 
-\begin{frame}{Perplexité et plausibilité psycholinguistique}
-\begin{itemize}
-    \item En anglais, une perplexité plus basse accompagne une meilleure prédiction des temps de lecture
-    \item En japonais, cette relation ne tient pas : \textbf{une perplexité plus basse n'implique pas un modèle plus humain}
-    \item Les évaluations doivent couvrir plusieurs langues
-\end{itemize}
-\begin{block}{Conclusion}
-    L'augmentation de la taille n'améliore pas nécessairement l'adéquation au comportement humain.
-\end{block}
-\src{Kuribayashi, Oseki, Ito, Yoshida, Asahara \& Inui, ACL 2021}
+% ---------------------------------------------------------------------
+\begin{frame}{Mais plus gros ne veut pas dire plus humain}
+  \begin{columns}[c,onlytextwidth]
+    \column{.48\textwidth}
+    \centering
+    \begin{tikzpicture}[x=4.4cm, y=3.0cm]
+      \draw[-{Stealth}, gris] (0,0) -- (1.08,0) node[below left, font=\scriptsize, text=gris] {taille / qualité du modèle};
+      \draw[-{Stealth}, gris] (0,0) -- (0,1.08) node[above right, font=\scriptsize, text=gris] {ajustement aux temps de lecture};
+      \draw[jaune, line width=1.6pt] plot[smooth] coordinates {(0.04,0.25) (0.2,0.62) (0.4,0.85) (0.55,0.82) (0.75,0.62) (1.0,0.38)};
+      \visible<2->{\node[font=\scriptsize, text=jaune, align=center] at (0.42,0.98) {zone « humaine »};}
+    \end{tikzpicture}\\
+    {\scriptsize\color{gris}schéma de la courbe en U inversé}
+    \column{.50\textwidth}
+    \small
+    \begin{itemize}
+      \item<1-> Au-delà d'un certain point, les \textbf{plus gros} modèles prédisent \textbf{moins bien} les temps de lecture.
+      \item<2-> Ils prédisent « trop bien » les mots rares : un humain, lui, est surpris.
+      \item<3-> En japonais, une meilleure perplexité n'implique pas un modèle plus humain.
+    \end{itemize}
+  \end{columns}
+  \vspace{0.4em}
+  \visible<4->{\cle{Le but n'est pas le modèle le plus puissant, mais le plus humain. Ce n'est pas la même chose.}}
+  \src{Kuribayashi et al., ACL 2021 ; Oh \& Schuler, TACL 2023}
 \end{frame}
 
-% ---------- Mécanismes ----------
-\begin{frame}{Pourquoi s'intéresser à la syntaxe ?}
-\begin{columns}[T]
-\column{.42\textwidth}
-\centering
-\begin{tikzpicture}[font=\footnotesize,
-  lv/.style={draw=navy, rounded corners, fill=navy!8, align=center, text width=3.4cm, minimum height=0.9cm}]
-  \node[lv] (a) {Langage};
-  \node[lv, below=0.35cm of a] (b) {Syntaxe : structure hiérarchique};
-  \node[lv, below=0.35cm of b] (c) {Dépendances à longue distance};
-  \node[lv, fill=yellow!35, below=0.35cm of c] (d) {Accord sujet-verbe};
-  \draw[-{Stealth}] (a)--(b); \draw[-{Stealth}] (b)--(c); \draw[-{Stealth}] (c)--(d);
-\end{tikzpicture}
-\column{.56\textwidth}
-\small
-\begin{itemize}
-    \item Le sens dépend de la \textbf{combinaison des mots}, pas seulement des mots
-    \item Peu de règles, une infinité de phrases
-    \item Question ouverte : \textbf{comment le cerveau calcule-t-il ces structures ?}
-    \item Cas test pour les modèles : \textbf{apprennent-ils une structure ?}
-\end{itemize}
-\end{columns}
-\src{Fedorenko et al., \emph{Cognition}, 2020 ; Lakretz et al., 2021}
-\end{frame}
-
-\begin{frame}{L'accord : un test de la syntaxe}
-\small
-\begin{columns}[T]
-\column{.52\textwidth}
-{\color{navy}\bfseries Pourquoi ce phénomène ?}\par
-« Les \textbf{clés} que l'homme près de l'armoire tient \textbf{sont} \dots »
-\begin{itemize}
-    \item L'accord suit la \textbf{structure hiérarchique}, pas l'ordre des mots
-    \item Il révèle un traitement syntaxique
-    \item L'imbrication sonde la \textbf{récursivité}
-\end{itemize}
-\column{.44\textwidth}
-{\color{navy}\bfseries Pourquoi un modèle ?}
-\begin{itemize}
-    \item Impossible d'observer chaque neurone humain
-    \item Un modèle s'ouvre : chaque unité se mesure et se modifie
-    \item Il \textbf{génère des hypothèses} testables chez l'humain
-\end{itemize}
-\end{columns}
-\src{Lakretz et al., \emph{Cognition}, 2021}
-\end{frame}
-
-\begin{frame}{Du modèle à l'hypothèse sur le cerveau}
-\centering
-\begin{tikzpicture}[node distance=0.35cm, font=\footnotesize,
-  pbox/.style={draw=navy, rounded corners, fill=navy!8, align=center, text width=2.3cm, minimum height=1.6cm}]
-  \node[pbox] (a) {1. Mécanisme identifié dans le modèle};
-  \node[pbox, right=of a] (b) {2. Prédiction d'erreurs sur les phrases imbriquées};
-  \node[pbox, right=of b] (c) {3. Test chez des participants humains};
-  \node[pbox, right=of c] (d) {4. Confirmation ou réfutation};
-  \draw[-{Stealth}] (a)--(b); \draw[-{Stealth}] (b)--(c); \draw[-{Stealth}] (c)--(d);
-\end{tikzpicture}
-\vspace{0.6em}
-\begin{itemize}
-    \item Modèle : un circuit très épars propage le nombre, mais échoue sur certaines dépendances imbriquées
-    \item Humains : mêmes tendances sur les dépendances internes, mais performance au-dessus du hasard, alors que le modèle passe sous le hasard
-    \item Les différences entre modèle et humain sont tout aussi informatives que les ressemblances
-\end{itemize}
-\src{Lakretz et al., \emph{Cognition}, 2021 ; Lakretz et al., COLING 2022}
-\end{frame}
-
-\begin{frame}{Syntaxe : des unités de nombre dans un LSTM}
-\begin{block}{Accord sujet-verbe}
-    « Les \textbf{clés} de l'armoire \textbf{sont} sur la table. » Le verbe s'accorde avec « clés », pas avec « armoire ».
-\end{block}
-\begin{itemize}
-    \item \textbf{Deux unités} portent l'information singulier/pluriel à longue distance
-    \item Un petit circuit « syntaxe » les met à jour
-    \item Intervenir sur ces unités provoque des erreurs d'accord
-\end{itemize}
-% IMAGE : figure des unités de nombre (à ajouter, avec autorisation)
-\src{Linzen et al., TACL 2016 ; Lakretz et al., NAACL 2019}
-\end{frame}
-
-\begin{frame}{Neurones uniques chez l'humain}
-\begin{itemize}
-    \item 21 patients implantés, plus de 1\,000 neurones, 1\,400 microfils, 1\,500 contacts iEEG
-    \item Phrases lues et entendues
-    \item Neurones sélectifs aux \textbf{phonèmes} (temporal supérieur) et aux \textbf{lettres} (occipito-temporal ventral)
-    \item Neurones \textbf{amodaux} dans le temporal moyen et le frontal inférieur
-\end{itemize}
-\src{Lakretz, Friedmann, King, Mankin, Rangel, Tankus, Dehaene \& Fried, préprint 2024}
-\end{frame}
-
-\begin{frame}{Localisation et ablation des unités du langage}
-\begin{itemize}
-    \item Chez l'humain : un \textbf{localisateur} fonctionnel identifie les régions du langage
-    \item Dans un LLM : la même logique identifie les unités sélectives au langage, puis les \textbf{supprime}
-    \item Effet causal : leur ablation dégrade les performances langagières
-\end{itemize}
-% TODO : vérifier la référence (AlKhamissi, Tuckute, Bosselut, Schrimpf, 2025)
-\src{AlKhamissi, Tuckute, Bosselut \& Schrimpf, NAACL 2025}
+% ---------------------------------------------------------------------
+\begin{frame}{Prudence : prédire n'est pas expliquer}
+  \begin{columns}[T,onlytextwidth]
+    \column{.48\textwidth}
+    \carte[vert]{Ce que l'on sait}{%
+      \begin{itemize}
+        \item Les vecteurs des modèles prédisent une partie de l'activité du réseau du langage.
+        \item La surprise prédit lecture et N400.
+        \item Résultats répliqués en IRMf, MEG, ECoG.
+      \end{itemize}}
+    \column{.48\textwidth}
+    \visible<2->{\carte[rouge]{Ce que l'on ne sait pas}{%
+      \begin{itemize}
+        \item Si le modèle utilise le \textbf{même algorithme}.
+        \item Une partie du score peut venir de facteurs simples (longueur, fréquence des mots).
+        \item La plupart des données sont en \textbf{anglais}.
+      \end{itemize}}}
+  \end{columns}
+  \vspace{0.6em}
+  \visible<3->{\cle{Pour passer de la corrélation au mécanisme, il faut ouvrir la boîte.}}
 \end{frame}

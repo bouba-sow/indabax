@@ -1,43 +1,52 @@
-\section{Bilan et perspectives}
+% =====================================================================
+%  Conclusion (~3 min)
+% =====================================================================
+\section*{Conclusion}
 
-\begin{frame}{État des résultats}
-\centering\small
-\begin{tabular}{lp{7.6cm}}
-    \textcolor{navy}{\textbf{Domaine}} & \textcolor{navy}{\textbf{Statut}} \\
-    \hline
-    Décodage invasif & Essais cliniques, très peu de participants \\
-    Décodage non invasif & Démonstrations de laboratoire \\
-    Alignement modèle-cerveau & Robuste (fMRI, ECoG, MEG), mécanisme débattu \\
-    Comportement & Partiel : temps de lecture et N400, avec des limites \\
-    Mécanismes & Exemples précis, peu généralisés \\
-\end{tabular}
-
-\vspace{0.4em}
-{\footnotesize Statuts : estimation de l'auteur d'après les exemples présentés.}
+% ---------------------------------------------------------------------
+\begin{frame}{Trois messages à retenir}
+  \vspace{0.3em}
+  \begin{tikzpicture}[
+      num/.style={circle, fill=jaune, text=fond, font=\bfseries\large, minimum size=0.9cm, inner sep=0pt},
+      txt/.style={anchor=west, text width=11.5cm, font=\normalsize, text=texte}]
+    \node[num] at (0,0) {1};
+    \node[txt] at (0.7,0) {\textbf{L'IA n'est pas que ChatGPT.} C'est aussi un \jaun{instrument scientifique} pour étudier l'esprit.};
+    \visible<2->{
+    \node[num] at (0,-1.5) {2};
+    \node[txt] at (0.7,-1.5) {\textbf{Un modèle est une hypothèse.} Il prédit une partie de l'activité cérébrale et de la lecture, et on peut l'\jaun{ouvrir} pour trouver des mécanismes.};}
+    \visible<3->{
+    \node[num] at (0,-3.0) {3};
+    \node[txt] at (0.7,-3.0) {\textbf{Prédire n'est pas expliquer.} Langage, mémoire et pensée se \jaun{dissocient}, chez l'humain comme dans les modèles.};}
+  \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Limites}
-\begin{itemize}
-    \item \textbf{Corrélation n'est pas mécanisme} : un score d'alignement élevé n'établit pas l'identité du calcul
-    \item Des scores élevés peuvent s'expliquer par des facteurs simples (longueur, position dans la phrase)
-    \item Données majoritairement en anglais
-    \item Données intracrâniennes rares, recueillies chez des patients
-\end{itemize}
-% TODO : ajouter la référence exacte pour le deuxième point
+% ---------------------------------------------------------------------
+\begin{frame}{Et pour la Guinée ?}
+  \begin{columns}[T,onlytextwidth]
+    \column{.32\textwidth}
+    \carte[jaune]{Nos langues}{%
+      Presque toutes les données sont en anglais. Le pular, le maninka, le soussou\dots{} sont absents.\\[0.3em]
+      {\color{jaune}Une vraie place à prendre.}}
+    \column{.32\textwidth}
+    \visible<2->{\carte[jaune]{Peu de matériel}{%
+      L'EEG est portable et peu coûteux. Les temps de lecture se mesurent avec un simple ordinateur.}}
+    \column{.32\textwidth}
+    \visible<3->{\carte[jaune]{Outils ouverts}{%
+      Modèles et données en libre accès : Hugging Face, MNE-Python, Brain-Score.\\[0.3em]
+      Formation gratuite : Neuromatch Academy.}}
+  \end{columns}
+  \vspace{0.6em}
+  \visible<4->{\cle{Comprendre comment un cerveau guinéen traite sa propre langue : une question scientifique ouverte.}}
 \end{frame}
 
-\begin{frame}{Conclusions}
-\begin{enumerate}
-    \item L'IA est à la fois un \textbf{modèle}, un \textbf{outil} et une \textbf{source d'inspiration} pour les neurosciences
-    \item Certaines applications sont déjà en usage, d'autres restent des preuves de principe
-    \item Pour le langage, les modèles prédisent une partie de l'activité cérébrale et du comportement, sans établir l'identité du calcul
-\end{enumerate}
-\end{frame}
-
-\section*{}
-\begin{frame}{}
-    \centering
-    \Huge\bfseries
-    \textcolor{navy}{Merci}\\[0.5em]
-    \Large Questions ?
+% ---------------------------------------------------------------------
+\begin{frame}[plain,noframenumbering]
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[bordeaux] (current page.north west) rectangle ([yshift=-5.0cm]current page.north east);
+    \fill[jaune] ([yshift=-5.0cm]current page.north west) rectangle ([yshift=-5.08cm]current page.north east);
+    \node[text=white, font=\bfseries\fontsize{40}{44}\selectfont] at ([yshift=-2.2cm]current page.north) {Merci !};
+    \node[text=jaune, font=\Large] at ([yshift=-3.7cm]current page.north) {Questions ?};
+    \node[text=texte, align=center, font=\small] at ([yshift=2.0cm]current page.south)
+      {\textbf{Boubacar Sow}\\{\color{gris}LSCP, ENS-PSL \& CNRS}\\{\color{gris}[adresse e-mail à ajouter]}};
+  \end{tikzpicture}
 \end{frame}
