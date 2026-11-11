@@ -81,15 +81,39 @@ Enregistrements intracrâniens (ECoG) pendant une conversation naturelle :
 \end{frame}
 
 % ---------- Mécanismes ----------
-\begin{frame}{Pourquoi étudier l'accord à longue distance ?}
+\begin{frame}{Pourquoi s'intéresser à la syntaxe ?}
+\begin{columns}[T]
+\column{.42\textwidth}
+\centering
+\begin{tikzpicture}[font=\footnotesize,
+  lv/.style={draw=navy, rounded corners, fill=navy!8, align=center, text width=3.4cm, minimum height=0.9cm}]
+  \node[lv] (a) {Langage};
+  \node[lv, below=0.35cm of a] (b) {Syntaxe : structure hiérarchique};
+  \node[lv, below=0.35cm of b] (c) {Dépendances à longue distance};
+  \node[lv, fill=yellow!35, below=0.35cm of c] (d) {Accord sujet-verbe};
+  \draw[-{Stealth}] (a)--(b); \draw[-{Stealth}] (b)--(c); \draw[-{Stealth}] (c)--(d);
+\end{tikzpicture}
+\column{.56\textwidth}
+\small
+\begin{itemize}
+    \item Le sens dépend de la \textbf{combinaison des mots}, pas seulement des mots
+    \item Peu de règles, une infinité de phrases
+    \item Question ouverte : \textbf{comment le cerveau calcule-t-il ces structures ?}
+    \item Cas test pour les modèles : \textbf{apprennent-ils une structure ?}
+\end{itemize}
+\end{columns}
+\src{Fedorenko et al., \emph{Cognition}, 2020 ; Lakretz et al., 2021}
+\end{frame}
+
+\begin{frame}{L'accord : un test de la syntaxe}
 \small
 \begin{columns}[T]
 \column{.52\textwidth}
-{\color{navy}\bfseries Un test de la syntaxe}\par
+{\color{navy}\bfseries Pourquoi ce phénomène ?}\par
 « Les \textbf{clés} que l'homme près de l'armoire tient \textbf{sont} \dots »
 \begin{itemize}
-    \item L'accord suit la \textbf{structure hiérarchique}, pas l'ordre linéaire des mots
-    \item Il révèle un traitement syntaxique, pas de simples associations locales
+    \item L'accord suit la \textbf{structure hiérarchique}, pas l'ordre des mots
+    \item Il révèle un traitement syntaxique
     \item L'imbrication sonde la \textbf{récursivité}
 \end{itemize}
 \column{.44\textwidth}
