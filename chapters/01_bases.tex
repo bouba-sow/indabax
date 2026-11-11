@@ -1,39 +1,30 @@
-\section{Les bases, sans prérequis}
+\section{Méthodes de comparaison}
 
-\begin{frame}{Le langage dans le cerveau}
+\begin{frame}{Le réseau du langage}
 \begin{itemize}
-    \item Un \textbf{réseau du langage} fronto-temporal, principalement dans l'hémisphère gauche
-    \item Il répond à la langue, écrite ou parlée, et peu à autre chose
-    \item Il est distinct du réseau de la pensée abstraite et du raisonnement
+    \item Réseau fronto-temporal, principalement dans l'hémisphère gauche
+    \item Sélectif au langage (écrit et parlé) et peu engagé par d'autres tâches
+    \item Dissocié du réseau du raisonnement abstrait (\emph{multiple demand})
 \end{itemize}
 % IMAGE : cerveau avec le réseau du langage (à ajouter)
-\src{Fedorenko et al. ; Fedorenko, Open Encyclopedia of Cognitive Science, 2025}
+\src{Fedorenko et al.}
 \end{frame}
 
-\begin{frame}{Comment « écouter » le cerveau ?}
+\begin{frame}{Techniques d'enregistrement}
 \centering\small
-\begin{tabular}{lcccc}
-    \textcolor{navy}{Méthode} & \textcolor{navy}{Espace} & \textcolor{navy}{Temps} & \textcolor{navy}{Invasif ?} \\
+\begin{tabular}{lccc}
+    \textcolor{navy}{\textbf{Méthode}} & \textcolor{navy}{\textbf{Résolution spatiale}} & \textcolor{navy}{\textbf{Résolution temporelle}} & \textcolor{navy}{\textbf{Invasif}} \\
     \hline
-    IRM fonctionnelle (fMRI) & millimètres & secondes & non \\
-    EEG / MEG & centimètres & millisecondes & non \\
-    Intracrânien (iEEG, sEEG) & millimètres--cm & millisecondes & oui \\
-    Neurones uniques & micromètres & millisecondes & oui \\
+    IRM fonctionnelle (fMRI) & mm & s & non \\
+    EEG / MEG & cm & ms & non \\
+    Intracrânien (ECoG, sEEG) & mm--cm & ms & oui \\
+    Neurones uniques & $\mu$m & ms & oui \\
 \end{tabular}
+
 \vspace{1em}
-
 \normalsize
-L'intracrânien se fait chez des patients épileptiques implantés pour raisons cliniques.
+Les enregistrements intracrâniens sont réalisés chez des patients épileptiques implantés pour raison clinique.
 % IMAGE : schémas des méthodes (à ajouter)
-\end{frame}
-
-\begin{frame}{Le protocole type}
-\begin{enumerate}
-    \item Un participant lit ou écoute un texte (souvent une histoire naturelle)
-    \item On enregistre son activité cérébrale mot par mot
-    \item On donne le même texte à un modèle de langage
-    \item On compare les deux
-\end{enumerate}
 \end{frame}
 
 \begin{frame}{Comparer un modèle à un cerveau}
@@ -42,7 +33,7 @@ L'intracrânien se fait chez des patients épileptiques implantés pour raisons 
 \begin{tikzpicture}[
     box/.style={draw=navy, rounded corners, fill=navy, text=white, align=center, minimum height=1.1cm, font=\small},
     arr/.style={-{Stealth}, thick, lscp}]
-    \node[box] (txt) at (0,0) {Texte\\{\footnotesize « Le chat dort… »}};
+    \node[box] (txt) at (0,0) {Stimulus\\{\footnotesize texte, parole}};
     \node[box] (lm) at (4.6,1.1) {Modèle de langage\\{\footnotesize activations}};
     \node[box] (br) at (4.6,-1.1) {Cerveau\\{\footnotesize fMRI / EEG / iEEG}};
     \node[box] (reg) at (9.2,0) {Régression\\linéaire};
@@ -57,17 +48,17 @@ L'intracrânien se fait chez des patients épileptiques implantés pour raisons 
 
 \vspace{1em}
 \begin{itemize}
-    \item On prédit le signal cérébral à partir des activations du modèle
-    \item Le score est mesuré sur des données \textbf{non vues} pendant l'ajustement
-    \item On le compare à un \textbf{plafond de bruit} (la variabilité entre participants)
+    \item Le signal cérébral est prédit à partir des activations du modèle
+    \item Le score est estimé sur des données \textbf{hors échantillon d'ajustement}
+    \item Il est normalisé par un \textbf{plafond de bruit} (fiabilité inter-participants)
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Deux outils à retenir}
+\begin{frame}{Deux approches de référence}
 \begin{block}{Modèle d'encodage}
-    Régression des activations du modèle vers le signal cérébral (utilisé dans Brain-Score).
+    Régression des activations du modèle vers le signal cérébral (utilisée dans Brain-Score).
 \end{block}
 \begin{block}{Analyse de similarité représentationnelle (RSA)}
-    On compare les distances entre stimuli dans le modèle à celles mesurées dans le cerveau.
+    Comparaison des matrices de dissimilarité entre stimuli, calculées dans le modèle et dans le cerveau.
 \end{block}
 \end{frame}

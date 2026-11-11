@@ -1,181 +1,181 @@
-\section{L'IA comme modèle du cerveau}
+\section{L'IA comme modèle du système cognitif}
 
-\begin{frame}{Avant le langage : vision et récompense}
+\begin{frame}{Vision et récompense}
 \begin{itemize}
-    \item \textbf{Vision} : des réseaux de vision optimisés pour reconnaître des objets prédisent l'activité du cortex visuel des primates
-    \item \textbf{Récompense} : l'apprentissage par renforcement \emph{distributionnel}, venu de l'IA, prédit que les neurones à dopamine ont des degrés d'optimisme différents
-    \item Des enregistrements de neurones à dopamine chez la souris le confirment
+    \item \textbf{Vision} : des réseaux optimisés pour la reconnaissance d'objets prédisent l'activité du cortex visuel des primates
+    \item \textbf{Récompense} : l'apprentissage par renforcement \emph{distributionnel}, issu de l'IA, prédit une diversité d'optimisme entre neurones dopaminergiques
+    \item Cette prédiction est confirmée par des enregistrements de neurones uniques chez la souris
 \end{itemize}
 \src{Yamins et al., PNAS 2014 ; Dabney et al., Nature 2020}
 \end{frame}
 
 % ---------- Langage : alignement ----------
-\domaincard{Langage : comparer modèles et cerveau}{
+\domaincard{Langage : alignement modèle-cerveau}{
     \begin{itemize}
         \item Tester si un modèle de langage calcule comme le cerveau
-        \item Comprendre ce qui rend un modèle plus proche du cerveau
+        \item Identifier les propriétés qui augmentent l'alignement
     \end{itemize}
 }{
     \begin{itemize}
-        \item Prédire l'activité fMRI, ECoG et MEG pendant l'écoute ou la lecture
-        \item Résultat solide en laboratoire, mais la corrélation ne prouve pas le même calcul
+        \item Prédiction de l'activité fMRI, ECoG et MEG pendant la compréhension
+        \item Résultats robustes, mais la corrélation n'établit pas l'identité du calcul
     \end{itemize}
 }
 
-\begin{frame}{Les modèles prédisent le réseau du langage}
+\begin{frame}{Prédiction du réseau du langage}
 \begin{itemize}
-    \item Des dizaines de modèles de langage comparés à des données fMRI, ECoG et EEG/MEG
-    \item Les meilleurs modèles sont ceux qui prédisent le mieux le mot suivant
-    \item Certains approchent le plafond de bruit sur des phrases
+    \item Des dizaines de modèles comparés à des données fMRI, ECoG et EEG/MEG
+    \item Les modèles les plus performants en prédiction du mot suivant sont les mieux alignés
+    \item Certains modèles atteignent le plafond de bruit sur des phrases
 \end{itemize}
 \vspace{0.5em}
-\begin{block}{Idée clé}
-    Prédire le prochain mot suffit à produire des représentations proches de celles du cerveau.
+\begin{block}{Résultat clé}
+    La prédiction du mot suivant suffit à produire des représentations proches de celles du cerveau.
 \end{block}
-% TODO : vérifier les chiffres exacts avant d'ajouter (Schrimpf 2021)
+% TODO : vérifier les chiffres exacts (Schrimpf 2021)
 \src{Schrimpf et al., PNAS 2021 ; Caucheteux \& King, 2022}
 \end{frame}
 
-\begin{frame}{Le cerveau prédit aussi}
+\begin{frame}{Prédiction dans le cerveau}
 Enregistrements intracrâniens (ECoG) pendant une conversation naturelle :
 \begin{itemize}
-    \item Le cerveau \textbf{anticipe} le mot suivant avant qu'il soit prononcé
-    \item Il réagit à la \textbf{surprise} après le mot
-    \item Les mots sont représentés par des plongements contextuels, comme dans un modèle
+    \item \textbf{Prédiction} du mot suivant avant son occurrence
+    \item Signal de \textbf{surprise} après le mot
+    \item Représentation des mots par des plongements contextuels, comme dans un modèle
 \end{itemize}
 % IMAGE : figure d'encodage temporel (à ajouter, avec autorisation)
 \src{Goldstein et al., Nature Neuroscience 2022}
 \end{frame}
 
-\begin{frame}{Combien de données, et jusqu'où ?}
+\begin{frame}{Quantité de données et saturation de l'alignement}
 \begin{itemize}
-    \item Environ \textbf{100 millions de mots} suffisent pour prédire presque au maximum les réponses fMRI à des phrases, soit ce qu'un enfant entend en une dizaine d'années
-    \item Mais l'alignement ne croît pas indéfiniment : sur huit modèles Pythia, il monte vite, atteint un pic vers 8 milliards de mots, puis stagne
+    \item $\sim$\textbf{100 millions de mots} suffisent pour prédire presque au maximum les réponses fMRI à des phrases, ce qui correspond à l'exposition d'un enfant sur une dizaine d'années
+    \item L'alignement ne croît pas indéfiniment : sur huit modèles Pythia, il augmente rapidement, atteint un pic vers 8 milliards de mots, puis sature
 \end{itemize}
 \src{Hosseini et al., Neurobiology of Language 2024 ; AlKhamissi et al., EMNLP 2025}
 \end{frame}
 
 % ---------- Comportement ----------
-\domaincard{Comportement : expliquer ce que font les humains}{
+\domaincard{Comportement : prédire la performance humaine}{
     \begin{itemize}
-        \item Prédire la difficulté de lecture et de compréhension
-        \item Tester des théories de la mémoire et de l'attente
+        \item Prédire la difficulté de traitement en lecture
+        \item Tester des théories de l'attente et de la mémoire
     \end{itemize}
 }{
     \begin{itemize}
-        \item La surprise d'un mot prédit les temps de lecture et le N400
-        \item Mais un modèle plus performant n'est pas toujours plus humain
+        \item La surprise prédit les temps de lecture et l'amplitude du N400
+        \item Un modèle plus performant n'est pas toujours plus proche de l'humain
     \end{itemize}
 }
 
-\begin{frame}{La surprise d'un mot}
+\begin{frame}{Surprise lexicale et difficulté de traitement}
 \[
     s(w_t) = -\log p(w_t \mid w_1,\dots,w_{t-1})
 \]
 \begin{itemize}
-    \item Un mot improbable est plus « surprenant » : les humains le lisent plus lentement
+    \item La surprise est corrélée au temps de lecture : un mot improbable est traité plus lentement
     \item Un modèle de langage fournit directement cette probabilité
-    \item La mémoire étant limitée, la théorie de la \textbf{surprise à contexte dégradé} explique aussi pourquoi les langues rapprochent les mots liés
+    \item La \textbf{surprise à contexte dégradé} intègre une mémoire limitée et explique la minimisation de la distance de dépendance
 \end{itemize}
 % TODO : vérifier la référence de Futrell (Cognitive Science 2020)
 \src{Levy, Cognition 2008 ; Smith \& Levy, Cognition 2013 ; Futrell, Gibson \& Levy, 2020}
 \end{frame}
 
-\begin{frame}{La surprise explique le N400}
+\begin{frame}{Surprise et N400}
 \begin{itemize}
-    \item Le \textbf{N400} : une onde EEG ($\sim$400 ms) qui augmente quand un mot est inattendu
+    \item \textbf{N400} : composante EEG ($\sim$400 ms) dont l'amplitude augmente pour un mot inattendu
     \item La surprise de modèles de langage explique de nombreux effets du N400
-    \item Reste des cas où l'humain et le modèle divergent
+    \item Des cas de divergence entre humain et modèle subsistent
 \end{itemize}
 % IMAGE : exemple d'onde N400 (à ajouter)
 % TODO : vérifier la référence (Michaelov et al., Neurobiology of Language 2024)
 \src{Michaelov, Bardolph, Van Petten, Bergen \& Coulson, 2024}
 \end{frame}
 
-\begin{frame}{Un meilleur modèle est-il plus humain ?}
+\begin{frame}{Perplexité et plausibilité psycholinguistique}
 \begin{itemize}
-    \item Hypothèse admise en anglais : plus la perplexité est basse, plus le modèle prédit les temps de lecture
-    \item En japonais, cette règle ne tient pas : \textbf{une perplexité plus basse n'est pas toujours plus humaine}
-    \item Il faut évaluer les modèles sur plusieurs langues
+    \item En anglais, une perplexité plus basse accompagne une meilleure prédiction des temps de lecture
+    \item En japonais, cette relation ne tient pas : \textbf{une perplexité plus basse n'implique pas un modèle plus humain}
+    \item Les évaluations doivent couvrir plusieurs langues
 \end{itemize}
-\begin{block}{Message}
-    Plus gros n'est pas automatiquement plus proche de l'humain.
+\begin{block}{Conclusion}
+    L'augmentation de la taille n'améliore pas nécessairement l'adéquation au comportement humain.
 \end{block}
 \src{Kuribayashi, Oseki, Ito, Yoshida, Asahara \& Inui, ACL 2021}
 \end{frame}
 
-\begin{frame}{Comment le sens se compose}
+\begin{frame}{Composition sémantique}
 \begin{itemize}
     \item « maison de chien » $\neq$ « chien de maison »
-    \item Des modèles simples de composition sémantique sont testés sur des données fMRI
-    \item Une composition apparaît dans le gyrus frontal inférieur gauche, avec un modèle explicite de la combinaison
+    \item Des modèles de composition sémantique sont évalués sur des données fMRI
+    \item Un effet de composition apparaît dans le gyrus frontal inférieur gauche, avec un modèle explicite de la combinaison
 \end{itemize}
 \src{Ciapparelli, Marelli, Graves \& Reverberi, Cerebral Cortex 2025}
 \end{frame}
 
 % ---------- Mécanismes ----------
-\domaincard{Mécanismes : ouvrir la boîte noire}{
+\domaincard{Mécanismes : analyse des représentations internes}{
     \begin{itemize}
-        \item Chercher quelles unités du modèle portent quelle information
-        \item Intervenir sur ces unités, ce que le cerveau permet très peu
+        \item Identifier les unités porteuses d'une information donnée
+        \item Intervenir sur ces unités, ce que le cerveau permet peu
     \end{itemize}
 }{
     \begin{itemize}
-        \item Des neurones de nombre et de syntaxe identifiés dans des réseaux
-        \item Les mêmes questions posées à des neurones humains enregistrés
+        \item Unités de nombre et de syntaxe identifiées dans des réseaux récurrents
+        \item Mêmes questions posées à des neurones humains enregistrés
     \end{itemize}
 }
 
-\begin{frame}{Tester la syntaxe : l'accord sujet-verbe}
+\begin{frame}{Syntaxe : accord sujet-verbe}
 \begin{block}{Exemple}
     « Les \textbf{clés} de l'armoire \textbf{sont} sur la table. » \\
-    Le verbe s'accorde avec « clés », pas avec « armoire ».
+    Le verbe s'accorde avec « clés » et non avec « armoire ».
 \end{block}
 \begin{itemize}
     \item Les LSTM apprennent cet accord à longue distance
-    \item Mais ont-ils compris la structure, ou une astuce statistique ?
+    \item Question : représentation de la structure ou heuristique statistique ?
 \end{itemize}
 \src{Linzen, Dupoux \& Goldberg, TACL 2016}
 \end{frame}
 
-\begin{frame}{Des neurones « nombre » dans un LSTM}
+\begin{frame}{Unités de nombre dans un LSTM}
 \begin{itemize}
-    \item Seulement \textbf{deux neurones} portent l'information singulier/pluriel à longue distance
-    \item Un petit circuit « syntaxe » les met à jour au bon moment
-    \item On peut intervenir sur ces neurones et voir le modèle se tromper
+    \item \textbf{Deux unités} portent l'information singulier/pluriel à longue distance
+    \item Un petit circuit « syntaxe » les met à jour
+    \item Intervenir sur ces unités provoque des erreurs d'accord
 \end{itemize}
 % IMAGE : figure des unités de nombre (à ajouter, avec autorisation)
 \src{Lakretz, Kruszewski, Desbordes, Hupkes, Dehaene \& Baroni, NAACL 2019}
 \end{frame}
 
-\begin{frame}{Phrases imbriquées : l'humain et le modèle}
+\begin{frame}{Dépendances imbriquées : humain et modèle}
 \begin{block}{Exemple}
     « Le garçon \textbf{que} les filles \textbf{que} je vois \textbf{aiment} \textbf{court}. »
 \end{block}
 \begin{itemize}
-    \item Difficile pour l'humain comme pour le réseau
-    \item Les types d'erreurs se ressemblent sur certains points, pas sur tous
-    \item Les transformers ne traitent pas ces phrases comme les humains
+    \item Difficulté comparable chez l'humain et le réseau
+    \item Profils d'erreurs proches sur certains points, pas sur tous
+    \item Les transformers ne traitent pas ces constructions comme les humains
 \end{itemize}
 % TODO : vérifier les deux références (Cognition 2021 ; COLING 2022)
 \src{Lakretz et al., Cognition 2021 ; Lakretz, Desbordes, Hupkes \& Dehaene, COLING 2022}
 \end{frame}
 
-\begin{frame}{Dans le cerveau : des neurones uniques}
+\begin{frame}{Neurones uniques chez l'humain}
 \begin{itemize}
     \item 21 patients implantés, plus de 1\,000 neurones, 1\,400 microfils, 1\,500 contacts iEEG
     \item Phrases lues et entendues
-    \item Neurones sensibles aux \textbf{phonèmes} (temporal supérieur) et aux \textbf{lettres} (occipito-temporal ventral)
-    \item Neurones \textbf{amodaux}, indépendants de la modalité, dans le temporal moyen et le frontal inférieur
+    \item Neurones sélectifs aux \textbf{phonèmes} (temporal supérieur) et aux \textbf{lettres} (occipito-temporal ventral)
+    \item Neurones \textbf{amodaux} dans le temporal moyen et le frontal inférieur
 \end{itemize}
-\src{Lakretz, Friedmann, King, Mankin, Rangel, Tankus, Dehaene \& Fried, preprint 2024}
+\src{Lakretz, Friedmann, King, Mankin, Rangel, Tankus, Dehaene \& Fried, préprint 2024}
 \end{frame}
 
-\begin{frame}{Les mêmes outils des deux côtés}
+\begin{frame}{Localisation et ablation des unités du langage}
 \begin{itemize}
-    \item Chez l'humain : un \textbf{localisateur} identifie les régions du langage
-    \item Dans un LLM : on identifie de la même façon les unités sélectives au langage, puis on les \textbf{supprime}
-    \item Effet causal : leur suppression dégrade les performances langagières
+    \item Chez l'humain : un \textbf{localisateur} fonctionnel identifie les régions du langage
+    \item Dans un LLM : la même logique identifie les unités sélectives au langage, puis les \textbf{supprime}
+    \item Effet causal : leur ablation dégrade les performances langagières
 \end{itemize}
 % TODO : vérifier la référence (AlKhamissi, Tuckute, Bosselut, Schrimpf, 2025)
 \src{AlKhamissi, Tuckute, Bosselut \& Schrimpf, NAACL 2025}

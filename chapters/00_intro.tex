@@ -1,41 +1,38 @@
-\section{Pourquoi relier IA et cerveau ?}
+\section{Problématique et cadre théorique}
 
-\begin{frame}{Deux boîtes noires}
+\begin{frame}{Problématique}
 \begin{columns}[T]
     \column{.48\textwidth}
-    \textcolor{navy}{\textbf{Le cerveau}}
+    \textcolor{navy}{\textbf{Cerveau humain}}
     \begin{itemize}
         \item $\sim$86 milliards de neurones
-        \item $\sim$20 watts
-        \item Apprend le langage en quelques années
+        \item $\sim$20 W
+        \item Acquisition du langage en quelques années d'exposition
     \end{itemize}
     \column{.48\textwidth}
-    \textcolor{navy}{\textbf{Un modèle de langage}}
+    \textcolor{navy}{\textbf{Modèle de langage}}
     \begin{itemize}
-        \item Milliards de paramètres
-        \item Entraîné sur des milliards de mots
-        \item Produit un langage fluide
+        \item $10^9$ à $10^{11}$ paramètres
+        \item Entraînement sur $\sim 10^{12}$ mots
+        \item Performance proche de l'humain en production
     \end{itemize}
 \end{columns}
 \vspace{1em}
-\begin{block}{Question centrale}
-    Ces deux systèmes peuvent-ils s'éclairer l'un l'autre ?
+\begin{block}{Question}
+    Ces deux systèmes mettent-ils en œuvre des calculs comparables ?
 \end{block}
-% IMAGE : cerveau vs réseau de neurones (à ajouter)
 \end{frame}
 
-\begin{frame}{Un lien historique}
+\begin{frame}{Précédents historiques}
 \begin{itemize}
-    \item 1943 : le neurone formel (McCulloch \& Pitts)
-    \item 1958 : le perceptron (Rosenblatt)
-    \item Réseaux convolutifs : inspirés du cortex visuel (Hubel \& Wiesel)
-    \item 2014 : des réseaux de vision optimisés pour la reconnaissance d'objets prédisent
-          l'activité du cortex visuel des primates
+    \item 1943 : neurone formel (McCulloch \& Pitts) ; 1958 : perceptron (Rosenblatt)
+    \item Réseaux convolutifs inspirés du cortex visuel (Hubel \& Wiesel)
+    \item 2014 : des réseaux optimisés pour la reconnaissance d'objets prédisent l'activité du cortex visuel des primates
 \end{itemize}
 \vspace{0.5em}
-\begin{alertblock}{Et pour le langage ?}
-    C'est la question des 5 dernières années.
-\end{alertblock}
+\begin{block}{Extension au langage}
+    Question abordée depuis environ 2018 avec les modèles de langage.
+\end{block}
 \src{Yamins et al., PNAS 2014}
 \end{frame}
 
@@ -43,12 +40,12 @@
 \begin{columns}[T]
     \column{.52\textwidth}
     \begin{itemize}
-        \item<1-> \textbf{Computationnel} : \emph{quoi} ? Que calcule le système ?\\
+        \item<1-> \textbf{Computationnel} : \emph{quel problème} est résolu ?\\
               {\small ex. : une addition}
-        \item<2-> \textbf{Algorithmique} : \emph{comment} ? Quelles représentations et quelles étapes ?\\
+        \item<2-> \textbf{Algorithmique} : \emph{quelles représentations et quelles procédures} ?\\
               {\small ex. : chiffres arabes et retenue}
-        \item<3-> \textbf{Implémentationnel} : sur quel \emph{matériel} ?\\
-              {\small ex. : neurones, transistors, dominos}
+        \item<3-> \textbf{Implémentationnel} : \emph{substrat} physique\\
+              {\small ex. : neurones, transistors}
     \end{itemize}
     \column{.46\textwidth}
     \centering
@@ -95,7 +92,7 @@
 \end{tikzpicture}}
 
 \vspace{0.4em}
-\textbf{Pire cas} : implémentations très différentes, et peut-être des buts différents. Les deux systèmes n'ont alors pas le même algorithme.
+\textbf{Hypothèse de divergence} : implémentations très différentes, éventuellement objectifs différents ; les algorithmes diffèrent.
 \end{frame}
 
 \begin{frame}{Marr : humains et modèles de langage}
@@ -120,44 +117,38 @@
 \end{tikzpicture}}
 
 \vspace{0.4em}
-\textbf{Cas optimiste} : les deux systèmes convergent vers le \emph{même} algorithme et ne diffèrent que par leur implémentation.
+\textbf{Hypothèse de convergence} : un \emph{même} algorithme, implémenté sur deux substrats différents.
 \end{frame}
 
-\begin{frame}{Dans quel cas sommes-nous ?}
+\begin{frame}{Inférer le niveau algorithmique}
 \begin{itemize}
-    \item L'algorithme ne s'observe pas directement : on l'\textbf{infère}
-    \item \textbf{Comportement} : temps de lecture (lecture auto-rythmée, suivi oculaire)
-    \item \textbf{Cerveau} : les motifs d'activité reflètent les représentations utilisées
+    \item L'algorithme n'est pas directement observable : il est \textbf{inféré}
+    \item \textbf{Comportement} : temps de lecture (lecture auto-rythmée, oculométrie)
+    \item \textbf{Activité cérébrale} : motifs d'activité reflétant les représentations utilisées
     \item On compare donc modèles et humains \textbf{au niveau algorithmique}
 \end{itemize}
 \vspace{0.4em}
-\begin{block}{Pourquoi utiliser des modèles d'IA pour étudier le cerveau ?}
-    Si les deux convergent, un modèle devient une hypothèse explicite sur l'algorithme du cerveau. Contrairement au cerveau, on peut l'observer en entier, le manipuler et l'ablater.
+\begin{block}{Intérêt des modèles d'IA}
+    Sous l'hypothèse de convergence, un modèle est une hypothèse explicite sur l'algorithme cérébral, entièrement observable et manipulable (ablation, intervention), ce que le cerveau permet peu.
 \end{block}
 \src{Marr, Vision, 1982}
 \end{frame}
 
-\begin{frame}{Trois rôles de l'IA en neurosciences}
+\begin{frame}{Domaines abordés}
 \begin{columns}[T]
-    \column{.31\textwidth}
-    \begin{block}{Modèle du cerveau}
+    \column{.48\textwidth}
+    \begin{block}{Modèle du système cognitif}
         \small
         Tester des hypothèses sur le calcul cérébral\\[0.3em]
-        Vision, langage, comportement, mécanismes, récompense
+        Vision et récompense ; langage (alignement) ; comportement ; mécanismes
     \end{block}
-    \column{.31\textwidth}
-    \begin{block}{Outil}
+    \column{.48\textwidth}
+    \begin{block}{Source d'inspiration}
         \small
-        Analyser, décoder, soigner\\[0.3em]
-        Analyse de données, interfaces cerveau-machine, clinique, jumeaux numériques
-    \end{block}
-    \column{.31\textwidth}
-    \begin{block}{Inspiration}
-        \small
-        Le cerveau guide la conception de l'IA\\[0.3em]
-        Signal cérébral, apprentissage avec peu de données
+        Le cerveau guide la conception des modèles\\[0.3em]
+        Signal cérébral comme supervision ; apprentissage à échelle développementale
     \end{block}
 \end{columns}
 \vspace{0.8em}
-Pour chaque domaine : \textbf{ce qu'on peut faire} en principe, et \textbf{ce qu'on fait vraiment} aujourd'hui.
+Pour chaque domaine : \textbf{potentiel} et \textbf{état actuel} des résultats.
 \end{frame}
