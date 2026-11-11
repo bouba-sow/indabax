@@ -104,15 +104,6 @@ Enregistrements intracrâniens (ECoG) pendant une conversation naturelle :
 \src{Kuribayashi, Oseki, Ito, Yoshida, Asahara \& Inui, ACL 2021}
 \end{frame}
 
-\begin{frame}{Composition sémantique}
-\begin{itemize}
-    \item « maison de chien » $\neq$ « chien de maison »
-    \item Des modèles de composition sémantique sont évalués sur des données fMRI
-    \item Un effet de composition apparaît dans le gyrus frontal inférieur gauche, avec un modèle explicite de la combinaison
-\end{itemize}
-\src{Ciapparelli, Marelli, Graves \& Reverberi, Cerebral Cortex 2025}
-\end{frame}
-
 % ---------- Mécanismes ----------
 \domaincard{Mécanismes : analyse des représentations internes}{
     \begin{itemize}
@@ -126,39 +117,17 @@ Enregistrements intracrâniens (ECoG) pendant une conversation naturelle :
     \end{itemize}
 }
 
-\begin{frame}{Syntaxe : accord sujet-verbe}
-\begin{block}{Exemple}
-    « Les \textbf{clés} de l'armoire \textbf{sont} sur la table. » \\
-    Le verbe s'accorde avec « clés » et non avec « armoire ».
+\begin{frame}{Syntaxe : des unités de nombre dans un LSTM}
+\begin{block}{Accord sujet-verbe}
+    « Les \textbf{clés} de l'armoire \textbf{sont} sur la table. » Le verbe s'accorde avec « clés », pas avec « armoire ».
 \end{block}
-\begin{itemize}
-    \item Les LSTM apprennent cet accord à longue distance
-    \item Question : représentation de la structure ou heuristique statistique ?
-\end{itemize}
-\src{Linzen, Dupoux \& Goldberg, TACL 2016}
-\end{frame}
-
-\begin{frame}{Unités de nombre dans un LSTM}
 \begin{itemize}
     \item \textbf{Deux unités} portent l'information singulier/pluriel à longue distance
     \item Un petit circuit « syntaxe » les met à jour
     \item Intervenir sur ces unités provoque des erreurs d'accord
 \end{itemize}
 % IMAGE : figure des unités de nombre (à ajouter, avec autorisation)
-\src{Lakretz, Kruszewski, Desbordes, Hupkes, Dehaene \& Baroni, NAACL 2019}
-\end{frame}
-
-\begin{frame}{Dépendances imbriquées : humain et modèle}
-\begin{block}{Exemple}
-    « Le garçon \textbf{que} les filles \textbf{que} je vois \textbf{aiment} \textbf{court}. »
-\end{block}
-\begin{itemize}
-    \item Difficulté comparable chez l'humain et le réseau
-    \item Profils d'erreurs proches sur certains points, pas sur tous
-    \item Les transformers ne traitent pas ces constructions comme les humains
-\end{itemize}
-% TODO : vérifier les deux références (Cognition 2021 ; COLING 2022)
-\src{Lakretz et al., Cognition 2021 ; Lakretz, Desbordes, Hupkes \& Dehaene, COLING 2022}
+\src{Linzen et al., TACL 2016 ; Lakretz et al., NAACL 2019}
 \end{frame}
 
 \begin{frame}{Neurones uniques chez l'humain}
