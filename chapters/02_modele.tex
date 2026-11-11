@@ -81,6 +81,47 @@ Enregistrements intracrâniens (ECoG) pendant une conversation naturelle :
 \end{frame}
 
 % ---------- Mécanismes ----------
+\begin{frame}{Pourquoi étudier l'accord à longue distance ?}
+\small
+\begin{columns}[T]
+\column{.52\textwidth}
+{\color{navy}\bfseries Un test de la syntaxe}\par
+« Les \textbf{clés} que l'homme près de l'armoire tient \textbf{sont} \dots »
+\begin{itemize}
+    \item L'accord suit la \textbf{structure hiérarchique}, pas l'ordre linéaire des mots
+    \item Il révèle un traitement syntaxique, pas de simples associations locales
+    \item L'imbrication sonde la \textbf{récursivité}
+\end{itemize}
+\column{.44\textwidth}
+{\color{navy}\bfseries Pourquoi un modèle ?}
+\begin{itemize}
+    \item Impossible d'observer chaque neurone humain
+    \item Un modèle s'ouvre : chaque unité se mesure et se modifie
+    \item Il \textbf{génère des hypothèses} testables chez l'humain
+\end{itemize}
+\end{columns}
+\src{Lakretz et al., \emph{Cognition}, 2021}
+\end{frame}
+
+\begin{frame}{Du modèle à l'hypothèse sur le cerveau}
+\centering
+\begin{tikzpicture}[node distance=0.35cm, font=\footnotesize,
+  pbox/.style={draw=navy, rounded corners, fill=navy!8, align=center, text width=2.3cm, minimum height=1.6cm}]
+  \node[pbox] (a) {1. Mécanisme identifié dans le modèle};
+  \node[pbox, right=of a] (b) {2. Prédiction d'erreurs sur les phrases imbriquées};
+  \node[pbox, right=of b] (c) {3. Test chez des participants humains};
+  \node[pbox, right=of c] (d) {4. Confirmation ou réfutation};
+  \draw[-{Stealth}] (a)--(b); \draw[-{Stealth}] (b)--(c); \draw[-{Stealth}] (c)--(d);
+\end{tikzpicture}
+\vspace{0.6em}
+\begin{itemize}
+    \item Modèle : un circuit très épars propage le nombre, mais échoue sur certaines dépendances imbriquées
+    \item Humains : mêmes tendances sur les dépendances internes, mais performance au-dessus du hasard, alors que le modèle passe sous le hasard
+    \item Les différences entre modèle et humain sont tout aussi informatives que les ressemblances
+\end{itemize}
+\src{Lakretz et al., \emph{Cognition}, 2021 ; Lakretz et al., COLING 2022}
+\end{frame}
+
 \begin{frame}{Syntaxe : des unités de nombre dans un LSTM}
 \begin{block}{Accord sujet-verbe}
     « Les \textbf{clés} de l'armoire \textbf{sont} sur la table. » Le verbe s'accorde avec « clés », pas avec « armoire ».
