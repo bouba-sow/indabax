@@ -7,6 +7,19 @@
 \usetikzlibrary{positioning,calc,arrows.meta}
 
 % Petite macro : source / référence en bas de slide
+% Carte de domaine : ce qu'on peut faire / ce qu'on fait vraiment
+\newcommand{\domaincard}[3]{%
+\begin{frame}{#1}
+\begin{columns}[T]
+    \column{.48\textwidth}
+    {\color{navy}\bfseries Ce qu'on peut faire}\par\vspace{0.3em}
+    #2
+    \column{.48\textwidth}
+    {\color{navy}\bfseries Ce qu'on fait vraiment}\par\vspace{0.3em}
+    #3
+\end{columns}
+\end{frame}}
+
 \newcommand{\src}[1]{\par\vfill{\scriptsize\textcolor{softgray}{#1}}}
 
 \title{IA et neurosciences du langage}
@@ -34,9 +47,9 @@
 
     \input{chapters/00_intro}
     \input{chapters/01_bases}
-    \input{chapters/02_alignement}
-    \input{chapters/03_comportement}
-    \input{chapters/04_mecanismes}
+    \input{chapters/02_modele}
+    \input{chapters/03_outils}
+    \input{chapters/04_inspiration}
     \input{chapters/05_labo}
     \input{chapters/06_conclusion}
 
