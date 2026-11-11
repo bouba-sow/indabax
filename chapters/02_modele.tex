@@ -10,18 +10,6 @@
 \end{frame}
 
 % ---------- Langage : alignement ----------
-\domaincard{Langage : alignement modèle-cerveau}{
-    \begin{itemize}
-        \item Tester si un modèle de langage calcule comme le cerveau
-        \item Identifier les propriétés qui augmentent l'alignement
-    \end{itemize}
-}{
-    \begin{itemize}
-        \item Prédiction de l'activité fMRI, ECoG et MEG pendant la compréhension
-        \item Résultats robustes, mais la corrélation n'établit pas l'identité du calcul
-    \end{itemize}
-}
-
 \begin{frame}{Prédiction du réseau du langage}
 \begin{itemize}
     \item Des dizaines de modèles comparés à des données fMRI, ECoG et EEG/MEG
@@ -56,18 +44,6 @@ Enregistrements intracrâniens (ECoG) pendant une conversation naturelle :
 \end{frame}
 
 % ---------- Comportement ----------
-\domaincard{Comportement : prédire la performance humaine}{
-    \begin{itemize}
-        \item Prédire la difficulté de traitement en lecture
-        \item Tester des théories de l'attente et de la mémoire
-    \end{itemize}
-}{
-    \begin{itemize}
-        \item La surprise prédit les temps de lecture et l'amplitude du N400
-        \item Un modèle plus performant n'est pas toujours plus proche de l'humain
-    \end{itemize}
-}
-
 \begin{frame}{Surprise lexicale et difficulté de traitement}
 \[
     s(w_t) = -\log p(w_t \mid w_1,\dots,w_{t-1})
@@ -105,18 +81,6 @@ Enregistrements intracrâniens (ECoG) pendant une conversation naturelle :
 \end{frame}
 
 % ---------- Mécanismes ----------
-\domaincard{Mécanismes : analyse des représentations internes}{
-    \begin{itemize}
-        \item Identifier les unités porteuses d'une information donnée
-        \item Intervenir sur ces unités, ce que le cerveau permet peu
-    \end{itemize}
-}{
-    \begin{itemize}
-        \item Unités de nombre et de syntaxe identifiées dans des réseaux récurrents
-        \item Mêmes questions posées à des neurones humains enregistrés
-    \end{itemize}
-}
-
 \begin{frame}{Syntaxe : des unités de nombre dans un LSTM}
 \begin{block}{Accord sujet-verbe}
     « Les \textbf{clés} de l'armoire \textbf{sont} sur la table. » Le verbe s'accorde avec « clés », pas avec « armoire ».
