@@ -4,7 +4,84 @@
 \partie{Ouvrir la boîte}{Ouvrir la boîte : langage, mémoire, pensée}
 
 % ---------------------------------------------------------------------
-\begin{frame}{Langage : l'accord, une fenêtre sur la syntaxe}
+\begin{frame}{Langage : pourquoi s'y intéresser ?}
+  \begin{columns}[T,onlytextwidth]
+    \column{.32\textwidth}
+    \carte[jaune]{Transmettre}{%
+      Partager des savoirs, une histoire, une culture. Les griots transmettent la mémoire d'un peuple par la parole.}
+    \column{.32\textwidth}
+    \visible<2->{\carte[jaune]{Apprendre et coopérer}{%
+      L'école, la science, le commerce, la politique : presque tout passe par le langage.}}
+    \column{.32\textwidth}
+    \visible<3->{\carte[rouge]{Soigner}{%
+      Après un AVC, beaucoup de patients perdent une partie du langage (\textbf{aphasie}). Comprendre le langage aide à le réparer.}}
+  \end{columns}
+  \vspace{0.7em}
+  \visible<4->{%
+  \small Une propriété unique : avec un nombre \textbf{fini} de mots, on fabrique une \textbf{infinité} de phrases.\\[0.4em]
+  \centering
+  \begin{tikzpicture}
+    \node[font=\normalsize, text=texte] (p1) at (0,0) {« Le \jaun{chien} mord l'\hum{homme} »};
+    \node[font=\large, text=rouge] at (3.55,0) {$\neq$};
+    \node[font=\normalsize, text=texte] (p2) at (7.1,0) {« L'\hum{homme} mord le \jaun{chien} »};
+  \end{tikzpicture}\par}
+  \vspace{0.4em}
+  \visible<5->{\cle{Mêmes mots, sens opposé : c'est la \textbf{structure} de la phrase, la syntaxe, qui fait le sens.}}
+\end{frame}
+
+% ---------------------------------------------------------------------
+\begin{frame}{Pourquoi est-ce difficile à étudier dans le cerveau ?}
+  \begin{columns}[T,onlytextwidth]
+    \column{.48\textwidth}
+    \small
+    \begin{itemize}
+      \item<1-> \textbf{Propre à l'humain} : pas de modèle animal, contrairement à la vision que l'on étudie chez le singe.
+      \item<2-> \textbf{Très rapide} : 3 à 4 mots par seconde, alors que l'IRMf mesure à l'échelle de la seconde.
+      \item<3-> \textbf{Grossier} : un point d'IRMf regroupe des centaines de milliers de neurones.
+    \end{itemize}
+    \column{.48\textwidth}
+    \small
+    \begin{itemize}
+      \item<4-> \textbf{Pas d'intervention} : on ne peut pas éteindre une région pour voir ce qui se passe.
+      \item<5-> \textbf{Structure invisible} : on entend une suite de mots ; la hiérarchie, elle, se construit dans la tête.
+    \end{itemize}
+  \end{columns}
+  \vspace{0.8em}
+  \visible<6->{\cle{Il nous faut un système qui traite le langage et que l'on peut ouvrir entièrement : un modèle.}}
+\end{frame}
+
+% ---------------------------------------------------------------------
+\begin{frame}{Un cas d'étude : l'accord sujet-verbe}
+  \begin{columns}[c,onlytextwidth]
+    \column{.44\textwidth}
+    \centering
+    \begin{tikzpicture}[
+        lv/.style={rounded corners=4pt, fill=fondclair, text=texte, align=center, text width=4.4cm, minimum height=0.8cm, font=\small},
+        ar/.style={-{Stealth}, jaune, line width=1pt}]
+      \node[lv] (a) at (0,0) {\textbf{Langage}};
+      \visible<2->{\node[lv] (b) at (0,-1.15) {\textbf{Syntaxe} : la structure};
+      \draw[ar] (a) -- (b);}
+      \visible<3->{\node[lv] (c) at (0,-2.3) {\textbf{Dépendances} à distance};
+      \draw[ar] (b) -- (c);}
+      \visible<4->{\node[lv, fill=jaune, text=fond] (d) at (0,-3.45) {\textbf{Accord sujet-verbe}};
+      \draw[ar] (c) -- (d);}
+    \end{tikzpicture}
+    \column{.54\textwidth}
+    \small
+    Pourquoi ce phénomène précis ?
+    \begin{itemize}
+      \item<4-> Il dépend de la \textbf{structure}, pas seulement des mots voisins.
+      \item<5-> Il se \textbf{mesure} facilement : la bonne réponse est connue, une erreur est un signal clair.
+      \item<6-> On peut poser \textbf{la même question} à un humain et à un modèle.
+      \item<7-> On peut en faire varier la difficulté (distance, phrases imbriquées).
+    \end{itemize}
+  \end{columns}
+  \vspace{0.5em}
+  \visible<8->{\cle{Un petit phénomène bien choisi pour tester une grande question : le modèle apprend-il la structure ?}}
+\end{frame}
+
+% ---------------------------------------------------------------------
+\begin{frame}{L'accord : une fenêtre sur la syntaxe}
   \centering
   \vspace{0.3em}
   \begin{tikzpicture}[w/.style={font=\large, text=texte, inner sep=2pt}]
