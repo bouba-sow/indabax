@@ -39,6 +39,104 @@
 \src{Yamins et al., PNAS 2014}
 \end{frame}
 
+\begin{frame}{Les trois niveaux de Marr}
+\begin{columns}[T]
+    \column{.52\textwidth}
+    \begin{itemize}
+        \item<1-> \textbf{Computationnel} : \emph{quoi} ? Que calcule le système ?\\
+              {\small ex. : une addition}
+        \item<2-> \textbf{Algorithmique} : \emph{comment} ? Quelles représentations et quelles étapes ?\\
+              {\small ex. : chiffres arabes et retenue}
+        \item<3-> \textbf{Implémentationnel} : sur quel \emph{matériel} ?\\
+              {\small ex. : neurones, transistors, dominos}
+    \end{itemize}
+    \column{.46\textwidth}
+    \centering
+    \resizebox{\linewidth}{!}{%
+    \begin{tikzpicture}[
+        n/.style={circle, draw=navy, fill=navy!15, minimum size=0.42cm, inner sep=0pt},
+        e/.style={navy, thick},
+        lab/.style={font=\small\bfseries, text=navy, anchor=west}]
+        \node<1->[n] (c) at (0,0) {};
+        \node<1->[lab] at (2.4,0) {Computationnel};
+        \node<2->[n] (a1) at (-1.2,-1.4) {};
+        \node<2->[n] (a2) at (0,-1.4) {};
+        \node<2->[n] (a3) at (1.2,-1.4) {};
+        \node<2->[lab] at (2.4,-1.4) {Algorithmique};
+        \draw<2->[e] (c)--(a1); \draw<2->[e] (c)--(a2); \draw<2->[e] (c)--(a3);
+        \foreach \x/\i in {-1.8/1,-0.6/2,0.6/3,1.8/4}{
+            \node<3->[n] (i\i) at (\x,-2.8) {};
+            \draw<3->[e] (a2)--(i\i);}
+        \node<3->[lab] at (2.4,-2.8) {Implémentation};
+        \node<3->[font=\small\bfseries, text=navy] at (0,-3.5) {Relation un-à-plusieurs};
+    \end{tikzpicture}}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Marr : humains et modèles de langage}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+    n/.style={circle, draw=navy, fill=navy!15, minimum size=0.42cm, inner sep=0pt},
+    e/.style={navy, thick},
+    lab/.style={font=\small\bfseries, text=navy, anchor=west}]
+    \node[n] (c) at (0,0) {};
+    \foreach \x/\i in {-4/1,-2/2,0/3,2/4,4/5}{\node[n] (a\i) at (\x,-1.5) {};}
+    \foreach \i in {2,3,4}{\draw[e] (c)--(a\i);}
+    \draw[lscp, ultra thick] (c)--(a1);
+    \draw[blue2, ultra thick] (c)--(a5);
+    \foreach \x/\i in {-5.2/1,-4.4/2,-3.6/3,-2.8/4}{\node[n] (m\i) at (\x,-3.2) {}; \draw[e] (a1)--(m\i);}
+    \foreach \x/\i in {2.8/1,3.6/2,4.4/3,5.2/4}{\node[n] (h\i) at (\x,-3.2) {}; \draw[e] (a5)--(h\i);}
+    \node[lab, text=lscp!70!black] at (-5.2,-3.9) {Modèles de langage};
+    \node[lab, text=blue2] at (2.6,-3.9) {Cerveaux humains};
+    \node[lab] at (6.2,0) {Computationnel};
+    \node[lab] at (6.2,-1.5) {Algorithmique};
+    \node[lab] at (6.2,-3.2) {Implémentation};
+\end{tikzpicture}}
+
+\vspace{0.4em}
+\textbf{Pire cas} : implémentations très différentes, et peut-être des buts différents. Les deux systèmes n'ont alors pas le même algorithme.
+\end{frame}
+
+\begin{frame}{Marr : humains et modèles de langage}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+    n/.style={circle, draw=navy, fill=navy!15, minimum size=0.42cm, inner sep=0pt},
+    e/.style={navy, thick},
+    lab/.style={font=\small\bfseries, text=navy, anchor=west}]
+    \node[n] (c) at (0,0) {};
+    \foreach \x/\i in {-4/1,-2/2,0/3,2/4,4/5}{\node[n] (a\i) at (\x,-1.5) {};}
+    \foreach \i in {1,2,4,5}{\draw[e] (c)--(a\i);}
+    \draw[lscp, ultra thick] (c) to[bend right=28] (a3);
+    \draw[blue2, ultra thick] (c) to[bend left=28] (a3);
+    \foreach \x/\i in {-5.2/1,-4.4/2,-3.6/3,-2.8/4}{\node[n] (m\i) at (\x,-3.2) {}; \draw[e] (a3)--(m\i);}
+    \foreach \x/\i in {2.8/1,3.6/2,4.4/3,5.2/4}{\node[n] (h\i) at (\x,-3.2) {}; \draw[e] (a3)--(h\i);}
+    \node[lab, text=lscp!70!black] at (-5.2,-3.9) {Modèles de langage};
+    \node[lab, text=blue2] at (2.6,-3.9) {Cerveaux humains};
+    \node[lab] at (6.2,0) {Computationnel};
+    \node[lab] at (6.2,-1.5) {Algorithmique};
+    \node[lab] at (6.2,-3.2) {Implémentation};
+\end{tikzpicture}}
+
+\vspace{0.4em}
+\textbf{Cas optimiste} : les deux systèmes convergent vers le \emph{même} algorithme et ne diffèrent que par leur implémentation.
+\end{frame}
+
+\begin{frame}{Dans quel cas sommes-nous ?}
+\begin{itemize}
+    \item L'algorithme ne s'observe pas directement : on l'\textbf{infère}
+    \item \textbf{Comportement} : temps de lecture (lecture auto-rythmée, suivi oculaire)
+    \item \textbf{Cerveau} : les motifs d'activité reflètent les représentations utilisées
+    \item On compare donc modèles et humains \textbf{au niveau algorithmique}
+\end{itemize}
+\vspace{0.4em}
+\begin{block}{Pourquoi utiliser des modèles d'IA pour étudier le cerveau ?}
+    Si les deux convergent, un modèle devient une hypothèse explicite sur l'algorithme du cerveau. Contrairement au cerveau, on peut l'observer en entier, le manipuler et l'ablater.
+\end{block}
+\src{Marr, Vision, 1982}
+\end{frame}
+
 \begin{frame}{Trois questions pour cet exposé}
 \begin{enumerate}
     \item \textcolor{navy}{\textbf{Comparer}} : les modèles de langage calculent-ils comme le cerveau ?
