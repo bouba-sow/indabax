@@ -46,7 +46,12 @@
     \fill[jaune] ([yshift=-5.0cm]current page.north west) rectangle ([yshift=-5.08cm]current page.north east);
     \node[text=white, font=\bfseries\fontsize{40}{44}\selectfont] at ([yshift=-2.2cm]current page.north) {Merci !};
     \node[text=jaune, font=\Large] at ([yshift=-3.7cm]current page.north) {Questions ?};
-    \node[text=texte, align=center, font=\small] at ([yshift=2.0cm]current page.south)
+    \node[text=texte, align=left, font=\small, anchor=west] at ([xshift=0.9cm,yshift=2.4cm]current page.south west)
       {\textbf{Boubacar Sow}\\{\color{gris}LSCP, ENS-PSL \& CNRS}\\{\color{jaune}boubacar.sow@ens.psl.eu}};
+    \node[anchor=south west, inner sep=0pt] at ([xshift=0.9cm,yshift=0.45cm]current page.south west)
+      {\includegraphics[height=1.0cm]{images/logo_indabax_guinee_transparent.png}};
+    \node[anchor=south east, fill=white, rounded corners=3pt, inner sep=3pt] (qr) at ([xshift=-0.9cm,yshift=0.75cm]current page.south east)
+      {\includegraphics[height=2.8cm]{images/code_qr.png}};
+    \node[anchor=east, text=jaune, font=\small\bfseries, align=right] at ([xshift=-0.25cm]qr.west) {Télécharger\\les slides};
   \end{tikzpicture}
 \end{frame}

@@ -78,10 +78,10 @@
   \begin{tikzpicture}[remember picture,overlay]
     \fill[bordeaux] (current page.north west) rectangle ([yshift=-5.3cm]current page.north east);
     \fill[jaune] ([yshift=-5.3cm]current page.north west) rectangle ([yshift=-5.38cm]current page.north east);
-    \node[anchor=north west, text width=14.2cm, align=flush left, text=white,
-          font=\bfseries\fontsize{23}{27}\selectfont]
+    \node[anchor=north west, text width=10.8cm, align=flush left, text=white,
+          font=\bfseries\fontsize{22}{26}\selectfont]
       at ([xshift=0.9cm,yshift=-0.9cm]current page.north west) {\inserttitle};
-    \node[anchor=north west, text width=14.2cm, align=flush left, text=jaune, font=\large]
+    \node[anchor=north west, text width=10.8cm, align=flush left, text=jaune, font=\large]
       at ([xshift=0.9cm,yshift=-3.55cm]current page.north west) {\insertsubtitle};
     \node[anchor=north west, text=texte, font=\large\bfseries]
       at ([xshift=0.9cm,yshift=-5.85cm]current page.north west) {\insertauthor};
@@ -89,7 +89,12 @@
       at ([xshift=0.9cm,yshift=-6.5cm]current page.north west) {\insertinstitute};
     \node[anchor=north west, text=jaune, font=\small]
       at ([xshift=0.9cm,yshift=-7.55cm]current page.north west) {\insertdate};
-    \node[anchor=south east] at ([xshift=-0.7cm,yshift=0.5cm]current page.south east) {\inserttitlegraphic};
+    \node[anchor=south east] at ([xshift=-0.7cm,yshift=0.5cm]current page.south east) (logos) {\inserttitlegraphic};
+    \node[anchor=south east, inner sep=0pt] at ([xshift=-0.45cm,yshift=0.05cm]logos.south west)
+      {\includegraphics[height=1.15cm]{images/logo_indabax_guinee_transparent.png}};
+    \node[anchor=north east, fill=white, rounded corners=3pt, inner sep=3pt] (qr) at ([xshift=-0.7cm,yshift=-0.75cm]current page.north east)
+      {\includegraphics[height=3.0cm]{images/code_qr.png}};
+    \node[anchor=north, text=jaune, font=\scriptsize\bfseries] at ([yshift=-0.08cm]qr.south) {Télécharger les slides};
   \end{tikzpicture}%
 }
 
