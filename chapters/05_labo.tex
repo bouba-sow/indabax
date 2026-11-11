@@ -12,107 +12,27 @@
 \includegraphics[height=1cm]{images/lscp.png}\hspace{1cm}\includegraphics[height=1.3cm]{images/ens_psl.png}\hspace{1cm}\includegraphics[height=1cm]{images/cnrs.png}
 \end{frame}
 
-\begin{frame}{Ma question de recherche}
+\begin{frame}{Un exemple de notre travail}
 \begin{block}{Rendre les modèles plus humains aide-t-il ?}
-    Deux idées pour rapprocher un modèle de langage de l'humain.
+    Deux contraintes testées : une \textbf{mémoire limitée} et un entraînement sur \textbf{peu de données} (10 à 100 millions de mots, comme un enfant).
 \end{block}
 \begin{itemize}
-    \item \textbf{Contrainte de mémoire} : une architecture qui limite le contexte accessible, comme la mémoire de travail humaine
-    \item \textbf{Contrainte développementale} : un entraînement sur 10 à 100 millions de mots, ce qu'entend un enfant (BabyLM)
+    \item 118 modèles de langage comparés à des temps de lecture et à des enregistrements cérébraux
+    \item Cerveau : fMRI, EEG, MEG et intracrânien
+    \item Méthode : similarité des représentations (RSA)
 \end{itemize}
-\vspace{0.5em}
-Ces contraintes rapprochent-elles les modèles du \textbf{comportement} humain et du \textbf{cerveau} ?
-\src{Prolonge : Hosseini et al. 2024 ; Kuribayashi et al. 2021 ; Michaelov et al. 2024 ; AlKhamissi et al. 2025}
 \end{frame}
 
-\begin{frame}{Un design 2 $\times$ 2 : 118 modèles}
-\centering
-\resizebox{0.95\textwidth}{!}{%
-\begin{tikzpicture}[
-    cell/.style={draw=navy, rounded corners, minimum width=5.4cm, minimum height=1.7cm, align=center, fill=navy!6},
-    head/.style={font=\bfseries\small, text=navy, align=center}]
-    \node[head] at (3.2,2.3) {Données web};
-    \node[head] at (9.0,2.3) {Données BabyLM\\{\footnotesize 10 à 100 M de mots}};
-    \node[head, text width=2.2cm] at (-1.2,0.9) {Attention complète};
-    \node[head, text width=2.2cm] at (-1.2,-1.0) {Mémoire limitée};
-    \node[cell] at (3.2,0.9) {\textbf{Standard}\\{\small 59 modèles (GPT-2, Llama, Pythia...)}};
-    \node[cell] at (9.0,0.9) {\textbf{BabyLM}\\{\small 11 modèles}};
-    \node[cell] at (3.2,-1.0) {\textbf{Mémoire limitée}\\{\small 24 modèles (ALiBi, forget gate...)}};
-    \node[cell] at (9.0,-1.0) {\textbf{BabyLM + mémoire}\\{\small 24 modèles}};
-\end{tikzpicture}%
-}
-\vspace{0.5em}
-
-\small Modèles figés : aucun n'est ajusté sur les données humaines.
-\end{frame}
-
-\begin{frame}{Les données humaines}
-\begin{columns}[T]
-    \column{.48\textwidth}
-    \textbf{Comportement : 16 mesures de lecture}
-    \begin{itemize}
-        \item Lecture auto-rythmée (Natural Stories, UCL)
-        \item Suivi oculaire (GECO, Provo, MECO, OneStop, ZuCo)
-    \end{itemize}
-    \column{.48\textwidth}
-    \textbf{Cerveau : 8 jeux de données}
-    \begin{itemize}
-        \item fMRI (Tuckute, Pereira)
-        \item EEG et N400 (Broderick, Nieuwland...)
-        \item MEG (MEG-MASC)
-        \item Intracrânien (Podcast)
-    \end{itemize}
-\end{columns}
-\end{frame}
-
-\begin{frame}{La méthode : comparer des géométries}
-\begin{enumerate}
-    \item Pour un même ensemble de stimuli, on construit une matrice de distances (RDM) pour le modèle et pour l'humain
-    \item On mesure combien la RDM du modèle améliore la prédiction de la RDM humaine, \textbf{au-delà de la longueur et de la fréquence des mots}
-    \item Le score est normalisé par un plafond de bruit
-\end{enumerate}
-\vspace{0.5em}
+\begin{frame}{Ce que nous avons trouvé}
 \begin{itemize}
-    \item \textbf{Similarité comportementale} : surprise du modèle contre temps de lecture
-    \item \textbf{Similarité cérébrale} : embeddings contre signaux cérébraux
+    \item Les contraintes rapprochent des \textbf{temps de lecture}, mais éloignent des \textbf{réponses cérébrales}
+    \item Les grands modèles font l'inverse
+    \item Aucun modèle n'est le meilleur sur les deux
 \end{itemize}
-\end{frame}
-
-\begin{frame}{Résultat 1 : deux cibles qui se dissocient}
-\begin{itemize}
-    \item \textbf{Aucun modèle n'est le meilleur sur les deux}
-    \item Les modèles BabyLM et à mémoire limitée sont meilleurs côté \textbf{comportement}
-    \item Les grands LLM standards sont meilleurs côté \textbf{cerveau}
-    \item À taille et perplexité égales, les contraintes vont avec plus de similarité comportementale mais moins de similarité cérébrale
-\end{itemize}
-% IMAGE : figure 2 de l'article (front de Pareto comportement vs cerveau)
-\end{frame}
-
-\begin{frame}{Résultat 2 : la mémoire n'explique pas l'avantage}
-\begin{itemize}
-    \item Mots qui sollicitent la mémoire : ceux qui ferment une dépendance syntaxique longue
-    \item Le signal humain est plus fort sur ces mots (temps de lecture, activité intracrânienne)
-    \item Mais la contrainte de mémoire \textbf{n'apporte pas d'avantage spécifique} sur ces mots
-\end{itemize}
-\begin{block}{Conclusion}
-    L'avantage comportemental des contraintes ne vient pas de limites de mémoire partagées avec l'humain.
+\vspace{0.4em}
+\begin{block}{Message}
+    Être proche du comportement et être proche du cerveau sont deux choses différentes.
 \end{block}
-\end{frame}
-
-\begin{frame}{Ce qu'il faut retenir}
-\begin{itemize}
-    \item Ce qui rend la \textbf{difficulté de traitement} humaine n'est pas ce qui rend les \textbf{représentations} proches du cerveau
-    \item L'alignement humain doit être évalué \textbf{sur les deux}
-    \item Similarité de géométrie ne prouve pas un algorithme commun
-\end{itemize}
-\vspace{0.5em}
-\textbf{Limites} : familles de modèles qui diffèrent par plus d'un facteur, données surtout en anglais.
-\end{frame}
-
-\begin{frame}{Et après ?}
-\begin{itemize}
-    \item Entraîner des modèles avec \textbf{une seule contrainte} ajoutée, pour isoler son effet
-    \item Plus de données de lecture et de cerveau pour tester la charge syntaxique
-    \item D'autres langues que l'anglais
-\end{itemize}
+% IMAGE : figure 2 de l'article (comportement vs cerveau), à ajouter
+\src{Travail en cours}
 \end{frame}
