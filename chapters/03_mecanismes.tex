@@ -222,37 +222,6 @@
 \end{frame}
 
 % ---------------------------------------------------------------------
-\begin{frame}{Mémoire de l'espace : du rat aux transformeurs}
-  \begin{columns}[T,onlytextwidth]
-    \column{.32\textwidth}
-    \centering
-    {\small\bfseries\color{bleu}1. Chez le rat}\\[0.3em]
-    \begin{tikzpicture}[scale=0.95]
-      \draw[gris, line width=1pt, fill=fondclair] (0,0) rectangle (3,3);
-      \draw[gris!70, line width=0.5pt] plot[smooth] coordinates {(0.3,0.4) (1.2,0.7) (2.6,0.5) (2.7,1.6) (1.9,2.2) (0.6,2.6) (0.4,1.5) (1.4,1.3) (2.2,1.9) (2.5,2.7) (1.2,2.7) (0.5,0.9) (1.8,0.3)};
-      \foreach \x/\y in {1.9,2.2, 2.0,2.05, 2.15,1.95, 2.25,2.1, 1.8,2.3, 2.05,2.3, 2.2,1.8, 1.95,1.9}{\fill[rouge] (\x,\y) circle (2pt);}
-    \end{tikzpicture}\\[0.2em]
-    {\scriptsize\color{gris}trajet du rat ; \textcolor{rouge}{points} : décharges d'un neurone de l'hippocampe}
-    \column{.32\textwidth}
-    \centering
-    \visible<2->{{\small\bfseries\color{orange}2. Dans le modèle}\\[0.3em]
-    \begin{tikzpicture}
-      \foreach \x in {0,...,5}{\foreach \y in {0,...,5}{
-        \pgfmathsetmacro{\c}{100*exp(-((\x-3.6)^2+(\y-3.4)^2)/1.6)}
-        \fill[jaune!\c!fondclair] (\x*0.5,\y*0.5) rectangle (\x*0.5+0.47,\y*0.5+0.47);}}
-    \end{tikzpicture}\\[0.2em]
-    {\scriptsize\color{gris}activité d'une unité artificielle selon la position (schéma)}}
-    \column{.32\textwidth}
-    \small
-    \textbf{Cellule de lieu} : un neurone de l'hippocampe s'active quand l'animal passe à un endroit précis.\\[0.4em]
-    \visible<2->{Un \textbf{transformeur} (l'architecture de ChatGPT), un peu modifié et entraîné à naviguer, développe des unités qui ressemblent à ces cellules.}
-  \end{columns}
-  \vspace{0.5em}
-  \visible<3->{\cle{Les mêmes outils d'IA éclairent la mémoire, pas seulement le langage.}}
-  \src{O'Keefe \& Dostrovsky, \emph{Brain Research} 1971 (Nobel 2014) ; Whittington, Warren \& Behrens, ICLR 2022}
-\end{frame}
-
-% ---------------------------------------------------------------------
 \begin{frame}{Pensée : le langage n'est pas la pensée}
   \begin{columns}[c,onlytextwidth]
     \column{.44\textwidth}

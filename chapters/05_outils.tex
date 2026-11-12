@@ -1,185 +1,144 @@
 % =====================================================================
-%  Partie 5 (~9 min) : au-delà du langage
+%  Partie 5 (~7 min) : application -- décoder le langage
 % =====================================================================
-\partie{Au-delà du langage}{Au-delà du langage : l'IA dans les neurosciences}
+\partie{Décoder le langage}{Application : décoder le langage dans le cerveau}
 
 % ---------------------------------------------------------------------
-\begin{frame}{Vision : reconnaître un objet}
+\begin{frame}{Encoder, décoder : deux directions}
   \centering
   \begin{tikzpicture}[
-      scale=0.8, every node/.style={transform shape},
-      cl/.style={draw=orange, fill=orange!25!fondclair, line width=0.8pt},
-      br/.style={rounded corners=3pt, fill=bleu!35!fondclair, text=white, font=\small\bfseries, minimum width=1.5cm, minimum height=0.6cm},
-      ar/.style={-{Stealth}, gris, line width=0.9pt},
-      lk/.style={{Stealth}-{Stealth}, jaune, dashed, line width=0.9pt}]
-    % image
-    \node[draw=gris, fill=fondclair, minimum size=1.6cm, font=\scriptsize, text=gris, align=center] (img) at (0,0) {image\\(un visage,\\une voiture\dots)};
-    % réseau convolutif : couches de plus en plus petites
-    \foreach \i/\h in {1/1.8, 2/1.45, 3/1.1, 4/0.75}{
-      \pgfmathsetmacro{\x}{1.4+1.55*\i}
-      \fill[cl] (\x-0.35,-\h/2) rectangle (\x+0.35,\h/2);
-      \node[font=\scriptsize, text=orange] at (\x,1.2) {couche \i};}
-    \node[rounded corners=3pt, fill=orange, text=fond, font=\small\bfseries] (cat) at (9.8,0) {« visage »};
-    \draw[ar] (img) -- (2.55,0); \draw[ar] (7.95,0) -- (cat);
-    \node[font=\small\bfseries, text=orange, anchor=west] at (10.9,0) {IA};
-    % cortex visuel du singe
-    \visible<2->{\node[br] (v1) at (2.95,-2.3) {V1};
-    \node[br] (v4) at (6.05,-2.3) {V4};
-    \node[br] (it) at (7.6,-2.3) {IT};
-    \draw[ar] (v1) -- (v4); \draw[ar] (v4) -- (it);
-    \node[font=\small\bfseries, text=bleu, anchor=west] at (10.9,-2.3) {singe};
-    \draw[lk] (6.05,-0.6) -- (v4); \draw[lk] (7.6,-0.45) -- (it);}
+      bx/.style={rounded corners=5pt, minimum width=3.0cm, minimum height=1.3cm, align=center, font=\small\bfseries},
+      ar/.style={-{Stealth[length=3mm]}, line width=1.6pt}]
+    \node[bx, fill=orange!30!fondclair, draw=orange, text=orange] (t) at (0,0) {Langage\\{\scriptsize\normalfont mots, phrases, modèle d'IA}};
+    \node[bx, fill=bleu!30!fondclair, draw=bleu, text=bleu] (b) at (9.6,0) {Cerveau\\{\scriptsize\normalfont IRMf, MEG, EEG, électrodes}};
+    \draw[ar, gris] ([yshift=0.3cm]t.east) -- node[above, font=\small, text=texte] {\textbf{encoder} : prédire le cerveau} ([yshift=0.3cm]b.west);
+    \visible<2->{\draw[ar, jaune] ([yshift=-0.3cm]b.west) -- node[below, font=\small, text=jaune] {\textbf{décoder} : retrouver les mots} ([yshift=-0.3cm]t.east);}
   \end{tikzpicture}
 
-  \vspace{0.2em}
+  \vspace{0.6em}
   \begin{columns}[T,onlytextwidth]
     \column{.48\textwidth}
-    \visible<3->{\carte[bleu]{Prédire}{Meilleur à reconnaître les objets = meilleur pour prédire les neurones du singe (couches profondes $\approx$ IT).\\[0.2em]{\scriptsize\color{gris}Yamins et al., \emph{PNAS} 2014}}}
-    \column{.48\textwidth}
-    \visible<4->{\carte[bleu]{Contrôler}{Le modèle fabrique des images qui activent des neurones de V4 plus fort que les images naturelles.\\[0.2em]{\scriptsize\color{gris}Bashivan, Kar \& DiCarlo, \emph{Science} 2019}}}
-  \end{columns}
-\end{frame}
-
-% ---------------------------------------------------------------------
-\begin{frame}{Récompense : apprendre de ses erreurs}
-  \begin{columns}[c,onlytextwidth]
-    \column{.50\textwidth}
-    \centering
-    \begin{tikzpicture}[x=1cm, y=1cm,
-        lab/.style={anchor=east, font=\scriptsize, text=texte, align=right, text width=2.2cm}]
-      \foreach \y/\l in {0/{Récompense\\inattendue}, -1.45/{Signal appris,\\puis récompense}, -2.9/{Signal appris,\\récompense absente}}{
-        \node[lab] at (-0.15,\y+0.25) {\l};
-        \draw[gris] (0,\y) -- (4.4,\y);}
-      % ligne 1 : pic à la récompense
-      \draw[jaune, line width=1.3pt] plot[smooth] coordinates {(0,0.1) (2.9,0.1) (3.2,0.85) (3.5,0.1) (4.4,0.1)};
-      % ligne 2 : pic au signal
-      \visible<2->{\draw[jaune, line width=1.3pt] plot[smooth] coordinates {(0,-1.35) (0.9,-1.35) (1.2,-0.6) (1.5,-1.35) (4.4,-1.35)};}
-      % ligne 3 : pic au signal, creux à la récompense attendue
-      \visible<3->{\draw[jaune, line width=1.3pt] plot[smooth] coordinates {(0,-2.8) (0.9,-2.8) (1.2,-2.05) (1.5,-2.8) (2.9,-2.8) (3.2,-3.15) (3.5,-2.8) (4.4,-2.8)};}
-      \foreach \y in {0,-1.45,-2.9}{\draw[orange, dashed] (3.2,\y-0.3) -- (3.2,\y+0.95);}
-      \foreach \y in {-1.45,-2.9}{\draw[bleu, dashed] (1.2,\y-0.3) -- (1.2,\y+0.95);}
-      \node[font=\scriptsize, text=bleu] at (1.2,-3.5) {signal};
-      \node[font=\scriptsize, text=orange] at (3.2,-3.5) {récompense};
-    \end{tikzpicture}\\[0.1em]
-    {\scriptsize\color{gris}activité des neurones à dopamine (schéma d'après Schultz et al. 1997)}
-    \column{.48\textwidth}
-    \small
-    \visible<4->{Les neurones à \textbf{dopamine} ne signalent pas la récompense elle-même, mais l'\jaun{erreur de prédiction} :
-    \[\delta = \text{reçu} - \text{attendu}\]
-    C'est exactement le signal d'apprentissage de l'\textbf{apprentissage par renforcement}, inventé en IA (Sutton \& Barto), celui qui fait jouer AlphaGo.\\[0.4em]
-    Une version plus récente de ces algorithmes a prédit une nouvelle propriété des neurones à dopamine, ensuite observée chez la souris.}
-  \end{columns}
-  \src{Schultz, Dayan \& Montague, \emph{Science} 1997 ; Dabney et al., \emph{Nature} 2020}
-\end{frame}
-
-% ---------------------------------------------------------------------
-\begin{frame}{Connexions : cartographier un cerveau entier}
-  \centering
-  \begin{tikzpicture}[
-      st/.style={rounded corners=4pt, fill=fondclair, text=texte, align=center, text width=2.55cm, minimum height=1.7cm, font=\small, inner sep=4pt},
-      ar/.style={-{Stealth}, jaune, line width=1.2pt}]
-    \node[st] (a) at (0,0) {\textbf{Microscope}\\{\scriptsize $\sim$7\,000 tranches ultrafines d'un cerveau de mouche}};
-    \visible<2->{\node[st, draw=orange, line width=1pt] (b) at (3.4,0) {\textcolor{orange}{\textbf{IA}}\\{\scriptsize délimite chaque neurone sur les images}}; \draw[ar] (a)--(b);}
-    \visible<3->{\node[st] (c) at (6.8,0) {\textbf{Correction}\\{\scriptsize par une large communauté de chercheurs et de volontaires}}; \draw[ar] (b)--(c);}
-    \visible<4->{\node[st, draw=jaune, line width=1pt] (d) at (10.2,0) {\textcolor{jaune}{\textbf{Câblage complet}}\\{\scriptsize 139\,255 neurones\\$\sim$50 millions de synapses}}; \draw[ar] (c)--(d);}
-  \end{tikzpicture}
-
-  \vspace{0.7em}
-  \begin{columns}[c,onlytextwidth]
-    \column{.30\textwidth}
-    \centering
-    \begin{tikzpicture}[scale=0.9]
-      \pgfmathsetseed{7}
-      \foreach \i in {1,...,22}{\coordinate (p\i) at (rnd*3.2, rnd*1.9);}
-      \foreach \i/\j in {1/5,2/7,3/9,4/12,5/14,6/2,7/15,8/3,9/18,10/4,11/20,12/6,13/1,14/22,15/8,16/10,17/11,18/13,19/16,20/17,21/19,22/21,1/9,3/14,6/18,10/20}{
-        \draw[orange!70, line width=0.4pt] (p\i) -- (p\j);}
-      \foreach \i in {1,...,22}{\fill[jaune] (p\i) circle (1.6pt);}
-    \end{tikzpicture}\\
-    {\scriptsize\color{gris}schéma d'un réseau de neurones réel}
-    \column{.68\textwidth}
     \small
     \begin{itemize}
-      \item<4-> Sans l'IA, tracer à la main tous les neurones prendrait des siècles.
-      \item<5-> Ensuite, on construit un réseau artificiel qui suit ce câblage, et on n'apprend que les paramètres inconnus : il \textbf{prédit l'activité} de neurones de la vision du mouvement, confirmée par 26 études.
+      \item<1-> Parties 2 à 4 : on \textbf{encode}, pour comprendre le cerveau.
+      \item<2-> Ici : on \textbf{décode}, pour aider des personnes.
+    \end{itemize}
+    \column{.48\textwidth}
+    \small
+    \begin{itemize}
+      \item<3-> \textbf{Électrodes implantées} : Willett et al.
+      \item<4-> \textbf{IRMf} : Tang et al.
+      \item<5-> \textbf{MEG / EEG}, sans chirurgie : équipe de J.-R. King
     \end{itemize}
   \end{columns}
-  \src{Dorkenwald et al. (FlyWire), \emph{Nature} 2024 ; Lappalainen et al., \emph{Nature} 2024}
+  \vspace{0.4em}
+  \visible<6->{\cle{Les mêmes outils (réseaux de neurones, modèles de langage) servent dans les deux sens.}}
 \end{frame}
 
 % ---------------------------------------------------------------------
-\begin{frame}{Redonner la parole}
+\begin{frame}{Redonner la parole : électrodes implantées}
   \begin{columns}[c,onlytextwidth]
-    \column{.50\textwidth}
+    \column{.46\textwidth}
     \centering
     \begin{tikzpicture}[
-        bx/.style={rounded corners=4pt, fill=bordeaux, text=white, align=center, minimum height=1.0cm, text width=2.4cm, font=\small},
-        ob/.style={rounded corners=4pt, fill=fondclair, draw=jaune, text=jaune, align=center, minimum height=0.6cm, minimum width=2.0cm, font=\scriptsize},
+        bx/.style={rounded corners=4pt, fill=bordeaux, text=white, align=center, minimum height=0.7cm, text width=4.2cm, font=\small, inner sep=2pt},
         ar/.style={-{Stealth}, jaune, line width=1pt}]
-      \node[bx] (c) at (0,0.2) {Cortex moteur\\{\scriptsize 253 électrodes}};
-      \node[bx, fill=orange!50!fondclair] (n) at (0,-1.6) {Réseau de neurones};
-      \node[ob] (t) at (-2.3,-3.0) {texte};
-      \node[ob] (v) at (0,-3.0) {voix};
-      \node[ob] (a) at (2.3,-3.0) {avatar};
-      \draw[ar] (c)--(n); \draw[ar] (n)--(t); \draw[ar] (n)--(v); \draw[ar] (n)--(a);
+      \node[bx] (c) at (0,0) {Tentative de parole\\{\scriptsize 4 matrices de micro-électrodes}};
+      \visible<2->{\node[bx, fill=orange!50!fondclair] [below=0.3cm of c] (n) {Réseau de neurones\\{\scriptsize activité $\rightarrow$ sons de la langue}};
+      \draw[ar] (c)--(n);}
+      \visible<3->{\node[bx, fill=orange!50!fondclair] [below=0.3cm of n] (l) {Modèle de langage\\{\scriptsize choisit les phrases probables}};
+      \draw[ar] (n)--(l);}
+      \visible<4->{\node[bx, fill=fondclair, draw=jaune, text=jaune] [below=0.3cm of l] (t) {Texte à l'écran};
+      \draw[ar] (l)--(t);}
     \end{tikzpicture}
-    \column{.48\textwidth}
+    \column{.52\textwidth}
     \small
     \begin{itemize}
-      \item<1-> Une patiente paralysée \textbf{tente} de parler, sans émettre de son.
-      \item<2-> Le décodeur reconnaît des \textbf{phonèmes}, puis un modèle de langage choisit les phrases les plus probables.
-      \item<3-> On retrouve les deux ingrédients de cet exposé : réseaux de neurones et \textbf{prédiction du mot suivant}.
+      \item<1-> Une patiente atteinte de \textbf{SLA} ne peut plus parler de façon intelligible. Elle \textbf{tente} de prononcer des phrases.
+      \item<2-> Un réseau de neurones reconnaît les \textbf{sons} qu'elle essaie de produire.
+      \item<3-> Un \textbf{modèle de langage}, celui des parties précédentes, corrige et complète.
+      \item<5-> Erreurs sur les mots : \textbf{9\,\%} avec 50 mots, \textbf{24\,\%} avec 125\,000 mots.
     \end{itemize}
   \end{columns}
-  \vspace{0.5em}
-  \visible<4->{\hspace*{3.6cm}\begin{tikzpicture}[x=0.042cm,
+  \visible<6->{%
+  \hspace*{3.6cm}\begin{tikzpicture}[x=0.042cm, y=0.75cm,
       lab/.style={anchor=east, font=\scriptsize, text=texte},
       val/.style={anchor=west, font=\scriptsize, text=gris}]
-    \foreach \l/\v/\y/\c in {{Avant (sélection de lettres)}/14/0/gris, {Willett et al. 2023}/62/-0.42/orange, {Metzger et al. 2023}/78/-0.84/orange, {Conversation naturelle}/160/-1.26/jaune}{
+    \foreach \l/\v/\y/\c in {{Record précédent}/18/0/gris, {Willett et al. 2023}/62/-0.42/orange, {Metzger et al. 2023}/78/-0.84/orange, {Conversation naturelle}/160/-1.26/jaune}{
       \node[lab] at (-2,\y) {\l};
       \fill[\c] (0,\y-0.15) rectangle (\v,\y+0.15);
       \node[val] at (\v+2,\y) {\v};}
     \node[font=\scriptsize, text=gris, anchor=west] at (95,-0.2) {mots par minute};
   \end{tikzpicture}}
-  \src{Metzger et al., \emph{Nature} 2023 ; Willett et al., \emph{Nature} 2023}
+  \src{Willett et al., \emph{Nature} 2023 ; Metzger et al., \emph{Nature} 2023}
 \end{frame}
 
 % ---------------------------------------------------------------------
-\begin{frame}{Décoder sans chirurgie ?}
+\begin{frame}{Retrouver le sens d'une histoire avec l'IRMf}
+  \begin{columns}[c,onlytextwidth]
+    \column{.50\textwidth}
+    \centering
+    \begin{tikzpicture}[
+        bx/.style={rounded corners=4pt, align=center, minimum height=0.9cm, text width=2.6cm, font=\scriptsize, text=white},
+        ar/.style={-{Stealth}, jaune, line width=1pt}]
+      \node[bx, fill=orange!50!fondclair] (lm) at (0,1.4) {\textbf{Modèle de langage}\\propose des suites possibles};
+      \visible<2->{\node[bx, fill=bordeaux] (enc) at (3.4,1.4) {\textbf{Modèle d'encodage}\\prédit l'IRMf de chaque suite};
+      \draw[ar] (lm)--(enc);}
+      \visible<3->{\node[bx, fill=bleu!45!fondclair] (cmp) at (3.4,-0.5) {\textbf{Comparer}\\au vrai signal IRMf};
+      \draw[ar] (enc)--(cmp);}
+      \visible<4->{\node[bx, fill=fondclair, draw=jaune, text=jaune] (k) at (0,-0.5) {\textbf{Garder}\\les meilleures suites};
+      \draw[ar] (cmp)--(k); \draw[ar] (k)--(lm);}
+    \end{tikzpicture}\\[0.3em]
+    \visible<2->{{\scriptsize\color{jaune}le modèle d'encodage de la partie 2, utilisé à l'envers}}
+    \column{.48\textwidth}
+    \small
+    \begin{itemize}
+      \item<1-> 3 participants écoutent \textbf{16 h} d'histoires dans l'IRM.
+      \item<5-> Le décodeur retrouve \textbf{l'idée générale}, pas les mots exacts.
+      \item<6-> Il marche aussi quand la personne \textbf{imagine} une histoire ou regarde un \textbf{film muet}.
+      \item<7-> Il faut la \textbf{coopération} de la personne : un décodeur entraîné sur quelqu'un ne marche pas sur un autre.
+    \end{itemize}
+  \end{columns}
+  \visible<8->{\cle{Sans chirurgie, mais il faut un IRM : impossible à utiliser au quotidien.}}
+  \src{Tang, LeBel, Jain \& Huth, \emph{Nature Neuroscience} 2023}
+\end{frame}
+
+% ---------------------------------------------------------------------
+\begin{frame}{Décoder sans chirurgie : MEG et EEG}
   \begin{columns}[T,onlytextwidth]
     \column{.48\textwidth}
-    \carte[bleu]{IRMf : le sens d'une histoire}{%
-      Un décodeur retrouve \textbf{l'idée générale} d'une histoire entendue ou imaginée, pas les mots exacts.\\[0.3em]
-      {\color{gris}16 h d'enregistrement par personne ; ne marche que si la personne coopère.}\\[0.2em]
-      {\scriptsize\color{gris}Tang et al., \emph{Nat. Neurosci.} 2023}}
+    \carte[bleu]{Écouter : quel extrait est entendu ?}{%
+      175 volontaires écoutent des histoires. À partir de 3 s de signal, le modèle doit retrouver l'extrait parmi \textbf{plus de 1\,000}.\\[0.4em]
+      \begin{tikzpicture}[x=0.045cm]
+        \fill[gris] (0,0) rectangle (0.1,0.3); \node[anchor=west, font=\scriptsize, text=gris] at (2,0.15) {hasard : 0,1\,\%};
+        \fill[bleu] (0,-0.45) rectangle (41,-0.15); \node[anchor=west, font=\scriptsize, text=texte] at (43,-0.3) {MEG : jusqu'à 41\,\%};
+        \fill[jaune] (0,-0.9) rectangle (80,-0.6); \node[anchor=west, font=\scriptsize, text=texte] at (82,-0.75) {meilleurs : $>$80\,\%};
+      \end{tikzpicture}\\[0.2em]
+      {\scriptsize\color{gris}Défossez, Caucheteux, Rapin, Kabeli \& King, \emph{Nat. Mach. Intell.} 2023}}
     \column{.48\textwidth}
-    \visible<2->{\carte[bleu]{MEG / EEG : la frappe au clavier}{%
-      Décodage des phrases tapées par 35 volontaires.\\[0.3em]
-      {\color{gris}Erreur sur les caractères : 32\,\% en MEG, 67\,\% en EEG.}\\[0.2em]
-      {\scriptsize\color{gris}Lévy et al. (Meta), 2025}}}
+    \visible<2->{\carte[bleu]{Taper : quelle phrase est écrite ?}{%
+      35 volontaires tapent des phrases au clavier. Le modèle reconstruit le texte, lettre par lettre.\\[0.4em]
+      Erreur sur les lettres :\\
+      \textbf{32\,\%} en MEG, \textbf{67\,\%} en EEG.\\
+      Meilleur participant : \textbf{19\,\%}.\\[0.2em]
+      {\scriptsize\color{gris}Lévy, Zhang, Pinet, Rapin, Banville, d'Ascoli \& King, 2025 (Brain2Qwerty)}}}
   \end{columns}
-  \vspace{0.6em}
-  \visible<3->{\small\textbf{Questions éthiques} : consentement, \textbf{vie privée mentale}, accès équitable à ces technologies.}
-  \vspace{0.3em}
-  \visible<4->{\cle{Des résultats réels, mais encore loin de « lire dans les pensées ».}}
+  \vspace{0.2em}
+  \visible<3->{\cle{Moins précis que les électrodes, mais sans chirurgie ; l'EEG est portable.}}
 \end{frame}
 
 % ---------------------------------------------------------------------
-\begin{frame}{Une même démarche, des questions très différentes}
-  \centering
-  \small
-  \renewcommand{\arraystretch}{1.35}
-  \begin{tabular}{>{\bfseries\color{jaune}}l l l}
-    \toprule
-    {\color{texte}Domaine} & \textbf{Modèle d'IA} & \textbf{Ce qu'il nous a appris} \\
-    \midrule
-    Langage    & modèles de langage            & prédisent une partie du réseau du langage \\
-    \onslide<2->{Mémoire} & \onslide<2->{transformeur modifié} & \onslide<2->{unités proches des cellules de lieu} \\
-    \onslide<3->{Vision} & \onslide<3->{réseaux convolutifs} & \onslide<3->{couches du réseau $\approx$ aires visuelles} \\
-    \onslide<4->{Récompense} & \onslide<4->{apprentissage par renforcement} & \onslide<4->{la dopamine code une erreur de prédiction} \\
-    \onslide<5->{Connexions} & \onslide<5->{segmentation d'images} & \onslide<5->{câblage complet d'un cerveau de mouche} \\
-    \onslide<6->{Décodage} & \onslide<6->{réseaux + modèle de langage} & \onslide<6->{redonner la parole à des patients paralysés} \\
-    \bottomrule
-  \end{tabular}
-  \vspace{0.8em}
-  \visible<7->{\cle{L'IA sert à la fois de \textbf{théorie} (un modèle à comparer au cerveau) et d'\textbf{instrument} (pour mesurer et décoder).}}
+\begin{frame}{Limites et questions éthiques}
+  \begin{columns}[T,onlytextwidth]
+    \column{.235\textwidth}
+    \carte[rouge]{Précision}{Encore loin d'une conversation fluide, surtout sans chirurgie.}
+    \column{.235\textwidth}
+    \visible<2->{\carte[rouge]{Vie privée mentale}{Qui a le droit d'accéder à ces données ? Pour quoi faire ?}}
+    \column{.235\textwidth}
+    \visible<3->{\carte[rouge]{Consentement}{Aujourd'hui, le décodage ne marche que si la personne coopère. Il faut que cela reste ainsi.}}
+    \column{.235\textwidth}
+    \visible<4->{\carte[rouge]{Accès équitable}{Ces technologies ne doivent pas être réservées à quelques pays.}}
+  \end{columns}
+  \vspace{1.0em}
+  \visible<5->{\cle{Des résultats réels et utiles aux patients, mais encore loin de « lire dans les pensées ».}}
 \end{frame}
