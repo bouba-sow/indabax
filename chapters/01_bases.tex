@@ -95,6 +95,13 @@
   \begin{columns}[c,onlytextwidth]
     \column{.44\textwidth}
     \centering
+    \begin{overprint}
+    \onslide<1>
+    \centering
+    \photo{width=0.95\linewidth,trim=0 45 0 0,clip}{images/cerveau_gyri.png}\\[0.2em]
+    {\scriptsize\color{gris}Repères anatomiques : les gyres frontaux et temporaux}
+    \onslide<2->
+    \centering
     \begin{tikzpicture}
       \node[inner sep=0pt, anchor=south west] (im) at (0,0) {\photo{height=3.5cm}{images/cerveau_lobes.png}};
       \begin{scope}[x={(im.south east)}, y={(im.north west)}]
@@ -104,17 +111,18 @@
       \end{scope}
     \end{tikzpicture}\\[0.2em]
     {\scriptsize\color{gris}\textcolor{rouge}{rouge} : réseau du langage (schéma)}
+    \end{overprint}
     \column{.54\textwidth}
     \small
     \begin{itemize}
       \item<1-> Des régions \textbf{frontales} et \textbf{temporales}, surtout à gauche, répondent aux phrases.
-      \item<2-> Il répond au langage \textbf{écrit comme parlé}, dans les 45 langues testées.
-      \item<3-> Il répond \textbf{peu} au calcul, à la musique ou à la logique : ces tâches mobilisent un \textbf{autre réseau}.
+      \item<3-> Il répond au langage \textbf{écrit comme parlé}, dans les 45 langues testées.
+      \item<4-> Il répond \textbf{peu} au calcul, à la musique ou à la logique : ces tâches mobilisent un \textbf{autre réseau}.
     \end{itemize}
   \end{columns}
   \vspace{0.4em}
-  \visible<4->{\cle{Cible de nos comparaisons : l'activité de ce réseau pendant la lecture ou l'écoute.}}
-  \src{Fedorenko, Ivanova \& Regev, \emph{Nat. Rev. Neurosci.} 2024 ; Malik-Moraleda et al., \emph{Nat. Neurosci.} 2022}
+  \visible<5->{\cle{Cible de nos comparaisons : l'activité de ce réseau pendant la lecture ou l'écoute.}}
+  \src{Fedorenko, Ivanova \& Regev, \emph{Nat. Rev. Neurosci.} 2024 ; Malik-Moraleda et al., \emph{Nat. Neurosci.} 2022 ; image des gyres : © 2011 UTHealth}
 \end{frame}
 
 % ---------------------------------------------------------------------
