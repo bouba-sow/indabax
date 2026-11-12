@@ -14,25 +14,25 @@
     \column{.52\textwidth}
     \small
     \begin{itemize}
-      \item \jaun{\textbf{Computationnel}} : \emph{quel problème} est résolu ?\\
+      \item<1-> \jaun{\textbf{Computationnel}} : \emph{quel problème} est résolu ?\\
             {\color{gris}ex. : additionner deux nombres}
-      \item \jaun{\textbf{Algorithmique}} : \emph{quelle procédure} ?\\
+      \item<2-> \jaun{\textbf{Algorithmique}} : \emph{quelle procédure} ?\\
             {\color{gris}ex. : chiffres arabes et retenue, ou bâtonnets}
-      \item \jaun{\textbf{Implémentation}} : \emph{quel support physique} ?\\
+      \item<3-> \jaun{\textbf{Implémentation}} : \emph{quel support physique} ?\\
             {\color{gris}ex. : neurones, transistors, boulier}
     \end{itemize}
     \vspace{0.4em}
-    {\small Un même problème admet \textbf{plusieurs} algorithmes, et un même algorithme \textbf{plusieurs} supports.}
+    \visible<4->{\small Un même problème admet \textbf{plusieurs} algorithmes, et un même algorithme \textbf{plusieurs} supports.}
     \column{.46\textwidth}
     \centering
     \begin{tikzpicture}[scale=0.82, every node/.style={transform shape}]
       \useasboundingbox (-2.2,0.6) rectangle (5.6,-5.4);
       \node[mn] (c) at (0,0) {};
       \node[mlab] at (1.0,0) {Computationnel};
-      \foreach \i/\x in {1/-1,2/0,3/1} {\node[mn] (a\i) at (\x,-2.2) {}; \draw[ma] (c) -- (a\i);}
-      \node[mlab] at (1.5,-2.2) {Algorithmique};
-      \foreach \i/\x in {1/-1.5,2/-0.5,3/0.5,4/1.5} {\node[mn] (i\i) at (\x,-4.4) {}; \draw[ma] (a2) -- (i\i);}
-      \node[mlab] at (2.0,-4.4) {Implémentation};
+      \visible<2->{\foreach \i/\x in {1/-1,2/0,3/1} {\node[mn] (a\i) at (\x,-2.2) {}; \draw[ma] (c) -- (a\i);}
+      \node[mlab] at (1.5,-2.2) {Algorithmique};}
+      \visible<3->{\foreach \i/\x in {1/-1.5,2/-0.5,3/0.5,4/1.5} {\node[mn] (i\i) at (\x,-4.4) {}; \draw[ma] (a2) -- (i\i);}
+      \node[mlab] at (2.0,-4.4) {Implémentation};}
     \end{tikzpicture}
   \end{columns}
   \src{Marr, \emph{Vision}, 1982}
@@ -99,9 +99,9 @@
   \vspace{0.8em}
   \begin{columns}[T,onlytextwidth]
     \column{.48\textwidth}
-    \carte[orange]{Apprendre puis tester}{On ajuste la correspondance sur une partie de l'histoire, puis on \textbf{prédit la suite}, que le système n'a jamais vue.}
+    \visible<2->{\carte[orange]{Apprendre puis tester}{On ajuste la correspondance sur une partie de l'histoire, puis on \textbf{prédit la suite}, que le système n'a jamais vue.}}
     \column{.48\textwidth}
-    \carte[jaune]{Comparer au plafond}{Les mesures sont bruitées : on compare le score à ce qu'un \textbf{autre humain} prédit du même signal. Proche du plafond = presque parfait.}
+    \visible<3->{\carte[jaune]{Comparer au plafond}{Les mesures sont bruitées : on compare le score à ce qu'un \textbf{autre humain} prédit du même signal. Proche du plafond = presque parfait.}}
   \end{columns}
 \end{frame}
 

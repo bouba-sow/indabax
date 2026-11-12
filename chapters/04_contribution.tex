@@ -12,20 +12,20 @@
   \vspace{1.0em}
   \begin{columns}[T,onlytextwidth]
     \column{.48\textwidth}
-    \carte[orange]{Contrainte de mémoire}{%
-      Le modèle oublie progressivement le contexte, comme notre mémoire de travail.}
+    \visible<2->{\carte[orange]{Contrainte de mémoire}{%
+      Le modèle oublie progressivement le contexte, comme notre mémoire de travail.}}
     \column{.48\textwidth}
-    \carte[orange]{Contrainte de données}{%
-      10 à 100 millions de mots, ce qu'entend un enfant (défi \textbf{BabyLM}), au lieu de milliers de milliards.}
+    \visible<3->{\carte[orange]{Contrainte de données}{%
+      10 à 100 millions de mots, ce qu'entend un enfant (défi \textbf{BabyLM}), au lieu de milliers de milliards.}}
   \end{columns}
 
   \vspace{0.8em}
-  \begin{tikzpicture}
+  \visible<4->{\begin{tikzpicture}
     \foreach \n/\l/\x in {118/modèles/0, 18/jeux de données/3.6, 7/comportement/7.2, 11/cerveau/10.8}{
       \node[font=\bfseries\Large, text=jaune] at (\x,0) {\n};
       \node[font=\scriptsize, text=gris] at (\x,-0.5) {\l};}
   \end{tikzpicture}\\[0.1em]
-  {\scriptsize\color{gris}temps de lecture, oculométrie ; IRMf, MEG, EEG, ECoG}
+  {\scriptsize\color{gris}temps de lecture, oculométrie ; IRMf, MEG, EEG, ECoG}}
 \end{frame}
 
 % ---------------------------------------------------------------------
@@ -36,8 +36,8 @@
     \begin{tikzpicture}
       \node[inner sep=0pt, anchor=south west] (im) at (0,0) {\photo{height=4.6cm}{images/resultat_pareto.png}};
       \begin{scope}[x={(im.south east)}, y={(im.north west)}]
-        \node[font=\scriptsize\bfseries, text=white, fill=violet!70!black, rounded corners=2pt, inner sep=2pt, align=center] at (0.30,0.86) {petits modèles\\contraints};
-        \node[font=\scriptsize\bfseries, text=white, fill=bleu!60!black, rounded corners=2pt, inner sep=2pt, align=center] at (0.70,0.12) {grands modèles};
+        \visible<2->{\node[font=\scriptsize\bfseries, text=white, fill=violet!70!black, rounded corners=2pt, inner sep=2pt, align=center] at (0.30,0.86) {petits modèles\\contraints};}
+        \visible<3->{\node[font=\scriptsize\bfseries, text=white, fill=bleu!60!black, rounded corners=2pt, inner sep=2pt, align=center] at (0.70,0.12) {grands modèles};}
       \end{scope}
     \end{tikzpicture}
     \column{.43\textwidth}
@@ -46,11 +46,11 @@
     \hum{\textbf{À droite}} : plus proche du cerveau.\\
     \jaun{\textbf{En haut}} : plus proche de la lecture.
     \begin{itemize}
-      \item Les modèles \textbf{contraints} sont plus proches de la lecture, mais plus loin du cerveau.
-      \item Les grands modèles montrent l'inverse.
-      \item Parmi nos modèles, \textbf{aucun} n'est en tête sur les deux scores.
+      \item<2-> Les modèles \textbf{contraints} sont plus proches de la lecture, mais plus loin du cerveau.
+      \item<3-> Les grands modèles montrent l'inverse.
+      \item<4-> Parmi nos modèles, \textbf{aucun} n'est en tête sur les deux scores.
     \end{itemize}
   \end{columns}
-  \visible<2->{\cle{« Ressembler à l'humain » : il faut toujours préciser à quel niveau.}}
+  \visible<5->{\cle{« Ressembler à l'humain » : il faut toujours préciser à quel niveau.}}
   \src{Sow et al., travail en cours (LSCP) ; scores par analyse de similarité des représentations (RSA), cerveau entier ; résultats préliminaires.}
 \end{frame}

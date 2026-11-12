@@ -22,13 +22,13 @@
     \small
     \begin{itemize}
       \item<2-> Le modèle donne une \textbf{probabilité} à chaque mot possible.
-      \item<2-> Il apprend seulement cela, sur des \textbf{milliards de phrases}.
-      \item<2-> Pour bien prédire, il doit capter la grammaire, le sens, le contexte\dots
-      \item<2-> ChatGPT = ce même principe, puis un ajustement pour dialoguer.
+      \item<3-> Il apprend seulement cela, sur des \textbf{milliards de phrases}.
+      \item<4-> Pour bien prédire, il doit capter la grammaire, le sens, le contexte\dots
+      \item<5-> ChatGPT = ce même principe, puis un ajustement pour dialoguer.
     \end{itemize}
   \end{columns}
   \vspace{0.4em}
-  \visible<2->{\cle{Aucune règle de grammaire n'est programmée : tout est appris à partir des données.}}
+  \visible<5->{\cle{Aucune règle de grammaire n'est programmée : tout est appris à partir des données.}}
 \end{frame}
 
 % ---------------------------------------------------------------------
@@ -40,24 +40,25 @@
       ar/.style={-{Stealth}, gris, line width=0.8pt}]
     \foreach \w/\x in {Le/0, chat/1.9, dort/3.8, sur/5.7, le/7.6, lit/9.5}{
       \node[mot] at (\x,0) {\w};}
-    \node[couche] (c1) at (4.75,1.15) {couche 1};
+    \visible<2->{\node[couche] (c1) at (4.75,1.15) {couche 1};
     \node[couche] (c2) at (4.75,1.95) {couche 2};
     \node[font=\small, text=gris] at (4.75,2.55) {$\vdots$};
     \node[couche] (cL) at (4.75,3.15) {couche $L$};
-    \foreach \x in {0,1.9,3.8,5.7,7.6,9.5}{\draw[ar] (\x,0.32) -- (\x,0.85);}
+    \foreach \x in {0,1.9,3.8,5.7,7.6,9.5}{\draw[ar] (\x,0.32) -- (\x,0.85);}}
+    \visible<3->{
     \foreach \x in {0,1.9,3.8,5.7,7.6,9.5}{
       \foreach \k in {0,...,5}{
         \pgfmathsetmacro{\v}{mod(37*\x*10+13*\k,100)}
         \fill[jaune!\v!fondclair] (\x-0.45+0.15*\k,3.6) rectangle (\x-0.32+0.15*\k,3.95);}}
-    \node[anchor=west, font=\scriptsize, text=jaune] at (10.4,3.78) {activations};
+    \node[anchor=west, font=\scriptsize, text=jaune] at (10.4,3.78) {activations};}
   \end{tikzpicture}
 
   \vspace{0.3em}
   \small
   \begin{itemize}
-    \item Chaque mot traverse une succession de \textbf{couches} de neurones artificiels.
-    \item À chaque couche, le mot devient un \jaun{vecteur de $\sim$1\,000 nombres} qui dépend du contexte.
-    \item Ces vecteurs sont les \textbf{représentations internes} du modèle : c'est eux que l'on compare au cerveau.
+    \item<2-> Chaque mot traverse une succession de \textbf{couches} de neurones artificiels.
+    \item<3-> À chaque couche, le mot devient un \jaun{vecteur de $\sim$1\,000 nombres} qui dépend du contexte.
+    \item<4-> Ces vecteurs sont les \textbf{représentations internes} du modèle : c'est eux que l'on compare au cerveau.
   \end{itemize}
 \end{frame}
 
@@ -79,13 +80,13 @@
     \column{.44\textwidth}
     \small
     \begin{itemize}
-      \item Mot attendu : surprise \textbf{faible}.\\ Mot inattendu : surprise \textbf{forte}.
-      \item Chez l'humain, un mot inattendu est en moyenne \hum{lu plus lentement}. En EEG, il produit souvent une onde plus marquée vers 400 ms (la \hum{N400}).
-      \item Le modèle donne donc une \textbf{prédiction chiffrée, mot par mot}, de la difficulté de lecture.
+      \item<2-> Mot attendu : surprise \textbf{faible}.\\ Mot inattendu : surprise \textbf{forte}.
+      \item<3-> Chez l'humain, un mot inattendu est en moyenne \hum{lu plus lentement}. En EEG, il produit souvent une onde plus marquée vers 400 ms (la \hum{N400}).
+      \item<4-> Le modèle donne donc une \textbf{prédiction chiffrée, mot par mot}, de la difficulté de lecture.
     \end{itemize}
   \end{columns}
   \vspace{0.6em}
-  \cle{Deux ponts entre IA et cerveau : les représentations internes, et la surprise.}
+  \visible<4->{\cle{Deux ponts entre IA et cerveau : les représentations internes, et la surprise.}}
   \src{Hale, NAACL 2001 ; Levy, \emph{Cognition} 2008 ; Kutas \& Hillyard, \emph{Science} 1980}
 \end{frame}
 
@@ -106,13 +107,13 @@
     \column{.54\textwidth}
     \small
     \begin{itemize}
-      \item Des régions \textbf{frontales} et \textbf{temporales}, surtout à gauche, répondent aux phrases.
-      \item Il répond au langage \textbf{écrit comme parlé}, dans les 45 langues testées.
-      \item Il répond \textbf{peu} au calcul, à la musique ou à la logique : ces tâches mobilisent un \textbf{autre réseau}.
+      \item<1-> Des régions \textbf{frontales} et \textbf{temporales}, surtout à gauche, répondent aux phrases.
+      \item<2-> Il répond au langage \textbf{écrit comme parlé}, dans les 45 langues testées.
+      \item<3-> Il répond \textbf{peu} au calcul, à la musique ou à la logique : ces tâches mobilisent un \textbf{autre réseau}.
     \end{itemize}
   \end{columns}
   \vspace{0.4em}
-  \cle{Cible de nos comparaisons : l'activité de ce réseau pendant la lecture ou l'écoute.}
+  \visible<4->{\cle{Cible de nos comparaisons : l'activité de ce réseau pendant la lecture ou l'écoute.}}
   \src{Fedorenko, Ivanova \& Regev, \emph{Nat. Rev. Neurosci.} 2024 ; Malik-Moraleda et al., \emph{Nat. Neurosci.} 2022}
 \end{frame}
 
@@ -134,7 +135,7 @@
     {\small\bfseries Intracrânien}\\{\scriptsize\color{gris}électrodes sur le cortex\\patients opérés}
   \end{columns}
   \vspace{0.7em}
-  \cle{Aucune méthode ne voit tout : on combine des mesures précises en espace (IRMf) et d'autres précises en temps (MEG, EEG).}
+  \visible<2->{\cle{Aucune méthode ne voit tout : on combine des mesures précises en espace (IRMf) et d'autres précises en temps (MEG, EEG).}}
   \src{Crédits des images : [à préciser]}
 \end{frame}
 
@@ -159,5 +160,5 @@
     \carte[bleu]{Oculométrie}{Une caméra enregistre où et combien de temps l'œil se fixe.}
   \end{columns}
   \vspace{0.2em}
-  \visible<2->{\small Le verbe « \jaun{sont} » doit retrouver son sujet « clés », loin en arrière : la lecture ralentit.}
+  \visible<3->{\small Le verbe « \jaun{sont} » doit retrouver son sujet « clés », loin en arrière : la lecture ralentit.}
 \end{frame}
