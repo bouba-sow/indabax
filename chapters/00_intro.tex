@@ -50,16 +50,16 @@
       \textbf{AlphaFold} prédit la forme 3D des protéines à partir de leur séquence.\\[0.4em]
       {\color{gris}Prix Nobel de chimie 2024.}}
     \column{.32\textwidth}
-    \visible<2->{\carte[bleu]{Médecine}{%
+    \carte[bleu]{Médecine}{%
       Un réseau de neurones transforme l'activité cérébrale d'une patiente paralysée en \textbf{texte et en voix}.\\[0.4em]
-      {\color{gris}Metzger et al., \emph{Nature} 2023.}}}
+      {\color{gris}Metzger et al., \emph{Nature} 2023.}}
     \column{.32\textwidth}
-    \visible<3->{\carte[orange]{Sciences cognitives}{%
-      Les modèles de langage servent de \textbf{modèles du cerveau} : des hypothèses que l'on peut tester.\\[0.4em]
-      {\color{gris}Le sujet de cet exposé.}}}
+    \carte[orange]{Neurosciences}{%
+      Les réseaux de neurones artificiels servent de \textbf{modèles du cerveau} : des hypothèses que l'on peut tester.\\[0.4em]
+      {\color{gris}Le sujet de cet exposé.}}
   \end{columns}
   \vspace{0.5em}
-  \visible<4->{\cle{Comme le télescope pour l'astronomie, l'IA devient un outil pour étudier l'esprit humain.}}
+  \cle{Comme le télescope pour l'astronomie, l'IA devient un outil pour étudier le cerveau.}
 \end{frame}
 
 \begin{frame}{Pourquoi un modèle aide à comprendre}
@@ -67,40 +67,38 @@
     \column{.52\textwidth}
     \centering
     \begin{tikzpicture}[
-        bx/.style={rounded corners=5pt, minimum width=2.7cm, minimum height=1.4cm, align=center, font=\small\bfseries},
+        bx/.style={rounded corners=5pt, minimum width=2.9cm, minimum height=1.4cm, align=center, font=\small\bfseries},
         ar/.style={-{Stealth[length=3mm]}, line width=1.2pt, gris}]
       \node[font=\small, text=texte, align=center] (in) at (0.3,0) {« Le chat\\dort »};
-      \node[bx, fill=bleu!25!fondclair, draw=bleu, text=bleu] (br) at (3.2,1.15) {Cerveau\\{\scriptsize\normalfont boîte noire}};
-      \node[bx, fill=orange!25!fondclair, draw=orange, text=orange] (md) at (3.2,-1.15) {Modèle d'IA\\{\scriptsize\normalfont boîte transparente}};
+      \node[bx, fill=bleu!25!fondclair, draw=bleu, text=bleu] (br) at (3.3,1.15) {Cerveau\\{\scriptsize\normalfont accès très limité}};
+      \node[bx, fill=orange!25!fondclair, draw=orange, text=orange] (md) at (3.3,-1.15) {Modèle d'IA\\{\scriptsize\normalfont tout est accessible}};
       \draw[ar] (in) -- (br.west);
       \draw[ar] (in) -- (md.west);
-      \visible<2->{
-      \node[font=\small, text=jaune, align=center] (cmp) at (5.9,0) {Comparer\\les réponses};
+      \node[font=\small, text=jaune, align=center] (cmp) at (6.1,0) {Comparer\\les réponses};
       \draw[ar, jaune] (br.east) -- (cmp);
-      \draw[ar, jaune] (md.east) -- (cmp);}
+      \draw[ar, jaune] (md.east) -- (cmp);
     \end{tikzpicture}
     \column{.42\textwidth}
     \small
     \begin{itemize}
-      \item<1-> On ne peut pas enregistrer chacun des 86 milliards de neurones d'un être humain.
-      \item<2-> Un modèle, lui, s'ouvre entièrement : chaque unité se \textbf{mesure} et se \textbf{modifie}.
-      \item<3-> S'il se comporte comme le cerveau, il devient une \jaun{hypothèse explicite} sur le calcul cérébral.
+      \item On ne peut pas enregistrer chacun des 86 milliards de neurones d'un être humain.
+      \item Dans un modèle, chaque unité se \textbf{mesure} et se \textbf{modifie}. La comprendre reste un travail de recherche.
+      \item S'il se comporte comme le cerveau, il devient une \jaun{hypothèse explicite} sur le calcul cérébral.
     \end{itemize}
   \end{columns}
   \vspace{0.6em}
-  \visible<4->{\cle{Un modèle d'IA est une théorie que l'on peut faire tourner, interroger et casser.}}
+  \cle{Un modèle d'IA est une théorie que l'on peut faire tourner, interroger et casser.}
 \end{frame}
 
 \begin{frame}{Le fil de l'exposé}
   \centering
   \vspace{0.3em}
-  {\large Le cerveau et l'IA traitent-ils le langage \jaun{de la même façon} ?\\[0.2em]
-  Et que nous apprend la comparaison ?}
+  {\large Que nous apprend la comparaison entre\\un modèle d'IA et le \jaun{cerveau humain} ?}
 
   \vspace{1.2em}
   \roadmap{0}
 
   \vspace{1.0em}
   \small\color{gris}
-  On part des \textbf{bases}, on apprend à \textbf{comparer}, puis on regarde \textbf{à l'intérieur}.
+  D'abord le \textbf{langage}, mon domaine. Puis un tour \textbf{au-delà du langage} : vision, récompense, connexions, décodage.
 \end{frame}

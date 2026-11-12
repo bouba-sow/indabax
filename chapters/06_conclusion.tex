@@ -10,13 +10,13 @@
       num/.style={circle, fill=jaune, text=fond, font=\bfseries\large, minimum size=0.9cm, inner sep=0pt},
       txt/.style={anchor=west, text width=11.5cm, font=\normalsize, text=texte}]
     \node[num] at (0,0) {1};
-    \node[txt] at (0.7,0) {\textbf{L'IA n'est pas que ChatGPT.} C'est aussi un \jaun{instrument scientifique} pour étudier l'esprit.};
-    \visible<2->{
-    \node[num] at (0,-1.5) {2};
-    \node[txt] at (0.7,-1.5) {\textbf{Un modèle est une hypothèse.} Il prédit une partie de l'activité cérébrale et de la lecture, et on peut l'\jaun{ouvrir} pour trouver des mécanismes.};}
-    \visible<3->{
-    \node[num] at (0,-3.0) {3};
-    \node[txt] at (0.7,-3.0) {\textbf{Prédire n'est pas expliquer.} Langage, mémoire et pensée se \jaun{dissocient}, chez l'humain comme dans les modèles.};}
+    \node[txt] at (0.7,0) {\textbf{L'IA n'est pas que ChatGPT.} C'est aussi un \jaun{instrument scientifique} pour étudier le cerveau : langage, vision, récompense, connexions.};
+
+    \node[num] at (0,-1.6) {2};
+    \node[txt] at (0.7,-1.6) {\textbf{Un modèle est une hypothèse.} Il prédit une partie de l'activité cérébrale et de la lecture, et on peut l'\jaun{ouvrir} pour trouver des mécanismes.};
+
+    \node[num] at (0,-3.2) {3};
+    \node[txt] at (0.7,-3.2) {\textbf{Prédire n'est pas expliquer.} Un bon score ne suffit pas : il faut \jaun{tester les mécanismes}, et préciser à quel niveau un modèle ressemble à l'humain.};
   \end{tikzpicture}
 \end{frame}
 
@@ -28,15 +28,15 @@
       Presque toutes les données sont en anglais. Le pular, le maninka, le soussou\dots{} sont absents.\\[0.3em]
       {\color{jaune}Une vraie place à prendre.}}
     \column{.32\textwidth}
-    \visible<2->{\carte[jaune]{Peu de matériel}{%
-      L'EEG est portable et peu coûteux. Les temps de lecture se mesurent avec un simple ordinateur.}}
+    \carte[jaune]{Peu de matériel}{%
+      L'EEG est portable et peu coûteux. Les temps de lecture se mesurent avec un simple ordinateur.}
     \column{.32\textwidth}
-    \visible<3->{\carte[jaune]{Outils ouverts}{%
+    \carte[jaune]{Outils ouverts}{%
       Modèles et données en libre accès : Hugging Face, MNE-Python, Brain-Score.\\[0.3em]
-      Formation gratuite : Neuromatch Academy.}}
+      Formation gratuite : Neuromatch Academy.}
   \end{columns}
   \vspace{0.6em}
-  \visible<4->{\cle{Comprendre comment un cerveau guinéen traite sa propre langue : une question scientifique ouverte.}}
+  \cle{Comprendre comment un cerveau guinéen traite sa propre langue : une question scientifique ouverte.}
 \end{frame}
 
 % ---------------------------------------------------------------------

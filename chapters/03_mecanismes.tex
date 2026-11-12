@@ -1,53 +1,79 @@
 % =====================================================================
-%  Partie 3 (~9 min) : ouvrir la boîte -- langage, mémoire, pensée
+%  Partie 3 (~11 min) : ouvrir la boîte -- langage, mémoire, pensée
 % =====================================================================
 \partie{Ouvrir la boîte}{Ouvrir la boîte : langage, mémoire, pensée}
 
-% ---------------------------------------------------------------------
-\begin{frame}{Langage : pourquoi s'y intéresser ?}
-  \begin{columns}[T,onlytextwidth]
-    \column{.32\textwidth}
-    \carte[jaune]{Transmettre}{%
-      Partager des savoirs, une histoire, une culture. Les griots transmettent la mémoire d'un peuple par la parole.}
-    \column{.32\textwidth}
-    \visible<2->{\carte[jaune]{Apprendre et coopérer}{%
-      L'école, la science, le commerce, la politique : presque tout passe par le langage.}}
-    \column{.32\textwidth}
-    \visible<3->{\carte[rouge]{Soigner}{%
-      Après un AVC, beaucoup de patients perdent une partie du langage (\textbf{aphasie}). Comprendre le langage aide à le réparer.}}
-  \end{columns}
-  \vspace{0.7em}
-  \visible<4->{%
-  \small Une propriété unique : avec un nombre \textbf{fini} de mots, on fabrique une \textbf{infinité} de phrases.\\[0.4em]
-  \centering
+% Cerveau schématique avec régions colorées (coordonnées relatives à l'image)
+\newcommand{\cerveau}[2]{%
   \begin{tikzpicture}
-    \node[font=\normalsize, text=texte] (p1) at (0,0) {« Le \jaun{chien} mord l'\hum{homme} »};
-    \node[font=\large, text=rouge] at (3.55,0) {$\neq$};
-    \node[font=\normalsize, text=texte] (p2) at (7.1,0) {« L'\hum{homme} mord le \jaun{chien} »};
-  \end{tikzpicture}\par}
+    \node[inner sep=0pt, anchor=south west] (im) at (0,0) {\photo{height=#1}{images/cerveau_lobes.png}};
+    \begin{scope}[x={(im.south east)}, y={(im.north west)}]#2\end{scope}
+  \end{tikzpicture}}
+\newcommand{\reseaulangage}{%
+  \fill[rouge, opacity=0.75] (0.235,0.47) ellipse (0.07 and 0.075);
+  \fill[rouge, opacity=0.75, rotate around={-8:(0.53,0.36)}] (0.53,0.36) ellipse (0.20 and 0.05);
+  \fill[rouge, opacity=0.6] (0.30,0.62) ellipse (0.05 and 0.05);}
+
+% ---------------------------------------------------------------------
+\begin{frame}{Pourquoi étudier le langage ? Pour soigner}
+  \begin{columns}[c,onlytextwidth]
+    \column{.42\textwidth}
+    \centering
+    \cerveau{3.6cm}{%
+      \fill[fond, opacity=0.85] (0.25,0.50) ellipse (0.09 and 0.10);
+      \draw[jaune, line width=1pt] (0.25,0.50) ellipse (0.09 and 0.10);
+      \node[font=\scriptsize\bfseries, text=jaune, fill=fond, rounded corners=2pt, inner sep=2pt] at (0.25,0.22) {lésion après un AVC};
+      \draw[jaune, line width=0.8pt] (0.25,0.27) -- (0.25,0.40);}\\[0.2em]
+    {\scriptsize\color{gris}schéma}
+    \column{.56\textwidth}
+    \small
+    Après un accident vasculaire cérébral (AVC), environ \textbf{un patient sur trois} perd une partie de sa capacité à parler ou à comprendre : c'est l'\jaun{\textbf{aphasie}}.\\[0.8em]
+    Savoir \textbf{comment} le cerveau traite le langage aide à :
+    \begin{itemize}
+      \item mieux \textbf{diagnostiquer} ce qui est atteint ;
+      \item mieux \textbf{rééduquer} ;
+      \item et même \textbf{redonner la parole} (partie 5).
+    \end{itemize}
+  \end{columns}
   \vspace{0.4em}
-  \visible<5->{\cle{Mêmes mots, sens opposé : c'est la \textbf{structure} de la phrase, la syntaxe, qui fait le sens.}}
+  \cle{Pour réparer un système, il faut d'abord comprendre comment il fonctionne.}
+  \src{Berthier, \emph{Drugs \& Aging} 2005 (aphasie chez 21 à 38\,\% des patients après un AVC)}
 \end{frame}
 
 % ---------------------------------------------------------------------
 \begin{frame}{Pourquoi est-ce difficile à étudier dans le cerveau ?}
   \begin{columns}[T,onlytextwidth]
-    \column{.48\textwidth}
-    \small
-    \begin{itemize}
-      \item<1-> \textbf{Propre à l'humain} : pas de modèle animal, contrairement à la vision que l'on étudie chez le singe.
-      \item<2-> \textbf{Très rapide} : 3 à 4 mots par seconde, alors que l'IRMf mesure à l'échelle de la seconde.
-      \item<3-> \textbf{Grossier} : un point d'IRMf regroupe des centaines de milliers de neurones.
-    \end{itemize}
-    \column{.48\textwidth}
-    \small
-    \begin{itemize}
-      \item<4-> \textbf{Pas d'intervention} : on ne peut pas éteindre une région pour voir ce qui se passe.
-      \item<5-> \textbf{Structure invisible} : on entend une suite de mots ; la hiérarchie, elle, se construit dans la tête.
-    \end{itemize}
+    \column{.235\textwidth}
+    \carte[rouge]{Très humain}{La syntaxe humaine n'a pas d'équivalent clair chez l'animal : on ne peut pas tout étudier chez le singe, comme pour la vision.}
+    \column{.235\textwidth}
+    \carte[rouge]{Très rapide}{3 à 4 mots par seconde, alors que l'IRMf mesure à l'échelle de la seconde.}
+    \column{.235\textwidth}
+    \carte[rouge]{Mesures grossières}{Un point d'IRMf regroupe des centaines de milliers de neurones.}
+    \column{.235\textwidth}
+    \carte[rouge]{Pas d'intervention}{On ne peut pas éteindre une région chez un volontaire pour voir ce qui change.}
   \end{columns}
-  \vspace{0.8em}
-  \visible<6->{\cle{Il nous faut un système qui traite le langage et que l'on peut ouvrir entièrement : un modèle.}}
+  \vspace{1.0em}
+  \cle{Il nous faut un système qui traite le langage et que l'on peut ouvrir entièrement : un modèle.}
+\end{frame}
+
+% ---------------------------------------------------------------------
+\begin{frame}{Le langage, du son au récit : chaque niveau a ses modèles}
+  \centering
+  \begin{tikzpicture}[
+      niv/.style={rounded corners=4pt, fill=fondclair, text=texte, align=left, text width=2.9cm, minimum height=1.75cm, font=\small, inner sep=5pt, anchor=north},
+      res/.style={align=left, text width=3.0cm, font=\scriptsize, text=texte, anchor=north},
+      ref/.style={align=left, text width=3.0cm, font=\fontsize{6.5}{8}\selectfont, text=gris, anchor=north}]
+    \foreach \x/\c/\t/\e/\r/\f in {
+        0/bleu/{Les sons}/{« b » ou « p » ?}/{Un modèle qui apprend seul à partir de 600\,h de parole s'organise en couches comme le cortex auditif.}/{Millet et al., NeurIPS 2022},
+        3.45/vert/{Les mots et leur sens}/{« chien » est proche de « chat »}/{Les catégories de sens se répartissent en une carte sur tout le cortex.}/{Huth et al., \emph{Nature} 2016},
+        6.9/jaune/{La structure de la phrase}/{qui fait quoi à qui ?}/{Des unités précises du modèle portent l'accord du verbe.}/{Lakretz et al., NAACL 2019},
+        10.35/orange/{Le récit}/{suivre une histoire}/{Le cerveau anticipe plus loin et plus abstrait qu'un modèle comme GPT-2.}/{Caucheteux, Gramfort \& King, \emph{Nat. Hum. Behav.} 2023}}{
+      \node[niv, draw=\c, line width=1pt] (n) at (\x,0) {{\color{\c}\bfseries\t}\par\vspace{0.2em}{\scriptsize\color{gris}\e}};
+      \node[res] (r) at (\x,-1.95) {\r};
+      \node[ref] at (\x,-3.85) {\f};}
+    \draw[-{Stealth}, gris, line width=1pt] (-1.6,-4.6) -- (12.0,-4.6) node[midway, below, font=\scriptsize, text=gris] {des unités les plus petites aux plus grandes};
+    \node[font=\scriptsize\bfseries, text=jaune] at (6.9,0.35) {notre cas d'étude};
+  \end{tikzpicture}
 \end{frame}
 
 % ---------------------------------------------------------------------
@@ -58,26 +84,22 @@
     \begin{tikzpicture}[
         lv/.style={rounded corners=4pt, fill=fondclair, text=texte, align=center, text width=4.4cm, minimum height=0.8cm, font=\small},
         ar/.style={-{Stealth}, jaune, line width=1pt}]
-      \node[lv] (a) at (0,0) {\textbf{Langage}};
-      \visible<2->{\node[lv] (b) at (0,-1.15) {\textbf{Syntaxe} : la structure};
-      \draw[ar] (a) -- (b);}
-      \visible<3->{\node[lv] (c) at (0,-2.3) {\textbf{Dépendances} à distance};
-      \draw[ar] (b) -- (c);}
-      \visible<4->{\node[lv, fill=jaune, text=fond] (d) at (0,-3.45) {\textbf{Accord sujet-verbe}};
-      \draw[ar] (c) -- (d);}
+      \node[lv] (b) at (0,0) {\textbf{Syntaxe} : la structure};
+      \node[lv] (c) at (0,-1.15) {\textbf{Dépendances} à distance};
+      \node[lv, fill=jaune, text=fond] (d) at (0,-2.3) {\textbf{Accord sujet-verbe}};
+      \draw[ar] (b) -- (c); \draw[ar] (c) -- (d);
     \end{tikzpicture}
     \column{.54\textwidth}
     \small
     Pourquoi ce phénomène précis ?
     \begin{itemize}
-      \item<4-> Il dépend de la \textbf{structure}, pas seulement des mots voisins.
-      \item<5-> Il se \textbf{mesure} facilement : la bonne réponse est connue, une erreur est un signal clair.
-      \item<6-> On peut poser \textbf{la même question} à un humain et à un modèle.
-      \item<7-> On peut en faire varier la difficulté (distance, phrases imbriquées).
+      \item Il dépend de la \textbf{structure}, pas seulement des mots voisins.
+      \item Il se \textbf{mesure} facilement : la bonne réponse est connue.
+      \item On peut poser \textbf{la même question} à un humain et à un modèle.
     \end{itemize}
   \end{columns}
-  \vspace{0.5em}
-  \visible<8->{\cle{Un petit phénomène bien choisi pour tester une grande question : le modèle apprend-il la structure ?}}
+  \vspace{0.8em}
+  \cle{Un petit phénomène bien choisi pour tester une grande question : le modèle apprend-il la structure ?}
 \end{frame}
 
 % ---------------------------------------------------------------------
@@ -95,8 +117,8 @@
     \node[w, right=0.3cm of g] (h) {tient};
     \node[w, text=jaune, font=\large\bfseries, right=0.3cm of h] (i) {sont};
     \node[w, right=0.3cm of i] (j) {\dots};
-    \visible<2->{\draw[-{Stealth}, jaune, line width=1.4pt] (b.north) to[out=50, in=130] node[above, font=\scriptsize] {accord à longue distance} (i.north);}
-    \visible<3->{\draw[-{Stealth}, rouge, line width=1pt, dashed] (g.south) to[out=-50, in=-130] node[below, font=\scriptsize, text=rouge] {« attracteur » au singulier} (i.south);}
+    \draw[-{Stealth}, jaune, line width=1.4pt] (b.north) to[out=50, in=130] node[above, font=\scriptsize] {accord à longue distance} (i.north);
+    \draw[-{Stealth}, rouge, line width=1pt, dashed] (g.south) to[out=-50, in=-130] node[below, font=\scriptsize, text=rouge] {« attracteur » au singulier} (i.south);
   \end{tikzpicture}
 
   \vspace{0.6em}
@@ -104,14 +126,14 @@
     \column{.48\textwidth}
     \small
     \begin{itemize}
-      \item<2-> Le verbe s'accorde avec « clés », \textbf{pas} avec le mot le plus proche.
-      \item<3-> L'accord suit la \textbf{structure} de la phrase, pas l'ordre des mots.
+      \item Le verbe s'accorde avec « clés », \textbf{pas} avec le mot le plus proche.
+      \item L'accord suit la \textbf{structure} de la phrase, pas l'ordre des mots.
     \end{itemize}
     \column{.48\textwidth}
     \small
     \begin{itemize}
-      \item<4-> Question : un réseau qui n'a vu que des phrases apprend-il cette structure ?
-      \item<5-> Et si oui, \textbf{comment} ? On peut regarder chaque neurone.
+      \item Un réseau qui n'a vu que des phrases apprend-il cette structure ?
+      \item Et si oui, \textbf{comment} ? On peut regarder chaque neurone.
     \end{itemize}
   \end{columns}
   \src{Linzen, Dupoux \& Goldberg, TACL 2016}
@@ -134,13 +156,13 @@
     \column{.44\textwidth}
     \small
     \begin{itemize}
-      \item<1-> Dans un réseau LSTM de 1\,300 unités, \textbf{deux unités} gardent le nombre du sujet en mémoire.
-      \item<2-> Un petit circuit « syntaxique » décide quand les mettre à jour.
-      \item<3-> Si on \textbf{supprime} ces unités, le modèle fait des erreurs d'accord.
+      \item Dans un réseau LSTM de 1\,300 unités, \textbf{deux unités} gardent le nombre du sujet en mémoire.
+      \item Un petit circuit « syntaxique » décide quand les mettre à jour.
+      \item Si on \textbf{supprime} ces unités, le modèle fait des erreurs d'accord.
     \end{itemize}
   \end{columns}
   \vspace{0.4em}
-  \visible<4->{\cle{On a trouvé un mécanisme précis, testable et manipulable, ce qu'on ne peut pas faire dans un cerveau humain.}}
+  \cle{Un mécanisme précis, testable et manipulable, ce qu'on ne peut pas faire dans un cerveau humain.}
   \src{Lakretz et al., NAACL 2019}
 \end{frame}
 
@@ -158,114 +180,97 @@
   \end{tikzpicture}
 
   \vspace{0.8em}
+  \small
   \begin{itemize}
-    \item<2-> Les humains font \textbf{plus d'erreurs} exactement là où le modèle l'annonçait.
-    \item<3-> Mais les humains restent \textbf{au-dessus du hasard}, le modèle tombe \textbf{en dessous}.
-    \item<4-> Les différences sont aussi instructives que les ressemblances.
+    \item Les humains font \textbf{plus d'erreurs} exactement là où le modèle l'annonçait.
+    \item Mais les humains restent \textbf{au-dessus du hasard}, le modèle tombe \textbf{en dessous}.
   \end{itemize}
   \vspace{0.3em}
-  \visible<5->{\cle{Le modèle ne remplace pas l'expérience : il dit où regarder.}}
+  \cle{Le modèle dit où regarder. Et ces erreurs viennent toutes d'une même limite : retenir le sujet assez longtemps. C'est une question de mémoire.}
   \src{Lakretz et al., \emph{Cognition} 2021}
 \end{frame}
 
 % ---------------------------------------------------------------------
-\begin{frame}{Mémoire : retenir un mot en attendant la suite}
-  \begin{columns}[T,onlytextwidth]
+\begin{frame}{Mémoire : garder le sujet en tête jusqu'au verbe}
+  \begin{columns}[c,onlytextwidth]
     \column{.50\textwidth}
-    \small
-    \begin{itemize}
-      \item<1-> Pour comprendre « sont », il faut \textbf{garder « clés » en mémoire} pendant plusieurs mots.
-      \item<2-> Notre mémoire de travail est \textbf{limitée} : plus la distance est longue, plus la lecture ralentit.
-      \item<3-> Un modèle avec une mémoire \textbf{imparfaite} du contexte explique mieux ces difficultés.
-      \item<4-> Conséquence visible dans les langues : sur 37 langues, les mots liés sont \jaun{plus proches} que par hasard.
-    \end{itemize}
-    \column{.46\textwidth}
     \centering
-    \visible<2->{%
     \begin{tikzpicture}[x=0.55cm, y=0.5cm]
       \foreach \i in {0,...,8}{\fill[fondclair] (\i,0) rectangle (\i+0.8,0.8);}
       \fill[jaune] (0,0) rectangle (0.8,0.8);
       \fill[jaune] (8,0) rectangle (8.8,0.8);
       \draw[jaune, line width=1.1pt] (0.4,0.9) to[out=60,in=120] (8.4,0.9);
-      \node[font=\scriptsize, text=gris] at (4.4,-0.5) {dépendance longue : coûteuse};
+      \node[font=\scriptsize, text=gris] at (4.4,-0.5) {sujet \dots\ 7 mots \dots\ verbe : coûteux};
       \foreach \i in {0,...,8}{\fill[fondclair] (\i,-2.2) rectangle (\i+0.8,-1.4);}
       \fill[jaune] (3,-2.2) rectangle (3.8,-1.4);
       \fill[jaune] (4,-2.2) rectangle (4.8,-1.4);
       \draw[jaune, line width=1.1pt] (3.4,-1.3) to[out=60,in=120] (4.4,-1.3);
-      \node[font=\scriptsize, text=gris] at (4.4,-2.75) {dépendance courte : facile};
-    \end{tikzpicture}}
+      \node[font=\scriptsize, text=gris] at (4.4,-2.75) {sujet, verbe : facile};
+    \end{tikzpicture}
+    \column{.48\textwidth}
+    \small
+    \begin{itemize}
+      \item Notre mémoire de travail est \textbf{limitée} : plus le verbe est loin de son sujet, plus la lecture ralentit.
+      \item Un modèle à qui l'on donne une mémoire \textbf{imparfaite} du contexte reproduit mieux ces difficultés.
+      \item Trace dans les langues du monde : sur 37 langues, les mots liés sont \jaun{plus proches} que par hasard.
+    \end{itemize}
   \end{columns}
   \vspace{0.6em}
-  \visible<5->{\cle{Ajouter une contrainte de mémoire « humaine » à un modèle permet de tester d'où vient la difficulté.}}
+  \cle{Donner au modèle une limite « humaine » permet de tester d'où vient la difficulté.}
   \src{Gibson, \emph{Cognition} 1998 ; Futrell, Mahowald \& Gibson, \emph{PNAS} 2015 ; Futrell, Gibson \& Levy, \emph{Cognitive Science} 2020}
 \end{frame}
 
 % ---------------------------------------------------------------------
-\begin{frame}{Mémoire : des transformeurs à l'hippocampe}
-  \begin{columns}[c,onlytextwidth]
-    \column{.50\textwidth}
-    \small
-    \begin{itemize}
-      \item<1-> L'\textbf{hippocampe} est central pour la mémoire et l'orientation dans l'espace (cellules de lieu, cellules de grille).
-      \item<2-> Un \textbf{transformeur}, l'architecture de ChatGPT, légèrement modifié, est mathématiquement proche d'un modèle de l'hippocampe.
-      \item<3-> Entraîné à naviguer, il développe des unités qui ressemblent aux \textbf{cellules de lieu et de grille}.
-    \end{itemize}
-    \column{.46\textwidth}
+\begin{frame}{Mémoire de l'espace : du rat aux transformeurs}
+  \begin{columns}[T,onlytextwidth]
+    \column{.32\textwidth}
     \centering
+    {\small\bfseries\color{bleu}1. Chez le rat}\\[0.3em]
+    \begin{tikzpicture}[scale=0.95]
+      \draw[gris, line width=1pt, fill=fondclair] (0,0) rectangle (3,3);
+      \draw[gris!70, line width=0.5pt] plot[smooth] coordinates {(0.3,0.4) (1.2,0.7) (2.6,0.5) (2.7,1.6) (1.9,2.2) (0.6,2.6) (0.4,1.5) (1.4,1.3) (2.2,1.9) (2.5,2.7) (1.2,2.7) (0.5,0.9) (1.8,0.3)};
+      \foreach \x/\y in {1.9,2.2, 2.0,2.05, 2.15,1.95, 2.25,2.1, 1.8,2.3, 2.05,2.3, 2.2,1.8, 1.95,1.9}{\fill[rouge] (\x,\y) circle (2pt);}
+    \end{tikzpicture}\\[0.2em]
+    {\scriptsize\color{gris}trajet du rat ; \textcolor{rouge}{points} : décharges d'un neurone de l'hippocampe}
+    \column{.32\textwidth}
+    \centering
+    {\small\bfseries\color{orange}2. Dans le modèle}\\[0.3em]
     \begin{tikzpicture}
-      \foreach \x in {0,...,6}{\foreach \y in {0,...,4}{
-        \pgfmathsetmacro{\c}{100*exp(-((\x-2)^2+(\y-2)^2)/2.5)+70*exp(-((\x-5.5)^2+(\y-0.5)^2)/2.5)}
-        \fill[jaune!\c!fondclair] (\x*0.5,\y*0.5) rectangle (\x*0.5+0.45,\y*0.5+0.45);}}
-      \node[font=\scriptsize, text=gris] at (1.7,-0.35) {activité d'une unité selon la position};
-    \end{tikzpicture}\\
-    {\scriptsize\color{gris}schéma}
+      \foreach \x in {0,...,5}{\foreach \y in {0,...,5}{
+        \pgfmathsetmacro{\c}{100*exp(-((\x-3.6)^2+(\y-3.4)^2)/1.6)}
+        \fill[jaune!\c!fondclair] (\x*0.5,\y*0.5) rectangle (\x*0.5+0.47,\y*0.5+0.47);}}
+    \end{tikzpicture}\\[0.2em]
+    {\scriptsize\color{gris}activité d'une unité artificielle selon la position (schéma)}
+    \column{.32\textwidth}
+    \small
+    \textbf{Cellule de lieu} : un neurone de l'hippocampe s'active quand l'animal passe à un endroit précis.\\[0.4em]
+    Un \textbf{transformeur} (l'architecture de ChatGPT), un peu modifié et entraîné à naviguer, développe des unités qui ressemblent à ces cellules.
   \end{columns}
-  \vspace{0.6em}
-  \visible<4->{\cle{Les mêmes outils d'IA éclairent la mémoire, pas seulement le langage.}}
-  \src{Whittington, Warren \& Behrens, ICLR 2022}
+  \vspace{0.5em}
+  \cle{Les mêmes outils d'IA éclairent la mémoire, pas seulement le langage.}
+  \src{O'Keefe \& Dostrovsky, \emph{Brain Research} 1971 (Nobel 2014) ; Whittington, Warren \& Behrens, ICLR 2022}
 \end{frame}
 
 % ---------------------------------------------------------------------
 \begin{frame}{Pensée : le langage n'est pas la pensée}
-  \begin{columns}[T,onlytextwidth]
-    \column{.48\textwidth}
-    \carte[bleu]{Réseau du langage}{%
-      Comprendre et produire des phrases.\\[0.3em]
-      {\color{gris}frontal et temporal gauches}}
-    \column{.48\textwidth}
-    \carte[jaune]{Réseau « multi-demande »}{%
-      Calcul, logique, résolution de problèmes.\\[0.3em]
-      {\color{gris}frontal et pariétal, deux hémisphères}}
+  \begin{columns}[c,onlytextwidth]
+    \column{.44\textwidth}
+    \centering
+    \cerveau{3.5cm}{%
+      \reseaulangage
+      \fill[bleu, opacity=0.75] (0.20,0.78) ellipse (0.07 and 0.06);
+      \fill[bleu, opacity=0.75] (0.62,0.80) ellipse (0.09 and 0.06);
+      \fill[bleu, opacity=0.6] (0.12,0.60) ellipse (0.04 and 0.05);}\\[0.2em]
+    {\scriptsize \textcolor{rouge}{\textbf{réseau du langage}} \quad \textcolor{bleu}{\textbf{réseau « multi-demande »}}\\\color{gris}(schéma)}
+    \column{.54\textwidth}
+    \small
+    \begin{itemize}
+      \item \textcolor{rouge}{\textbf{Langage}} : comprendre et produire des phrases.
+      \item \textcolor{bleu}{\textbf{Multi-demande}} : calcul, logique, résolution de problèmes.
+      \item Certains patients aphasiques, au langage très atteint, peuvent encore \textbf{calculer et raisonner}.
+    \end{itemize}
   \end{columns}
-  \vspace{0.6em}
-  \small
-  \begin{itemize}
-    \item<2-> Des patients aphasiques (langage très atteint) peuvent encore \textbf{calculer, raisonner, jouer aux échecs}.
-    \item<3-> En imagerie, ces deux réseaux sont \textbf{distincts}.
-    \item<4-> Le langage serait d'abord un outil de \textbf{communication}, plutôt que le support de la pensée.
-  \end{itemize}
+  \vspace{0.5em}
+  \cle{Chez l'humain, langage et pensée s'appuient sur des réseaux en grande partie distincts. Pour les IA, la question reste ouverte.}
   \src{Fedorenko, Piantadosi \& Gibson, \emph{Nature} 2024}
-\end{frame}
-
-% ---------------------------------------------------------------------
-\begin{frame}{Pensée : et dans les modèles de langage ?}
-  \begin{columns}[T,onlytextwidth]
-    \column{.48\textwidth}
-    \carte[vert]{Compétence formelle}{%
-      Produire des phrases bien formées, respecter la grammaire.\\[0.3em]
-      {\color{vert}Les LLM y excellent.}}
-    \column{.48\textwidth}
-    \carte[rouge]{Compétence fonctionnelle}{%
-      Raisonner, planifier, connaître le monde, utiliser le langage en situation.\\[0.3em]
-      {\color{rouge}Plus fragile, moins stable.}}
-  \end{columns}
-  \vspace{0.6em}
-  \small
-  \begin{itemize}
-    \item<2-> Comme chez l'humain, on peut \textbf{localiser} dans un LLM des unités sélectives au langage\dots
-    \item<3-> \dots et les \textbf{supprimer} : le modèle perd ses capacités linguistiques, comme une lésion.
-  \end{itemize}
-  \vspace{0.2em}
-  \visible<4->{\cle{Bien parler n'est pas bien penser : ni chez l'humain, ni dans ChatGPT.}}
-  \src{Mahowald, Ivanova et al., \emph{Trends Cogn. Sci.} 2024 ; AlKhamissi, Tuckute, Bosselut \& Schrimpf, NAACL 2025}
 \end{frame}

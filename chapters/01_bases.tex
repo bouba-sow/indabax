@@ -1,5 +1,5 @@
 % =====================================================================
-%  Partie 1 (~7 min) : deux systèmes qui traitent le langage
+%  Partie 1 (~6 min) : deux systèmes qui traitent le langage
 % =====================================================================
 \partie{Deux systèmes}{Deux systèmes qui traitent le langage}
 
@@ -9,7 +9,6 @@
     \column{.58\textwidth}
     \centering
     {« Au marché de Madina, j'ai acheté du \jaun{\underline{\hspace{1.0cm}}} »}\\[0.8em]
-    \visible<2->{%
     \begin{tikzpicture}[x=6.2cm, y=0.55cm,
         lab/.style={anchor=east, font=\small, text=texte},
         val/.style={anchor=west, font=\scriptsize, text=gris}]
@@ -18,18 +17,18 @@
         \fill[orange] (0,-\i-0.32) rectangle (\p,-\i+0.32);
         \node[val] at (\p+0.01,-\i) {\p};}
     \end{tikzpicture}\\[0.2em]
-    {\scriptsize\color{gris}probabilités illustratives}}
+    {\scriptsize\color{gris}probabilités illustratives}
     \column{.40\textwidth}
     \small
     \begin{itemize}
-      \item<2-> Le modèle donne une \textbf{probabilité} à chaque mot possible.
-      \item<3-> Il apprend seulement cela, sur des \textbf{milliards de phrases}.
-      \item<4-> Pour bien prédire, il doit capter la grammaire, le sens, le contexte\dots
-      \item<5-> ChatGPT = ce même principe, puis un ajustement pour dialoguer.
+      \item Le modèle donne une \textbf{probabilité} à chaque mot possible.
+      \item Il apprend seulement cela, sur des \textbf{milliards de phrases}.
+      \item Pour bien prédire, il doit capter la grammaire, le sens, le contexte\dots
+      \item ChatGPT = ce même principe, puis un ajustement pour dialoguer.
     \end{itemize}
   \end{columns}
   \vspace{0.4em}
-  \visible<5->{\cle{Aucune règle de grammaire n'est programmée : tout est appris à partir des données.}}
+  \cle{Aucune règle de grammaire n'est programmée : tout est appris à partir des données.}
 \end{frame}
 
 % ---------------------------------------------------------------------
@@ -41,26 +40,24 @@
       ar/.style={-{Stealth}, gris, line width=0.8pt}]
     \foreach \w/\x in {Le/0, chat/1.9, dort/3.8, sur/5.7, le/7.6, lit/9.5}{
       \node[mot] at (\x,0) {\w};}
-    \visible<2->{
     \node[couche] (c1) at (4.75,1.15) {couche 1};
     \node[couche] (c2) at (4.75,1.95) {couche 2};
     \node[font=\small, text=gris] at (4.75,2.55) {$\vdots$};
     \node[couche] (cL) at (4.75,3.15) {couche $L$};
-    \foreach \x in {0,1.9,3.8,5.7,7.6,9.5}{\draw[ar] (\x,0.32) -- (\x,0.85);}}
-    \visible<3->{
+    \foreach \x in {0,1.9,3.8,5.7,7.6,9.5}{\draw[ar] (\x,0.32) -- (\x,0.85);}
     \foreach \x in {0,1.9,3.8,5.7,7.6,9.5}{
       \foreach \k in {0,...,5}{
         \pgfmathsetmacro{\v}{mod(37*\x*10+13*\k,100)}
         \fill[jaune!\v!fondclair] (\x-0.45+0.15*\k,3.6) rectangle (\x-0.32+0.15*\k,3.95);}}
-    \node[anchor=west, font=\scriptsize, text=jaune] at (10.4,3.78) {activations};}
+    \node[anchor=west, font=\scriptsize, text=jaune] at (10.4,3.78) {activations};
   \end{tikzpicture}
 
   \vspace{0.3em}
   \small
   \begin{itemize}
-    \item<2-> Chaque mot traverse une succession de \textbf{couches} de neurones artificiels.
-    \item<3-> À chaque couche, le mot devient un \jaun{vecteur de $\sim$1\,000 nombres} qui dépend du contexte.
-    \item<4-> Ces vecteurs sont la « pensée interne » du modèle : c'est \textbf{eux} que l'on compare au cerveau.
+    \item Chaque mot traverse une succession de \textbf{couches} de neurones artificiels.
+    \item À chaque couche, le mot devient un \jaun{vecteur de $\sim$1\,000 nombres} qui dépend du contexte.
+    \item Ces vecteurs sont les \textbf{représentations internes} du modèle : c'est eux que l'on compare au cerveau.
   \end{itemize}
 \end{frame}
 
@@ -82,33 +79,40 @@
     \column{.44\textwidth}
     \small
     \begin{itemize}
-      \item<2-> Mot attendu $\Rightarrow$ surprise \textbf{faible}.\\ Mot inattendu $\Rightarrow$ surprise \textbf{forte}.
-      \item<3-> Chez l'humain, un mot surprenant est \hum{lu plus lentement} et produit une \hum{réponse cérébrale plus forte}.
-      \item<4-> Le modèle fournit donc une \textbf{prédiction chiffrée, mot par mot}, de la difficulté de lecture.
+      \item Mot attendu : surprise \textbf{faible}.\\ Mot inattendu : surprise \textbf{forte}.
+      \item Chez l'humain, un mot inattendu est en moyenne \hum{lu plus lentement}. En EEG, il produit souvent une onde plus marquée vers 400 ms (la \hum{N400}).
+      \item Le modèle donne donc une \textbf{prédiction chiffrée, mot par mot}, de la difficulté de lecture.
     \end{itemize}
   \end{columns}
   \vspace{0.6em}
-  \visible<4->{\cle{Deux ponts entre IA et cerveau : les vecteurs internes, et la surprise.}}
-  \src{Hale, NAACL 2001 ; Levy, \emph{Cognition} 2008}
+  \cle{Deux ponts entre IA et cerveau : les représentations internes, et la surprise.}
+  \src{Hale, NAACL 2001 ; Levy, \emph{Cognition} 2008 ; Kutas \& Hillyard, \emph{Science} 1980}
 \end{frame}
 
 % ---------------------------------------------------------------------
-\begin{frame}{Côté humain : le cerveau du langage}
+\begin{frame}{Côté humain : le réseau du langage}
   \begin{columns}[c,onlytextwidth]
-    \column{.36\textwidth}
+    \column{.44\textwidth}
     \centering
-    \photo{height=3.0cm}{images/cerveau_lobes.png}\\[0.2em]
-    {\scriptsize\color{gris}Les quatre lobes et le cervelet}
-    \column{.62\textwidth}
+    \begin{tikzpicture}
+      \node[inner sep=0pt, anchor=south west] (im) at (0,0) {\photo{height=3.5cm}{images/cerveau_lobes.png}};
+      \begin{scope}[x={(im.south east)}, y={(im.north west)}]
+        \fill[rouge, opacity=0.75] (0.235,0.47) ellipse (0.07 and 0.075);
+        \fill[rouge, opacity=0.75, rotate around={-8:(0.53,0.36)}] (0.53,0.36) ellipse (0.20 and 0.05);
+        \fill[rouge, opacity=0.6] (0.30,0.62) ellipse (0.05 and 0.05);
+      \end{scope}
+    \end{tikzpicture}\\[0.2em]
+    {\scriptsize\color{gris}\textcolor{rouge}{rouge} : réseau du langage (schéma)}
+    \column{.54\textwidth}
     \small
     \begin{itemize}
-      \item<1-> Un \textbf{réseau du langage} dans les lobes \textbf{frontal} et \textbf{temporal}, surtout à gauche.
-      \item<2-> Il répond au langage \textbf{écrit comme parlé}, dans toutes les langues testées.
-      \item<3-> Il répond \textbf{peu} au calcul, à la musique ou à la logique : ces tâches mobilisent un \textbf{autre réseau}.
+      \item Des régions \textbf{frontales} et \textbf{temporales}, surtout à gauche, répondent aux phrases.
+      \item Il répond au langage \textbf{écrit comme parlé}, dans les 45 langues testées.
+      \item Il répond \textbf{peu} au calcul, à la musique ou à la logique : ces tâches mobilisent un \textbf{autre réseau}.
     \end{itemize}
-    \vspace{0.3em}
-    \visible<4->{{\small\color{jaune}On y reviendra dans la partie 3 : langage et pensée sont-ils la même chose ?}}
   \end{columns}
+  \vspace{0.4em}
+  \cle{Cible de nos comparaisons : l'activité de ce réseau pendant la lecture ou l'écoute.}
   \src{Fedorenko, Ivanova \& Regev, \emph{Nat. Rev. Neurosci.} 2024 ; Malik-Moraleda et al., \emph{Nat. Neurosci.} 2022}
 \end{frame}
 
@@ -130,29 +134,8 @@
     {\small\bfseries Intracrânien}\\{\scriptsize\color{gris}électrodes sur le cortex\\patients opérés}
   \end{columns}
   \vspace{0.7em}
-  \visible<2->{\cle{Aucune méthode ne voit tout : on combine des mesures précises en espace et d'autres précises en temps.}}
+  \cle{Aucune méthode ne voit tout : on combine des mesures précises en espace (IRMf) et d'autres précises en temps (MEG, EEG).}
   \src{Crédits des images : [à préciser]}
-\end{frame}
-
-% ---------------------------------------------------------------------
-\begin{frame}{Où et quand : le compromis des méthodes}
-  \centering
-  \begin{tikzpicture}[x=1.45cm, y=0.95cm,
-      m/.style={rounded corners=6pt, font=\small\bfseries, align=center, inner sep=4pt}]
-    % axes : temps (log) en x, espace (log) en y
-    \draw[-{Stealth}, gris, line width=0.9pt] (0,0) -- (7.4,0) node[below=0.35cm, anchor=north east, font=\scriptsize, text=gris] {résolution temporelle};
-    \draw[-{Stealth}, gris, line width=0.9pt] (0,0) -- (0,4.6) node[above right, font=\scriptsize, text=gris] {résolution spatiale};
-    \foreach \x/\l in {0.6/1 ms, 2.6/100 ms, 4.6/1 s, 6.4/10 s}{\node[font=\scriptsize, text=gris, below] at (\x,0) {\l};}
-    \foreach \y/\l in {0.4/1 µm, 1.6/1 mm, 2.8/1 cm, 4.0/10 cm}{\node[font=\scriptsize, text=gris, left] at (0,\y) {\l};}
-    \node[m, fill=bleu!35!fondclair, text=white] at (5.6,1.6) {IRMf};
-    \node[m, fill=bleu!35!fondclair, text=white] at (1.3,3.3) {EEG / MEG};
-    \node[m, fill=rouge!35!fondclair, text=white] at (1.3,2.0) {ECoG / sEEG};
-    \node[m, fill=rouge!35!fondclair, text=white] at (1.3,0.55) {neurones uniques};
-    \visible<2->{\node[font=\scriptsize, text=gris, align=left, anchor=west] at (3.3,3.6) {\textcolor{bleu}{\textbf{bleu}} : non invasif\\\textcolor{rouge}{\textbf{rouge}} : chirurgie nécessaire};}
-  \end{tikzpicture}
-
-  \vspace{0.4em}
-  \small Le langage va \textbf{vite} (3 à 4 mots par seconde) : les méthodes rapides captent la dynamique, l'IRMf localise.
 \end{frame}
 
 % ---------------------------------------------------------------------
@@ -162,9 +145,9 @@
   \begin{tikzpicture}[x=1.45cm, y=0.009cm]
     \foreach \w/\t/\i/\c in {Les/240/0/b, clés/265/1/b, que/235/2/b, l'homme/270/3/b, tient/290/4/b, sont/345/5/jaune, sur/250/6/b, la/230/7/b, table/260/8/b}{
       \node[font=\small, text=texte] at (\i,-25) {\w};
-      \visible<2->{\fill[\c] (\i-0.3,0) rectangle (\i+0.3,\t-180);}}
-    \visible<2->{\draw[gris] (-0.5,0) -- (8.5,0);
-    \node[font=\scriptsize, text=gris, anchor=east] at (-0.5,110) {temps (ms)};}
+      \fill[\c] (\i-0.3,0) rectangle (\i+0.3,\t-180);}
+    \draw[gris] (-0.5,0) -- (8.5,0);
+    \node[font=\scriptsize, text=gris, anchor=east] at (-0.5,110) {temps (ms)};
   \end{tikzpicture}\\[-0.1em]
   {\scriptsize\color{gris}valeurs illustratives}
 
@@ -176,5 +159,5 @@
     \carte[bleu]{Oculométrie}{Une caméra enregistre où et combien de temps l'œil se fixe.}
   \end{columns}
   \vspace{0.2em}
-  \visible<3->{\small Le verbe « \jaun{sont} » doit retrouver son sujet « clés », loin en arrière : la lecture ralentit.}
+  {\small Le verbe « \jaun{sont} » doit retrouver son sujet « clés », loin en arrière : la lecture ralentit.}
 \end{frame}

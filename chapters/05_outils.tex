@@ -1,7 +1,111 @@
 % =====================================================================
-%  Partie 5 (~3 min) : l'IA comme outil -- décoder le cerveau
+%  Partie 5 (~9 min) : au-delà du langage
 % =====================================================================
-\partie{L'IA comme outil}{L'IA comme outil : décoder le cerveau}
+\partie{Au-delà du langage}{Au-delà du langage : l'IA dans les neurosciences}
+
+% ---------------------------------------------------------------------
+\begin{frame}{Vision : reconnaître un objet}
+  \centering
+  \begin{tikzpicture}[
+      scale=0.8, every node/.style={transform shape},
+      cl/.style={draw=orange, fill=orange!25!fondclair, line width=0.8pt},
+      br/.style={rounded corners=3pt, fill=bleu!35!fondclair, text=white, font=\small\bfseries, minimum width=1.5cm, minimum height=0.6cm},
+      ar/.style={-{Stealth}, gris, line width=0.9pt},
+      lk/.style={{Stealth}-{Stealth}, jaune, dashed, line width=0.9pt}]
+    % image
+    \node[draw=gris, fill=fondclair, minimum size=1.6cm, font=\scriptsize, text=gris, align=center] (img) at (0,0) {image\\(un visage,\\une voiture\dots)};
+    % réseau convolutif : couches de plus en plus petites
+    \foreach \i/\h in {1/1.8, 2/1.45, 3/1.1, 4/0.75}{
+      \pgfmathsetmacro{\x}{1.4+1.55*\i}
+      \fill[cl] (\x-0.35,-\h/2) rectangle (\x+0.35,\h/2);
+      \node[font=\scriptsize, text=orange] at (\x,1.2) {couche \i};}
+    \node[rounded corners=3pt, fill=orange, text=fond, font=\small\bfseries] (cat) at (9.8,0) {« visage »};
+    \draw[ar] (img) -- (2.55,0); \draw[ar] (7.95,0) -- (cat);
+    \node[font=\small\bfseries, text=orange, anchor=west] at (10.9,0) {IA};
+    % cortex visuel du singe
+    \node[br] (v1) at (2.95,-2.3) {V1};
+    \node[br] (v4) at (6.05,-2.3) {V4};
+    \node[br] (it) at (7.6,-2.3) {IT};
+    \draw[ar] (v1) -- (v4); \draw[ar] (v4) -- (it);
+    \node[font=\small\bfseries, text=bleu, anchor=west] at (10.9,-2.3) {singe};
+    \draw[lk] (6.05,-0.6) -- (v4); \draw[lk] (7.6,-0.45) -- (it);
+  \end{tikzpicture}
+
+  \vspace{0.2em}
+  \begin{columns}[T,onlytextwidth]
+    \column{.48\textwidth}
+    \carte[bleu]{Prédire}{Meilleur à reconnaître les objets = meilleur pour prédire les neurones du singe (couches profondes $\approx$ IT).\\[0.2em]{\scriptsize\color{gris}Yamins et al., \emph{PNAS} 2014}}
+    \column{.48\textwidth}
+    \carte[bleu]{Contrôler}{Le modèle fabrique des images qui activent des neurones de V4 plus fort que les images naturelles.\\[0.2em]{\scriptsize\color{gris}Bashivan, Kar \& DiCarlo, \emph{Science} 2019}}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------------
+\begin{frame}{Récompense : apprendre de ses erreurs}
+  \begin{columns}[c,onlytextwidth]
+    \column{.50\textwidth}
+    \centering
+    \begin{tikzpicture}[x=1cm, y=1cm,
+        lab/.style={anchor=east, font=\scriptsize, text=texte, align=right, text width=2.2cm}]
+      \foreach \y/\l in {0/{Récompense\\inattendue}, -1.45/{Signal appris,\\puis récompense}, -2.9/{Signal appris,\\récompense absente}}{
+        \node[lab] at (-0.15,\y+0.25) {\l};
+        \draw[gris] (0,\y) -- (4.4,\y);}
+      % ligne 1 : pic à la récompense
+      \draw[jaune, line width=1.3pt] plot[smooth] coordinates {(0,0.1) (2.9,0.1) (3.2,0.85) (3.5,0.1) (4.4,0.1)};
+      % ligne 2 : pic au signal
+      \draw[jaune, line width=1.3pt] plot[smooth] coordinates {(0,-1.35) (0.9,-1.35) (1.2,-0.6) (1.5,-1.35) (4.4,-1.35)};
+      % ligne 3 : pic au signal, creux à la récompense attendue
+      \draw[jaune, line width=1.3pt] plot[smooth] coordinates {(0,-2.8) (0.9,-2.8) (1.2,-2.05) (1.5,-2.8) (2.9,-2.8) (3.2,-3.15) (3.5,-2.8) (4.4,-2.8)};
+      \foreach \y in {0,-1.45,-2.9}{\draw[orange, dashed] (3.2,\y-0.3) -- (3.2,\y+0.95);}
+      \foreach \y in {-1.45,-2.9}{\draw[bleu, dashed] (1.2,\y-0.3) -- (1.2,\y+0.95);}
+      \node[font=\scriptsize, text=bleu] at (1.2,-3.5) {signal};
+      \node[font=\scriptsize, text=orange] at (3.2,-3.5) {récompense};
+    \end{tikzpicture}\\[0.1em]
+    {\scriptsize\color{gris}activité des neurones à dopamine (schéma d'après Schultz et al. 1997)}
+    \column{.48\textwidth}
+    \small
+    Les neurones à \textbf{dopamine} ne signalent pas la récompense elle-même, mais l'\jaun{erreur de prédiction} :
+    \[\delta = \text{reçu} - \text{attendu}\]
+    C'est exactement le signal d'apprentissage de l'\textbf{apprentissage par renforcement}, inventé en IA (Sutton \& Barto), celui qui fait jouer AlphaGo.\\[0.4em]
+    Une version plus récente de ces algorithmes a prédit une nouvelle propriété des neurones à dopamine, ensuite observée chez la souris.
+  \end{columns}
+  \src{Schultz, Dayan \& Montague, \emph{Science} 1997 ; Dabney et al., \emph{Nature} 2020}
+\end{frame}
+
+% ---------------------------------------------------------------------
+\begin{frame}{Connexions : cartographier un cerveau entier}
+  \centering
+  \begin{tikzpicture}[
+      st/.style={rounded corners=4pt, fill=fondclair, text=texte, align=center, text width=2.55cm, minimum height=1.7cm, font=\small, inner sep=4pt},
+      ar/.style={-{Stealth}, jaune, line width=1.2pt}]
+    \node[st] (a) at (0,0) {\textbf{Microscope}\\{\scriptsize $\sim$7\,000 tranches ultrafines d'un cerveau de mouche}};
+    \node[st, draw=orange, line width=1pt] (b) at (3.4,0) {\textcolor{orange}{\textbf{IA}}\\{\scriptsize délimite chaque neurone sur les images}};
+    \node[st] (c) at (6.8,0) {\textbf{Correction}\\{\scriptsize par une large communauté de chercheurs et de volontaires}};
+    \node[st, draw=jaune, line width=1pt] (d) at (10.2,0) {\textcolor{jaune}{\textbf{Câblage complet}}\\{\scriptsize 139\,255 neurones\\$\sim$50 millions de synapses}};
+    \draw[ar] (a)--(b); \draw[ar] (b)--(c); \draw[ar] (c)--(d);
+  \end{tikzpicture}
+
+  \vspace{0.7em}
+  \begin{columns}[c,onlytextwidth]
+    \column{.30\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.9]
+      \pgfmathsetseed{7}
+      \foreach \i in {1,...,22}{\coordinate (p\i) at (rnd*3.2, rnd*1.9);}
+      \foreach \i/\j in {1/5,2/7,3/9,4/12,5/14,6/2,7/15,8/3,9/18,10/4,11/20,12/6,13/1,14/22,15/8,16/10,17/11,18/13,19/16,20/17,21/19,22/21,1/9,3/14,6/18,10/20}{
+        \draw[orange!70, line width=0.4pt] (p\i) -- (p\j);}
+      \foreach \i in {1,...,22}{\fill[jaune] (p\i) circle (1.6pt);}
+    \end{tikzpicture}\\
+    {\scriptsize\color{gris}schéma d'un réseau de neurones réel}
+    \column{.68\textwidth}
+    \small
+    \begin{itemize}
+      \item Sans l'IA, tracer à la main tous les neurones prendrait des siècles.
+      \item Ensuite, on construit un réseau artificiel qui suit ce câblage, et on n'apprend que les paramètres inconnus : il \textbf{prédit l'activité} de neurones de la vision du mouvement, confirmée par 26 études.
+    \end{itemize}
+  \end{columns}
+  \src{Dorkenwald et al. (FlyWire), \emph{Nature} 2024 ; Lappalainen et al., \emph{Nature} 2024}
+\end{frame}
 
 % ---------------------------------------------------------------------
 \begin{frame}{Redonner la parole}
@@ -22,13 +126,12 @@
     \column{.48\textwidth}
     \small
     \begin{itemize}
-      \item<1-> Une patiente paralysée \textbf{tente} de parler, sans émettre de son.
-      \item<2-> Le décodeur reconnaît des \textbf{phonèmes}, puis un modèle de langage choisit les phrases les plus probables.
-      \item<3-> On retrouve les deux ingrédients de cet exposé : réseaux de neurones et \textbf{prédiction du mot suivant}.
+      \item Une patiente paralysée \textbf{tente} de parler, sans émettre de son.
+      \item Le décodeur reconnaît des \textbf{phonèmes}, puis un modèle de langage choisit les phrases les plus probables.
+      \item On retrouve les deux ingrédients de cet exposé : réseaux de neurones et \textbf{prédiction du mot suivant}.
     \end{itemize}
   \end{columns}
   \vspace{0.5em}
-  \visible<4->{%
   \hspace*{3.6cm}\begin{tikzpicture}[x=0.042cm,
       lab/.style={anchor=east, font=\scriptsize, text=texte},
       val/.style={anchor=west, font=\scriptsize, text=gris}]
@@ -37,7 +140,7 @@
       \fill[\c] (0,\y-0.15) rectangle (\v,\y+0.15);
       \node[val] at (\v+2,\y) {\v};}
     \node[font=\scriptsize, text=gris, anchor=west] at (95,-0.2) {mots par minute};
-  \end{tikzpicture}}
+  \end{tikzpicture}
   \src{Metzger et al., \emph{Nature} 2023 ; Willett et al., \emph{Nature} 2023}
 \end{frame}
 
@@ -50,13 +153,34 @@
       {\color{gris}16 h d'enregistrement par personne ; ne marche que si la personne coopère.}\\[0.2em]
       {\scriptsize\color{gris}Tang et al., \emph{Nat. Neurosci.} 2023}}
     \column{.48\textwidth}
-    \visible<2->{\carte[bleu]{MEG / EEG : la frappe au clavier}{%
+    \carte[bleu]{MEG / EEG : la frappe au clavier}{%
       Décodage des phrases tapées par 35 volontaires.\\[0.3em]
       {\color{gris}Erreur sur les caractères : 32\,\% en MEG, 67\,\% en EEG.}\\[0.2em]
-      {\scriptsize\color{gris}Lévy et al. (Meta), 2025}}}
+      {\scriptsize\color{gris}Lévy et al. (Meta), 2025}}
   \end{columns}
   \vspace{0.6em}
-  \visible<3->{\small\textbf{Questions éthiques} : consentement, \textbf{vie privée mentale}, accès équitable à ces technologies.}
+  {\small\textbf{Questions éthiques} : consentement, \textbf{vie privée mentale}, accès équitable à ces technologies.}
   \vspace{0.3em}
-  \visible<4->{\cle{Des résultats réels, mais encore loin de « lire dans les pensées ».}}
+  \cle{Des résultats réels, mais encore loin de « lire dans les pensées ».}
+\end{frame}
+
+% ---------------------------------------------------------------------
+\begin{frame}{Une même démarche, des questions très différentes}
+  \centering
+  \small
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabular}{>{\bfseries\color{jaune}}l l l}
+    \toprule
+    {\color{texte}Domaine} & \textbf{Modèle d'IA} & \textbf{Ce qu'il nous a appris} \\
+    \midrule
+    Langage    & modèles de langage            & prédisent une partie du réseau du langage \\
+    Mémoire    & transformeur modifié          & unités proches des cellules de lieu \\
+    Vision     & réseaux convolutifs           & couches du réseau $\approx$ aires visuelles \\
+    Récompense & apprentissage par renforcement & la dopamine code une erreur de prédiction \\
+    Connexions & segmentation d'images         & câblage complet d'un cerveau de mouche \\
+    Décodage   & réseaux + modèle de langage   & redonner la parole à des patients paralysés \\
+    \bottomrule
+  \end{tabular}
+  \vspace{0.8em}
+  \cle{L'IA sert à la fois de \textbf{théorie} (un modèle à comparer au cerveau) et d'\textbf{instrument} (pour mesurer et décoder).}
 \end{frame}

@@ -12,40 +12,45 @@
   \vspace{1.0em}
   \begin{columns}[T,onlytextwidth]
     \column{.48\textwidth}
-    \visible<2->{\carte[orange]{Contrainte de mémoire}{%
-      Le modèle oublie progressivement le contexte, comme notre mémoire de travail.}}
+    \carte[orange]{Contrainte de mémoire}{%
+      Le modèle oublie progressivement le contexte, comme notre mémoire de travail.}
     \column{.48\textwidth}
-    \visible<3->{\carte[orange]{Contrainte de données}{%
-      10 à 100 millions de mots, ce qu'entend un enfant (défi \textbf{BabyLM}), au lieu de milliers de milliards.}}
+    \carte[orange]{Contrainte de données}{%
+      10 à 100 millions de mots, ce qu'entend un enfant (défi \textbf{BabyLM}), au lieu de milliers de milliards.}
   \end{columns}
 
   \vspace{0.8em}
-  \visible<4->{%
   \begin{tikzpicture}
     \foreach \n/\l/\x in {118/modèles/0, 18/jeux de données/3.6, 7/comportement/7.2, 11/cerveau/10.8}{
       \node[font=\bfseries\Large, text=jaune] at (\x,0) {\n};
       \node[font=\scriptsize, text=gris] at (\x,-0.5) {\l};}
   \end{tikzpicture}\\[0.1em]
-  {\scriptsize\color{gris}temps de lecture, oculométrie ; IRMf, MEG, EEG, ECoG}}
+  {\scriptsize\color{gris}temps de lecture, oculométrie ; IRMf, MEG, EEG, ECoG}
 \end{frame}
 
 % ---------------------------------------------------------------------
-\begin{frame}{Résultat : comportement et cerveau ne vont pas ensemble}
+\begin{frame}{Résultat : lecture et cerveau ne vont pas ensemble}
   \begin{columns}[c,onlytextwidth]
-    \column{.50\textwidth}
+    \column{.55\textwidth}
     \centering
-    \photo{height=4.9cm}{images/resultat_pareto.png}
-    \column{.48\textwidth}
+    \begin{tikzpicture}
+      \node[inner sep=0pt, anchor=south west] (im) at (0,0) {\photo{height=4.6cm}{images/resultat_pareto.png}};
+      \begin{scope}[x={(im.south east)}, y={(im.north west)}]
+        \node[font=\scriptsize\bfseries, text=white, fill=violet!70!black, rounded corners=2pt, inner sep=2pt, align=center] at (0.30,0.86) {petits modèles\\contraints};
+        \node[font=\scriptsize\bfseries, text=white, fill=bleu!60!black, rounded corners=2pt, inner sep=2pt, align=center] at (0.70,0.12) {grands modèles};
+      \end{scope}
+    \end{tikzpicture}
+    \column{.43\textwidth}
     \small
-    Chaque point est un modèle. \hum{À droite} : proche du cerveau. \jaun{En haut} : proche de la lecture humaine.
+    Chaque point est un modèle.\\
+    \hum{\textbf{À droite}} : plus proche du cerveau.\\
+    \jaun{\textbf{En haut}} : plus proche de la lecture.
     \begin{itemize}
-      \item<2-> Les modèles \textbf{contraints} (\textcolor{violet!60!white}{violet}, \textcolor{rouge}{rouge}) sont plus proches de la \textbf{lecture}\dots
-      \item<3-> \dots mais plus \textbf{loin du cerveau}.
-      \item<4-> Les grands modèles (\textcolor{bleu}{bleu}) montrent l'inverse.
-      \item<5-> \textbf{Aucun} modèle ne gagne sur les deux à la fois.
+      \item Les modèles \textbf{contraints} sont plus proches de la lecture, mais plus loin du cerveau.
+      \item Les grands modèles montrent l'inverse.
+      \item Parmi nos modèles, \textbf{aucun} n'est en tête sur les deux scores.
     \end{itemize}
   \end{columns}
-  \vspace{0.3em}
-  \visible<6->{\cle{« Ressembler à l'humain » n'est pas une seule propriété : il faut préciser à quel niveau.}}
-  \src{Sow et al., travail en cours (LSCP)}
+  \cle{« Ressembler à l'humain » : il faut toujours préciser à quel niveau.}
+  \src{Sow et al., travail en cours (LSCP) ; scores par analyse de similarité des représentations (RSA), cerveau entier ; résultats préliminaires.}
 \end{frame}

@@ -1,5 +1,5 @@
 % =====================================================================
-%  Partie 2 (~9 min) : comparer le modèle au cerveau
+%  Partie 2 (~6 min) : comparer le modèle au cerveau
 % =====================================================================
 \partie{Comparer}{Comparer le modèle au cerveau}
 
@@ -14,27 +14,25 @@
     \column{.52\textwidth}
     \small
     \begin{itemize}
-      \item<1-> \jaun{\textbf{Computationnel}} : \emph{quel problème} est résolu ?\\
+      \item \jaun{\textbf{Computationnel}} : \emph{quel problème} est résolu ?\\
             {\color{gris}ex. : additionner deux nombres}
-      \item<2-> \jaun{\textbf{Algorithmique}} : \emph{quelle procédure} ?\\
+      \item \jaun{\textbf{Algorithmique}} : \emph{quelle procédure} ?\\
             {\color{gris}ex. : chiffres arabes et retenue, ou bâtonnets}
-      \item<3-> \jaun{\textbf{Implémentation}} : \emph{quel support physique} ?\\
+      \item \jaun{\textbf{Implémentation}} : \emph{quel support physique} ?\\
             {\color{gris}ex. : neurones, transistors, boulier}
     \end{itemize}
     \vspace{0.4em}
-    \visible<4->{\small Un même problème admet \textbf{plusieurs} algorithmes, et un même algorithme \textbf{plusieurs} supports.}
+    {\small Un même problème admet \textbf{plusieurs} algorithmes, et un même algorithme \textbf{plusieurs} supports.}
     \column{.46\textwidth}
     \centering
     \begin{tikzpicture}[scale=0.82, every node/.style={transform shape}]
       \useasboundingbox (-2.2,0.6) rectangle (5.6,-5.4);
       \node[mn] (c) at (0,0) {};
       \node[mlab] at (1.0,0) {Computationnel};
-      \visible<2->{
-        \foreach \i/\x in {1/-1,2/0,3/1} {\node[mn] (a\i) at (\x,-2.2) {}; \draw[ma] (c) -- (a\i);}
-        \node[mlab] at (1.5,-2.2) {Algorithmique};}
-      \visible<3->{
-        \foreach \i/\x in {1/-1.5,2/-0.5,3/0.5,4/1.5} {\node[mn] (i\i) at (\x,-4.4) {}; \draw[ma] (a2) -- (i\i);}
-        \node[mlab] at (2.0,-4.4) {Implémentation};}
+      \foreach \i/\x in {1/-1,2/0,3/1} {\node[mn] (a\i) at (\x,-2.2) {}; \draw[ma] (c) -- (a\i);}
+      \node[mlab] at (1.5,-2.2) {Algorithmique};
+      \foreach \i/\x in {1/-1.5,2/-0.5,3/0.5,4/1.5} {\node[mn] (i\i) at (\x,-4.4) {}; \draw[ma] (a2) -- (i\i);}
+      \node[mlab] at (2.0,-4.4) {Implémentation};
     \end{tikzpicture}
   \end{columns}
   \src{Marr, \emph{Vision}, 1982}
@@ -43,32 +41,44 @@
 % ---------------------------------------------------------------------
 \begin{frame}{Humains et modèles : même algorithme ?}
   \centering
-  \begin{tikzpicture}[scale=0.68, every node/.style={transform shape}]
-    \useasboundingbox (-5.2,0.7) rectangle (7.6,-5.4);
-    \node[mn] (c) at (0,0) {};
-    \node[mlab] at (5.4,0) {Computationnel};
-    \node[mlab] at (5.4,-2.2) {Algorithmique};
-    \node[mlab] at (5.4,-4.4) {Implémentation};
-    \foreach \i/\x in {1/-3,2/-1.5,3/0,4/1.5,5/3} {\node[mn] (a\i) at (\x,-2.2) {};}
-    \only<1>{
+  \begin{tikzpicture}[scale=0.5, every node/.style={transform shape}]
+    % --- Divergence ---
+    \begin{scope}
+      \node[mn] (c) at (0,0) {};
+      \foreach \i/\x in {1/-3,2/-1.5,3/0,4/1.5,5/3} {\node[mn] (a\i) at (\x,-2.2) {};}
       \foreach \i in {2,3,4} {\draw[ma, white!30] (c) -- (a\i);}
       \draw[-{Stealth}, line width=2.4pt, orange] (c) -- (a1);
       \draw[-{Stealth}, line width=2.4pt, bleu] (c) -- (a5);
-      \foreach \j/\x in {1/-4.5,2/-3.5,3/-2.5,4/-1.5} {\node[mn] at (\x,-4.4) {}; \draw[ma] (a1) -- (\x,-4.15);}
-      \foreach \j/\x in {1/1.5,2/2.5,3/3.5,4/4.5} {\node[mn] at (\x,-4.4) {}; \draw[ma] (a5) -- (\x,-4.15);}}
-    \only<2->{
+      \foreach \x in {-4.5,-3.5,-2.5,-1.5} {\node[mn] at (\x,-4.4) {}; \draw[ma] (a1) -- (\x,-4.15);}
+      \foreach \x in {1.5,2.5,3.5,4.5} {\node[mn] at (\x,-4.4) {}; \draw[ma] (a5) -- (\x,-4.15);}
+      \node[text=orange, font=\Large\bfseries] at (-3,-5.3) {Modèles};
+      \node[text=bleu, font=\Large\bfseries] at (3,-5.3) {Humains};
+      \node[text=rouge, font=\huge\bfseries] at (0,1.2) {Divergence};
+    \end{scope}
+    % --- Convergence ---
+    \begin{scope}[xshift=13cm]
+      \node[mn] (c) at (0,0) {};
+      \foreach \i/\x in {1/-3,2/-1.5,3/0,4/1.5,5/3} {\node[mn] (a\i) at (\x,-2.2) {};}
       \foreach \i in {1,2,4,5} {\draw[ma, white!30] (c) -- (a\i);}
       \draw[-{Stealth}, line width=2.4pt, orange] (c.south west) to[bend right=28] (a3.north west);
       \draw[-{Stealth}, line width=2.4pt, bleu] (c.south east) to[bend left=28] (a3.north east);
-      \foreach \j/\x in {1/-4.5,2/-3.5,3/-2.5,4/-1.5} {\node[mn] at (\x,-4.4) {}; \draw[ma] (a3) -- (\x,-4.15);}
-      \foreach \j/\x in {1/1.5,2/2.5,3/3.5,4/4.5} {\node[mn] at (\x,-4.4) {}; \draw[ma] (a3) -- (\x,-4.15);}}
-    \node[text=orange, font=\small\bfseries] at (-3,-5.1) {Modèles de langage};
-    \node[text=bleu, font=\small\bfseries] at (3,-5.1) {Cerveaux humains};
+      \foreach \x in {-4.5,-3.5,-2.5,-1.5} {\node[mn] at (\x,-4.4) {}; \draw[ma] (a3) -- (\x,-4.15);}
+      \foreach \x in {1.5,2.5,3.5,4.5} {\node[mn] at (\x,-4.4) {}; \draw[ma] (a3) -- (\x,-4.15);}
+      \node[text=orange, font=\Large\bfseries] at (-3,-5.3) {Modèles};
+      \node[text=bleu, font=\Large\bfseries] at (3,-5.3) {Humains};
+      \node[text=vert, font=\huge\bfseries] at (0,1.2) {Convergence};
+    \end{scope}
   \end{tikzpicture}
 
-  \only<1>{\small\textcolor{rouge}{\textbf{Divergence}} : supports différents, procédures différentes. Le modèle ne nous apprend rien sur le cerveau.}%
-  \only<2>{\small\textcolor{vert}{\textbf{Convergence}} : une \textbf{même procédure} sur deux supports. Le modèle devient une loupe sur le cerveau.}%
-  \only<3>{\cle{On ne voit pas l'algorithme directement : on l'infère en comparant les réponses, mot par mot.}}
+  \vspace{0.3em}
+  \begin{columns}[T,onlytextwidth]
+    \column{.48\textwidth}
+    \small Procédures différentes : le modèle ne nous apprend rien sur le cerveau.
+    \column{.48\textwidth}
+    \small Une \textbf{même procédure} sur deux supports : le modèle devient une loupe sur le cerveau.
+  \end{columns}
+  \vspace{0.4em}
+  \cle{On ne voit pas l'algorithme directement : on l'infère en comparant les réponses, mot par mot.}
 \end{frame}
 
 % ---------------------------------------------------------------------
@@ -78,155 +88,42 @@
       bx/.style={rounded corners=4pt, align=center, minimum height=1.0cm, font=\small, text=white, inner sep=4pt},
       ar/.style={-{Stealth}, line width=1pt, gris}]
     \node[bx, fill=fondclair, text=texte] (st) at (0,0) {Même histoire\\{\scriptsize lue ou écoutée}};
-    \node[bx, fill=orange!45!fondclair] (lm) at (3.8,0.85) {Modèle : $X$\\{\scriptsize activations}};
-    \node[bx, fill=bleu!45!fondclair] (br) at (3.8,-0.85) {Cerveau : $y$\\{\scriptsize IRMf, MEG, ECoG}};
-    \node[bx, fill=bordeaux] (rg) at (7.6,0) {Régression\\{\scriptsize $\hat y = X w$}};
-    \node[bx, fill=fondclair, text=jaune] (sc) at (10.9,0) {\textbf{Score}\\{\scriptsize corrélation}};
+    \node[bx, fill=orange!45!fondclair] (lm) at (3.8,0.85) {Modèle\\{\scriptsize représentations, surprise}};
+    \node[bx, fill=bleu!45!fondclair] (br) at (3.8,-0.85) {Humain\\{\scriptsize IRMf, EEG, lecture}};
+    \node[bx, fill=bordeaux] (rg) at (7.6,0) {Régression\\{\scriptsize modèle vers humain}};
+    \node[bx, fill=fondclair, text=jaune] (sc) at (10.9,0) {\textbf{Score}\\{\scriptsize phrases nouvelles}};
     \draw[ar] (st) -- (lm.west); \draw[ar] (st) -- (br.west);
     \draw[ar] (lm.east) -- (rg); \draw[ar] (br.east) -- (rg); \draw[ar] (rg) -- (sc);
   \end{tikzpicture}
 
-  \vspace{0.7em}
+  \vspace{0.8em}
   \begin{columns}[T,onlytextwidth]
-    \column{.50\textwidth}
-    \visible<2->{%
-    \[\hat w = \arg\min_w \;\underbrace{\lVert y - Xw \rVert^2}_{\text{erreur}} + \lambda \underbrace{\lVert w \rVert^2}_{\text{régularisation}}\]}
     \column{.48\textwidth}
-    \small
-    \begin{itemize}
-      \item<3-> On apprend $w$ sur une partie des données, on \textbf{teste sur des phrases jamais vues}.
-      \item<4-> On divise par le \jaun{plafond de bruit} : ce qu'un autre humain prédit du même cerveau.
-    \end{itemize}
-  \end{columns}
-  \vspace{0.3em}
-  \visible<5->{\cle{Score = 1 : le modèle prédit le cerveau aussi bien que le permet le bruit de mesure.}}
-\end{frame}
-
-% ---------------------------------------------------------------------
-\begin{frame}{Résultat 1 : prédire les mots, c'est prédire le cerveau}
-  \begin{columns}[c,onlytextwidth]
-    \column{.50\textwidth}
-    \centering
-    \begin{tikzpicture}[x=4.6cm, y=3.4cm]
-      \draw[-{Stealth}, gris] (0,0) -- (1.08,0) node[below left, font=\scriptsize, text=gris, align=right] {performance de prédiction\\du mot suivant};
-      \draw[-{Stealth}, gris] (0,0) -- (0,1.08) node[above right, font=\scriptsize, text=gris] {score cerveau};
-      \draw[dashed, jaune] (0,0.92) -- (1.02,0.92) node[right, font=\scriptsize, text=jaune] {plafond};
-      \foreach \x/\y in {0.08/0.12, 0.15/0.2, 0.22/0.18, 0.3/0.33, 0.38/0.4, 0.44/0.36, 0.52/0.5, 0.58/0.55, 0.63/0.62, 0.7/0.66, 0.76/0.72, 0.82/0.78, 0.9/0.86, 0.95/0.9}{
-        \fill[orange] (\x,\y) circle (2.2pt);}
-      \visible<2->{\draw[jaune, line width=1pt] (0.05,0.08) -- (0.98,0.92);}
-    \end{tikzpicture}\\
-    {\scriptsize\color{gris}schéma d'après Schrimpf et al. 2021 (43 modèles)}
+    \carte[orange]{Apprendre puis tester}{On ajuste la correspondance sur une partie de l'histoire, puis on \textbf{prédit la suite}, que le système n'a jamais vue.}
     \column{.48\textwidth}
-    \small
-    \begin{itemize}
-      \item<1-> Des dizaines de modèles comparés à l'IRMf, l'ECoG et le comportement.
-      \item<2-> Plus un modèle prédit bien le mot suivant, mieux il prédit le \textbf{réseau du langage}.
-      \item<3-> Les meilleurs approchent le \textbf{plafond de bruit} sur certains jeux de données.
-      \item<4-> $\sim$\textbf{100 millions de mots} d'entraînement suffisent presque : l'ordre de ce qu'entend un enfant.
-    \end{itemize}
+    \carte[jaune]{Comparer au plafond}{Les mesures sont bruitées : on compare le score à ce qu'un \textbf{autre humain} prédit du même signal. Proche du plafond = presque parfait.}
   \end{columns}
-  \src{Schrimpf et al., \emph{PNAS} 2021 ; Caucheteux \& King, \emph{Commun. Biol.} 2022 ; Hosseini et al., \emph{Neurobiol. Lang.} 2024}
 \end{frame}
 
 % ---------------------------------------------------------------------
-\begin{frame}{Résultat 2 : le cerveau aussi prédit le mot suivant}
-  \centering
-  \begin{tikzpicture}[x=1.2cm]
-    \draw[-{Stealth}, gris, line width=0.9pt] (-5,0) -- (5.3,0) node[below left, font=\scriptsize, text=gris] {temps};
-    \draw[jaune, line width=1.5pt] (0,-0.3) -- (0,2.1) node[above, font=\small\bfseries, text=jaune] {le mot est entendu};
-    \foreach \x/\l in {-4/$-800$ ms, -2/$-400$ ms, 0/0, 2/$+400$ ms, 4/$+800$ ms}{\node[below, font=\scriptsize, text=gris] at (\x,-0.05) {\l};}
-    \visible<2->{
-      \draw[bleu, line width=1.4pt] plot[smooth] coordinates {(-4.5,0.15) (-3,0.25) (-1.6,0.6) (-0.6,1.2) (0,1.35)};
-      \node[font=\small, text=bleu, align=center] at (-2.9,1.25) {\textbf{prédiction}\\avant le mot};}
-    \visible<3->{
-      \draw[orange, line width=1.4pt] plot[smooth] coordinates {(0,0.2) (0.8,0.5) (1.8,1.5) (2.6,0.9) (4.5,0.2)};
-      \node[font=\small, text=orange, align=center] at (3.6,1.55) {\textbf{surprise}\\après le mot};}
-  \end{tikzpicture}
-
-  \vspace{0.4em}
-  \small
-  \begin{itemize}
-    \item<1-> Patients implantés (ECoG) écoutant un podcast de 30 minutes.
-    \item<2-> L'activité \textbf{avant} chaque mot contient déjà de l'information sur ce mot.
-    \item<3-> Après le mot, la réponse cérébrale suit la \textbf{surprise} calculée par GPT-2.
-    \item<4-> Le cerveau représente les mots dans leur contexte, comme les \textbf{vecteurs} du modèle.
-  \end{itemize}
-  \src{Goldstein et al., \emph{Nature Neuroscience} 2022}
-\end{frame}
-
-% ---------------------------------------------------------------------
-\begin{frame}{Résultat 3 : la surprise prédit lecture et EEG}
-  \begin{columns}[c,onlytextwidth]
-    \column{.48\textwidth}
-    \centering
-    \begin{tikzpicture}[x=1.15cm, y=1.0cm]
-      \draw[-{Stealth}, gris] (0,0) -- (5.2,0) node[below left, font=\scriptsize, text=gris] {ms après le mot};
-      \draw[gris] (0,-1.7) -- (0,0.9);
-      \foreach \x/\l in {1/200, 2/400, 3/600, 4/800}{\node[below, font=\scriptsize, text=gris] at (\x,-1.75) {\l};}
-      \draw[bleu, line width=1.3pt] plot[smooth] coordinates {(0,0) (0.5,0.3) (1,0.1) (1.6,-0.25) (2,-0.35) (2.6,-0.15) (3.4,0.05) (4.5,0)};
-      \visible<2->{\draw[jaune, line width=1.6pt] plot[smooth] coordinates {(0,0) (0.5,0.3) (1,0.0) (1.6,-0.9) (2,-1.35) (2.6,-0.8) (3.4,-0.1) (4.5,0)};
-      \node[font=\scriptsize\bfseries, text=jaune, anchor=west] at (2.25,-1.3) {N400};}
-      \draw[bleu, line width=1.3pt] (0.2,1.25) -- (0.6,1.25) node[right, font=\scriptsize, text=bleu] {mot attendu};
-      \visible<2->{\draw[jaune, line width=1.6pt] (2.6,1.25) -- (3.0,1.25) node[right, font=\scriptsize, text=jaune] {mot surprenant};}
-    \end{tikzpicture}\\
-    {\scriptsize\color{gris}schéma ; négatif vers le bas}
-    \column{.50\textwidth}
-    \small
-    \begin{itemize}
-      \item<1-> \textbf{N400} : onde EEG négative, $\sim$400 ms après un mot.
-      \item<2-> Elle est plus ample quand le mot est \textbf{inattendu} :\\
-            « Il beurre son pain avec des \jaun{chaussettes} ».
-      \item<3-> La surprise d'un modèle de langage prédit l'amplitude de la N400 \textbf{et} les temps de lecture.
-    \end{itemize}
-  \end{columns}
-  \vspace{0.5em}
-  \visible<4->{\cle{Un seul nombre par mot, calculé par une IA, rend compte de mesures humaines très différentes.}}
-  \src{Kutas \& Hillyard, \emph{Science} 1980 ; Smith \& Levy, \emph{Cognition} 2013 ; Michaelov et al., \emph{Neurobiol. Lang.} 2024}
-\end{frame}
-
-% ---------------------------------------------------------------------
-\begin{frame}{Mais plus gros ne veut pas dire plus humain}
-  \begin{columns}[c,onlytextwidth]
-    \column{.48\textwidth}
-    \centering
-    \begin{tikzpicture}[x=4.4cm, y=3.0cm]
-      \draw[-{Stealth}, gris] (0,0) -- (1.08,0) node[below left, font=\scriptsize, text=gris] {taille / qualité du modèle};
-      \draw[-{Stealth}, gris] (0,0) -- (0,1.08) node[above right, font=\scriptsize, text=gris] {ajustement aux temps de lecture};
-      \draw[jaune, line width=1.6pt] plot[smooth] coordinates {(0.04,0.25) (0.2,0.62) (0.4,0.85) (0.55,0.82) (0.75,0.62) (1.0,0.38)};
-      \visible<2->{\node[font=\scriptsize, text=jaune, align=center] at (0.42,0.98) {zone « humaine »};}
-    \end{tikzpicture}\\
-    {\scriptsize\color{gris}schéma de la courbe en U inversé}
-    \column{.50\textwidth}
-    \small
-    \begin{itemize}
-      \item<1-> Au-delà d'un certain point, les \textbf{plus gros} modèles prédisent \textbf{moins bien} les temps de lecture.
-      \item<2-> Ils prédisent « trop bien » les mots rares : un humain, lui, est surpris.
-      \item<3-> En japonais, une meilleure perplexité n'implique pas un modèle plus humain.
-    \end{itemize}
-  \end{columns}
-  \vspace{0.4em}
-  \visible<4->{\cle{Le but n'est pas le modèle le plus puissant, mais le plus humain. Ce n'est pas la même chose.}}
-  \src{Kuribayashi et al., ACL 2021 ; Oh \& Schuler, TACL 2023}
-\end{frame}
-
-% ---------------------------------------------------------------------
-\begin{frame}{Prudence : prédire n'est pas expliquer}
+\begin{frame}{Ce que l'on sait, ce que l'on ne sait pas}
   \begin{columns}[T,onlytextwidth]
     \column{.48\textwidth}
     \carte[vert]{Ce que l'on sait}{%
       \begin{itemize}
-        \item Les vecteurs des modèles prédisent une partie de l'activité du réseau du langage.
-        \item La surprise prédit lecture et N400.
-        \item Résultats répliqués en IRMf, MEG, ECoG.
+        \item Les modèles prédisent \textbf{une partie} de l'activité du réseau du langage.
+        \item En général, mieux un modèle prédit le mot suivant, mieux il prédit le cerveau.
+        \item Sa surprise prédit en partie les temps de lecture.
       \end{itemize}}
     \column{.48\textwidth}
-    \visible<2->{\carte[rouge]{Ce que l'on ne sait pas}{%
+    \carte[rouge]{Ce que l'on ne sait pas}{%
       \begin{itemize}
-        \item Si le modèle utilise le \textbf{même algorithme}.
-        \item Une partie du score peut venir de facteurs simples (longueur, fréquence des mots).
-        \item La plupart des données sont en \textbf{anglais}.
-      \end{itemize}}}
+        \item Si le modèle utilise le \textbf{même algorithme} que le cerveau.
+        \item Pourquoi les plus grands modèles ne sont pas toujours plus « humains ».
+        \item Ce qui vaut hors de l'anglais, où sont presque toutes les données.
+      \end{itemize}}
   \end{columns}
-  \vspace{0.6em}
-  \visible<3->{\cle{Pour passer de la corrélation au mécanisme, il faut ouvrir la boîte.}}
+  \vspace{0.2em}
+  \cle{Prédire n'est pas expliquer. Pour passer de la corrélation au mécanisme, il faut ouvrir la boîte.}
+  \src{Schrimpf et al., \emph{PNAS} 2021 ; Goldstein et al., \emph{Nat. Neurosci.} 2022 ; Caucheteux \& King, \emph{Commun. Biol.} 2022 ; Oh \& Schuler, TACL 2023}
 \end{frame}
