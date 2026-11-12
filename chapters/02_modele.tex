@@ -56,7 +56,7 @@
       \node[text=rouge, font=\huge\bfseries] at (0,1.2) {Divergence};
     \end{scope}
     % --- Convergence ---
-    \begin{scope}[xshift=13cm]
+    \visible<2->{\begin{scope}[xshift=13cm]
       \node[mn] (c) at (0,0) {};
       \foreach \i/\x in {1/-3,2/-1.5,3/0,4/1.5,5/3} {\node[mn] (a\i) at (\x,-2.2) {};}
       \foreach \i in {1,2,4,5} {\draw[ma, white!30] (c) -- (a\i);}
@@ -67,7 +67,7 @@
       \node[text=orange, font=\Large\bfseries] at (-3,-5.3) {Modèles};
       \node[text=bleu, font=\Large\bfseries] at (3,-5.3) {Humains};
       \node[text=vert, font=\huge\bfseries] at (0,1.2) {Convergence};
-    \end{scope}
+    \end{scope}}
   \end{tikzpicture}
 
   \vspace{0.3em}
@@ -75,10 +75,10 @@
     \column{.48\textwidth}
     \small Procédures différentes : le modèle ne nous apprend rien sur le cerveau.
     \column{.48\textwidth}
-    \small Une \textbf{même procédure} sur deux supports : le modèle devient une loupe sur le cerveau.
+    \visible<2->{\small Une \textbf{même procédure} sur deux supports : le modèle devient une loupe sur le cerveau.}
   \end{columns}
   \vspace{0.4em}
-  \cle{On ne voit pas l'algorithme directement : on l'infère en comparant les réponses, mot par mot.}
+  \visible<3->{\cle{On ne voit pas l'algorithme directement : on l'infère en comparant les réponses, mot par mot.}}
 \end{frame}
 
 % ---------------------------------------------------------------------
@@ -116,14 +116,14 @@
         \item Sa surprise prédit en partie les temps de lecture.
       \end{itemize}}
     \column{.48\textwidth}
-    \carte[rouge]{Ce que l'on ne sait pas}{%
+    \visible<2->{\carte[rouge]{Ce que l'on ne sait pas}{%
       \begin{itemize}
         \item Si le modèle utilise le \textbf{même algorithme} que le cerveau.
         \item Pourquoi les plus grands modèles ne sont pas toujours plus « humains ».
         \item Ce qui vaut hors de l'anglais, où sont presque toutes les données.
-      \end{itemize}}
+      \end{itemize}}}
   \end{columns}
   \vspace{0.2em}
-  \cle{Prédire n'est pas expliquer. Pour passer de la corrélation au mécanisme, il faut ouvrir la boîte.}
+  \visible<3->{\cle{Prédire n'est pas expliquer. Pour passer de la corrélation au mécanisme, il faut ouvrir la boîte.}}
   \src{Schrimpf et al., \emph{PNAS} 2021 ; Goldstein et al., \emph{Nat. Neurosci.} 2022 ; Caucheteux \& King, \emph{Commun. Biol.} 2022 ; Oh \& Schuler, TACL 2023}
 \end{frame}

@@ -74,9 +74,9 @@
       \node[bx, fill=orange!25!fondclair, draw=orange, text=orange] (md) at (3.3,-1.15) {Modèle d'IA\\{\scriptsize\normalfont tout est accessible}};
       \draw[ar] (in) -- (br.west);
       \draw[ar] (in) -- (md.west);
-      \node[font=\small, text=jaune, align=center] (cmp) at (6.1,0) {Comparer\\les réponses};
+      \visible<2->{\node[font=\small, text=jaune, align=center] (cmp) at (6.1,0) {Comparer\\les réponses};
       \draw[ar, jaune] (br.east) -- (cmp);
-      \draw[ar, jaune] (md.east) -- (cmp);
+      \draw[ar, jaune] (md.east) -- (cmp);}
     \end{tikzpicture}
     \column{.42\textwidth}
     \small
@@ -87,7 +87,7 @@
     \end{itemize}
   \end{columns}
   \vspace{0.6em}
-  \cle{Un modèle d'IA est une théorie que l'on peut faire tourner, interroger et casser.}
+  \visible<2->{\cle{Un modèle d'IA est une théorie que l'on peut faire tourner, interroger et casser.}}
 \end{frame}
 
 \begin{frame}{Le fil de l'exposé}
