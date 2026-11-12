@@ -2,26 +2,48 @@
 %  Introduction (~5 min) : l'IA n'est pas seulement ChatGPT
 % =====================================================================
 
-\begin{frame}{Quand on dit « intelligence artificielle »\dots}
-  \centering
-  \begin{tikzpicture}[
-      bulle/.style={rounded corners=8pt, fill=fondclair, text=texte, text width=7.2cm, inner sep=8pt, font=\small}]
-    \node[bulle, anchor=west] (q) at (0,0) {\textbf{Vous :} Explique-moi comment fonctionne le cerveau.};
-    \node[bulle, fill=bordeaux, anchor=east, text width=7.6cm] (r) at (12.6,-1.35)
-      {\textbf{ChatGPT :} Le cerveau est un organe composé d'environ 86 milliards de neurones\dots};
-  \end{tikzpicture}
+% Tuile photo recadrée pour remplir la case :
+% \tuile{largeur}{hauteur}{width=.. ou height=.. (côté qui couvre la case)}{fichier}{légende}
+\newcommand{\tuile}[5]{%
+  \begin{tikzpicture}
+    \begin{scope}
+      \clip (0,0) rectangle (#1,#2);
+      \node at (0.5*#1,0.5*#2) {\includegraphics[#3]{#4}};
+      \fill[fond, opacity=0.75] (0,0) rectangle (#1,0.38cm);
+    \end{scope}
+    \node[text=texte, font=\tiny, inner sep=0pt] at (0.5*#1,0.19cm) {#5};
+  \end{tikzpicture}}
 
-  \vspace{0.8em}
-  \visible<2->{%
-  {\large \dots on pense presque toujours à \jaun{\textbf{ChatGPT}}.}\\[0.6em]
-  }
-  \visible<3->{%
-  Mais les chatbots ne sont qu'\textbf{une} application d'une idée beaucoup plus large :\\
-  \jaun{des systèmes qui apprennent à partir de données}.
-  }
+\begin{frame}{Mon parcours : de Conakry à Paris}
+  \begin{columns}[c,onlytextwidth]
+    \column{.62\textwidth}
+    \begin{tikzpicture}[
+        pt/.style={circle, fill=jaune, minimum size=0.28cm, inner sep=0pt},
+        ent/.style={anchor=west, text width=8.2cm, align=left, font=\footnotesize, text=texte}]
+      \draw[gris, line width=1pt] (0,0.15) -- (0,-5.15);
+      \foreach \y/\an/\quoi/\ou in {
+          0/2019/{Bac, Terminale Sciences mathématiques}/{Institution Sainte-Marie de Dixinn, Conakry},
+          -1.25/2019--2022/{Licence d'informatique}/{Univ. Bretagne Occidentale (Brest) \& Univ. du Québec à Rimouski},
+          -2.5/2022--2024/{M1 Data Science, puis M2 MVA}/{M1 : Université Paris-Saclay \textperiodcentered{} M2 Mathématiques, Vision, Apprentissage : ENS Paris-Saclay},
+          -3.75/2024--2025/{Ingénieur de recherche}/{Institut Pasteur, Paris},
+          -5.0/Depuis mai 2026/{Doctorant en sciences cognitives}/{LSCP, École normale supérieure (rue d'Ulm), Paris}}{
+        \node[pt] at (0,\y) {};
+        \node[ent] at (0.3,\y) {{\color{jaune}\bfseries\an}\enspace\textbf{\quoi}\\{\scriptsize\color{gris}\ou}};}
+    \end{tikzpicture}
+    \column{.36\textwidth}
+    \raggedleft
+    \IfFileExists{images/photo_boubacar.jpg}%
+      {\tuile{2.45cm}{3.1cm}{width=2.45cm}{images/photo_boubacar.jpg}{Boubacar Sow}}%
+      {\tikz\node[minimum width=2.45cm, minimum height=3.1cm, fill=fondclair, draw=gris, dashed, text=gris, font=\scriptsize, align=center] {Photo\\à venir};}%
+    \hspace{0.15cm}%
+    \tuile{2.45cm}{3.1cm}{width=2.45cm}{images/ens_ulm.jpg}{ENS, rue d'Ulm}\\[0.15cm]
+    \tuile{2.45cm}{2.1cm}{height=2.1cm}{images/ens_paris_saclay.jpg}{ENS Paris-Saclay}%
+    \hspace{0.15cm}%
+    \tuile{2.45cm}{2.1cm}{height=2.1cm}{images/ens_ulm2.jpg}{ENS, la cour}
+  \end{columns}
 \end{frame}
 
-\begin{frame}{L'IA est aussi un instrument scientifique}
+\begin{frame}{L'IA, ce n'est pas que ChatGPT}
   \begin{columns}[T,onlytextwidth]
     \column{.32\textwidth}
     \carte[vert]{Biologie}{%
