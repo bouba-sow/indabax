@@ -1,94 +1,27 @@
 % =====================================================================
 %  Partie 3 (~11 min) : ouvrir la boîte -- langage, mémoire, pensée
 % =====================================================================
-\partie{Ouvrir la boîte}{Ouvrir la boîte : langage, mémoire, pensée}
-
-% Cerveau schématique avec régions colorées (coordonnées relatives à l'image)
-\newcommand{\cerveau}[2]{%
-  \begin{tikzpicture}
-    \node[inner sep=0pt, anchor=south west] (im) at (0,0) {\photo{height=#1}{images/cerveau_lobes.png}};
-    \begin{scope}[x={(im.south east)}, y={(im.north west)}]#2\end{scope}
-  \end{tikzpicture}}
-\newcommand{\reseaulangage}{%
-  \fill[rouge, opacity=0.75] (0.235,0.47) ellipse (0.07 and 0.075);
-  \fill[rouge, opacity=0.75, rotate around={-8:(0.53,0.36)}] (0.53,0.36) ellipse (0.20 and 0.05);
-  \fill[rouge, opacity=0.6] (0.30,0.62) ellipse (0.05 and 0.05);}
-
-% ---------------------------------------------------------------------
-\begin{frame}{Pourquoi étudier le langage ? Pour soigner}
-  \begin{columns}[c,onlytextwidth]
-    \column{.42\textwidth}
-    \centering
-    \cerveau{3.6cm}{%
-      \fill[fond, opacity=0.85] (0.25,0.50) ellipse (0.09 and 0.10);
-      \draw[jaune, line width=1pt] (0.25,0.50) ellipse (0.09 and 0.10);
-      \node[font=\scriptsize\bfseries, text=jaune, fill=fond, rounded corners=2pt, inner sep=2pt] at (0.25,0.22) {lésion après un AVC};
-      \draw[jaune, line width=0.8pt] (0.25,0.27) -- (0.25,0.40);}\\[0.2em]
-    {\scriptsize\color{gris}schéma}
-    \column{.56\textwidth}
-    \small
-    Après un accident vasculaire cérébral (AVC), environ \textbf{un patient sur trois} perd une partie de sa capacité à parler ou à comprendre : c'est l'\jaun{\textbf{aphasie}}.\\[0.8em]
-    Savoir \textbf{comment} le cerveau traite le langage aide à :
-    \begin{itemize}
-      \item<2-> mieux \textbf{diagnostiquer} ce qui est atteint ;
-      \item<3-> mieux \textbf{rééduquer} ;
-      \item<4-> et même \textbf{redonner la parole} (partie 5).
-    \end{itemize}
-  \end{columns}
-  \vspace{0.4em}
-  \visible<5->{\cle{Pour réparer un système, il faut d'abord comprendre comment il fonctionne.}}
-  \src{Berthier, \emph{Drugs \& Aging} 2005 (aphasie chez 21 à 38\,\% des patients après un AVC)}
-\end{frame}
-
-
+\partie{Ouvrir la boîte}{Ouvrir la boîte : langage, pensée, mémoire}
 
 % ---------------------------------------------------------------------
 \begin{frame}{Un cas d'étude : l'accord sujet-verbe}
-  \begin{columns}[c,onlytextwidth]
-    \column{.44\textwidth}
-    \centering
-    \begin{tikzpicture}[
-        lv/.style={rounded corners=4pt, fill=fondclair, text=texte, align=center, text width=4.4cm, minimum height=0.8cm, font=\small},
-        ar/.style={-{Stealth}, jaune, line width=1pt}]
-      \node[lv] (b) at (0,0) {\textbf{Syntaxe} : la structure};
-      \visible<2->{\node[lv] (c) at (0,-1.15) {\textbf{Dépendances} à distance};
-      \draw[ar] (b) -- (c);}
-      \visible<3->{\node[lv, fill=jaune, text=fond] (d) at (0,-2.3) {\textbf{Accord sujet-verbe}};
-      \draw[ar] (0,-0.75) -- (d);}
-    \end{tikzpicture}
-    \column{.54\textwidth}
-    \small
-    Pourquoi ce phénomène précis ?
-    \begin{itemize}
-      \item<4-> Il dépend de la \textbf{structure}, pas seulement des mots voisins.
-      \item<5-> Il se \textbf{mesure} facilement : la bonne réponse est connue.
-      \item<6-> On peut poser \textbf{la même question} à un humain et à un modèle.
-    \end{itemize}
-  \end{columns}
-  \vspace{0.8em}
-  \visible<7->{\cle{Un petit phénomène bien choisi pour tester une grande question : le modèle apprend-il la structure ?}}
-\end{frame}
-
-% ---------------------------------------------------------------------
-\begin{frame}{L'accord : une fenêtre sur la syntaxe}
   \centering
-  \vspace{0.3em}
-  \begin{tikzpicture}[w/.style={font=\large, text=texte, inner sep=2pt}]
+  \begin{tikzpicture}[w/.style={font=\normalsize, text=texte, inner sep=2pt}]
     \node[w] (a) at (0,0) {Les};
-    \node[w, text=jaune, font=\large\bfseries, right=0.3cm of a] (b) {clés};
+    \node[w, text=jaune, font=\normalsize\bfseries, right=0.3cm of a] (b) {clés};
     \node[w, right=0.3cm of b] (c) {que};
     \node[w, right=0.3cm of c] (d) {l'homme};
     \node[w, right=0.3cm of d] (e) {près};
     \node[w, right=0.3cm of e] (f) {de};
     \node[w, right=0.3cm of f] (g) {l'armoire};
     \node[w, right=0.3cm of g] (h) {tient};
-    \node[w, text=jaune, font=\large\bfseries, right=0.3cm of h] (i) {sont};
+    \node[w, text=jaune, font=\normalsize\bfseries, right=0.3cm of h] (i) {sont};
     \node[w, right=0.3cm of i] (j) {\dots};
-    \visible<2->{\draw[-{Stealth}, jaune, line width=1.4pt] (b.north) to[out=50, in=130] node[above, font=\scriptsize] {accord à longue distance} (i.north);}
-    \visible<3->{\draw[-{Stealth}, rouge, line width=1pt, dashed] (g.south) to[out=-50, in=-130] node[below, font=\scriptsize, text=rouge] {« attracteur » au singulier} (i.south);}
+    \visible<2->{\draw[-{Stealth}, jaune, line width=1.4pt] (b.north) to[out=30, in=150] node[above, font=\scriptsize] {accord à longue distance} (i.north);}
+    \visible<3->{\draw[-{Stealth}, rouge, line width=1pt, dashed] (g.south) to[out=-40, in=-140] node[below, font=\scriptsize, text=rouge] {« attracteur » au singulier} (i.south);}
   \end{tikzpicture}
 
-  \vspace{0.6em}
+  \vspace{-0.6em}
   \begin{columns}[T,onlytextwidth]
     \column{.48\textwidth}
     \small
@@ -99,10 +32,13 @@
     \column{.48\textwidth}
     \small
     \begin{itemize}
-      \item<4-> Un réseau qui n'a vu que des phrases apprend-il cette structure ?
-      \item<5-> Et si oui, \textbf{comment} ? On peut regarder chaque neurone.
+      \item<4-> La bonne réponse est connue : même question pour un \textbf{humain} et un \textbf{modèle}.
+      \item<5-> Un modèle qui n'a vu que des phrases apprend-il la structure ? \textbf{Comment} ?
     \end{itemize}
   \end{columns}
+  \vspace{-0.2em}
+  \visible<6->{\cle{Un petit phénomène bien choisi pour tester une grande question.}}
+  \raggedright
   \src{Linzen, Dupoux \& Goldberg, TACL 2016}
 \end{frame}
 
@@ -123,7 +59,7 @@
     \column{.44\textwidth}
     \small
     \begin{itemize}
-      \item<1-> Dans un réseau LSTM de 1\,300 unités, \textbf{deux unités} gardent le nombre du sujet en mémoire.
+      \item<1-> Dans un réseau LSTM (plus ancien que ChatGPT) de 1\,300 unités, \textbf{deux unités} gardent le nombre du sujet en mémoire.
       \item<2-> Un petit circuit « syntaxique » décide quand les mettre à jour.
       \item<3-> Si on \textbf{supprime} ces unités, le modèle fait des erreurs d'accord.
     \end{itemize}
@@ -133,6 +69,29 @@
   \src{Lakretz et al., NAACL 2019}
 \end{frame}
 
+% ---------------------------------------------------------------------
+\begin{frame}{Pensée : le langage n'est pas la pensée}
+  \begin{columns}[c,onlytextwidth]
+    \column{.44\textwidth}
+    \centering
+    \cerveau{3.5cm}{%
+      \reseaulangage
+      \visible<2->{\fill[bleu, opacity=0.75] (0.20,0.78) ellipse (0.07 and 0.06);
+      \fill[bleu, opacity=0.75] (0.62,0.80) ellipse (0.09 and 0.06);
+      \fill[bleu, opacity=0.6] (0.12,0.60) ellipse (0.04 and 0.05);}}\\[0.2em]
+    {\scriptsize \textcolor{rouge}{\textbf{réseau du langage}} \quad \textcolor{bleu}{\textbf{réseau « multi-demande »}}\\\color{gris}(schéma)}
+    \column{.54\textwidth}
+    \small
+    \begin{itemize}
+      \item<1-> \textcolor{rouge}{\textbf{Langage}} : comprendre et produire des phrases.
+      \item<2-> \textcolor{bleu}{\textbf{Multi-demande}} : calcul, logique, résolution de problèmes.
+      \item<3-> Certains patients aphasiques, au langage très atteint, peuvent encore \textbf{calculer et raisonner}.
+    \end{itemize}
+  \end{columns}
+  \vspace{0.5em}
+  \visible<4->{\cle{Chez l'humain, langage et pensée s'appuient sur des réseaux en grande partie distincts. Pour les IA, la question reste ouverte.}}
+  \src{Fedorenko, Piantadosi \& Gibson, \emph{Nature} 2024}
+\end{frame}
 
 % ---------------------------------------------------------------------
 \begin{frame}{Mémoire : garder le sujet en tête jusqu'au verbe}
@@ -161,28 +120,4 @@
   \vspace{0.6em}
   \visible<3->{\cle{Si un modèle à la mémoire limitée bute sur les mêmes phrases que nous, c'est que notre difficulté vient de la mémoire.}}
   \src{Gibson, \emph{Cognition} 1998 ; Futrell, Gibson \& Levy, \emph{Cognitive Science} 2020}
-\end{frame}
-
-% ---------------------------------------------------------------------
-\begin{frame}{Pensée : le langage n'est pas la pensée}
-  \begin{columns}[c,onlytextwidth]
-    \column{.44\textwidth}
-    \centering
-    \cerveau{3.5cm}{%
-      \reseaulangage
-      \visible<2->{\fill[bleu, opacity=0.75] (0.20,0.78) ellipse (0.07 and 0.06);
-      \fill[bleu, opacity=0.75] (0.62,0.80) ellipse (0.09 and 0.06);
-      \fill[bleu, opacity=0.6] (0.12,0.60) ellipse (0.04 and 0.05);}}\\[0.2em]
-    {\scriptsize \textcolor{rouge}{\textbf{réseau du langage}} \quad \textcolor{bleu}{\textbf{réseau « multi-demande »}}\\\color{gris}(schéma)}
-    \column{.54\textwidth}
-    \small
-    \begin{itemize}
-      \item<1-> \textcolor{rouge}{\textbf{Langage}} : comprendre et produire des phrases.
-      \item<2-> \textcolor{bleu}{\textbf{Multi-demande}} : calcul, logique, résolution de problèmes.
-      \item<3-> Certains patients aphasiques, au langage très atteint, peuvent encore \textbf{calculer et raisonner}.
-    \end{itemize}
-  \end{columns}
-  \vspace{0.5em}
-  \visible<4->{\cle{Chez l'humain, langage et pensée s'appuient sur des réseaux en grande partie distincts. Pour les IA, la question reste ouverte.}}
-  \src{Fedorenko, Piantadosi \& Gibson, \emph{Nature} 2024}
 \end{frame}

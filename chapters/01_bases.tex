@@ -3,6 +3,17 @@
 % =====================================================================
 \partie{Deux systèmes}{Deux systèmes qui traitent le langage}
 
+% Cerveau schématique avec régions colorées (coordonnées relatives à l'image)
+\newcommand{\cerveau}[2]{%
+  \begin{tikzpicture}
+    \node[inner sep=0pt, anchor=south west] (im) at (0,0) {\photo{height=#1}{images/cerveau_lobes.png}};
+    \begin{scope}[x={(im.south east)}, y={(im.north west)}]#2\end{scope}
+  \end{tikzpicture}}
+\newcommand{\reseaulangage}{%
+  \fill[rouge, opacity=0.75] (0.235,0.47) ellipse (0.07 and 0.075);
+  \fill[rouge, opacity=0.75, rotate around={-8:(0.53,0.36)}] (0.53,0.36) ellipse (0.20 and 0.05);
+  \fill[rouge, opacity=0.6] (0.30,0.62) ellipse (0.05 and 0.05);}
+
 % ---------------------------------------------------------------------
 \begin{frame}{Un modèle de langage : prédire le mot suivant}
   \begin{columns}[c,onlytextwidth]
@@ -91,6 +102,32 @@
 \end{frame}
 
 % ---------------------------------------------------------------------
+\begin{frame}{Pourquoi étudier le langage ? Pour soigner}
+  \begin{columns}[c,onlytextwidth]
+    \column{.42\textwidth}
+    \centering
+    \cerveau{3.6cm}{%
+      \fill[fond, opacity=0.85] (0.25,0.50) ellipse (0.09 and 0.10);
+      \draw[jaune, line width=1pt] (0.25,0.50) ellipse (0.09 and 0.10);
+      \node[font=\scriptsize\bfseries, text=jaune, fill=fond, rounded corners=2pt, inner sep=2pt] at (0.25,0.22) {lésion après un AVC};
+      \draw[jaune, line width=0.8pt] (0.25,0.27) -- (0.25,0.40);}\\[0.2em]
+    {\scriptsize\color{gris}schéma}
+    \column{.56\textwidth}
+    \small
+    Après un accident vasculaire cérébral (AVC), environ \textbf{un patient sur trois} perd une partie de sa capacité à parler ou à comprendre : c'est l'\jaun{\textbf{aphasie}}.\\[0.8em]
+    Savoir \textbf{comment} le cerveau traite le langage aide à :
+    \begin{itemize}
+      \item<2-> mieux \textbf{diagnostiquer} ce qui est atteint ;
+      \item<3-> mieux \textbf{rééduquer} ;
+      \item<4-> et même \textbf{redonner la parole} (partie 5).
+    \end{itemize}
+  \end{columns}
+  \vspace{0.4em}
+  \visible<5->{\cle{Pour réparer un système, il faut d'abord comprendre comment il fonctionne.}}
+  \src{Berthier, \emph{Drugs \& Aging} 2005 (aphasie chez 21 à 38\,\% des patients après un AVC)}
+\end{frame}
+
+% ---------------------------------------------------------------------
 \begin{frame}{Côté humain : le réseau du langage}
   \begin{columns}[c,onlytextwidth]
     \column{.44\textwidth}
@@ -117,11 +154,10 @@
     \begin{itemize}
       \item<1-> Des régions \textbf{frontales} et \textbf{temporales}, surtout à gauche, répondent aux phrases.
       \item<3-> Il répond au langage \textbf{écrit comme parlé}, dans les 45 langues testées.
-      \item<4-> Il répond \textbf{peu} au calcul, à la musique ou à la logique : ces tâches mobilisent un \textbf{autre réseau}.
     \end{itemize}
   \end{columns}
   \vspace{0.4em}
-  \visible<5->{\cle{Cible de nos comparaisons : l'activité de ce réseau pendant la lecture ou l'écoute.}}
+  \visible<4->{\cle{Cible de nos comparaisons : l'activité de ce réseau pendant la lecture ou l'écoute.}}
   \src{Fedorenko, Ivanova \& Regev, \emph{Nat. Rev. Neurosci.} 2024 ; Malik-Moraleda et al., \emph{Nat. Neurosci.} 2022 ; image des gyres : © 2011 UTHealth}
 \end{frame}
 

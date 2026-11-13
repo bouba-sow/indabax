@@ -87,8 +87,8 @@
       at ([xshift=0.9cm,yshift=-5.85cm]current page.north west) {\insertauthor};
     \node[anchor=north west, text width=12cm, align=left, text=gris, font=\small]
       at ([xshift=0.9cm,yshift=-6.5cm]current page.north west) {\insertinstitute};
-    \node[anchor=north west, text=jaune, font=\small]
-      at ([xshift=0.9cm,yshift=-7.55cm]current page.north west) {\insertdate};
+    \node[anchor=north west, text=jaune, font=\small, align=left]
+      at ([xshift=0.9cm,yshift=-7.45cm]current page.north west) {\insertdate};
     \node[anchor=south east] at ([xshift=-0.7cm,yshift=0.5cm]current page.south east) (logos) {\inserttitlegraphic};
     \node[anchor=south east, inner sep=0pt] at ([xshift=-0.45cm,yshift=0.05cm]logos.south west)
       {\includegraphics[height=1.15cm]{images/logo_indabax_guinee_transparent.png}};
@@ -104,7 +104,7 @@
 \newcommand{\etape}[1]{%
   \ifcase#1\or Deux systèmes\\qui traitent le langage%
   \or Comparer\\le modèle au cerveau%
-  \or Ouvrir la boîte :\\langage, mémoire, pensée%
+  \or Ouvrir la boîte :\\langage, pensée, mémoire%
   \or Mon travail :\\des modèles plus humains ?%
   \or Application :\\décoder le langage\fi}
 \newcommand{\roadmap}[1]{%
@@ -145,7 +145,7 @@
 %  Macros de mise en page
 % ---------------------------------------------------------------
 % Source en bas de slide
-\newcommand{\src}[1]{\par\vfill{\fontsize{6.5}{8}\selectfont\color{gris}#1}\par\vspace{0.1cm}}
+\newcommand{\src}[1]{\par\vfill{\fontsize{6.5}{8}\selectfont\color{gris}#1}\par\vspace{0.25cm}}
 % Message clé : encadré bordeaux, texte jaune
 \newcommand{\cle}[1]{%
   \begin{tcolorbox}[enhanced, colback=bordeaux, colframe=bordeaux, arc=3pt,

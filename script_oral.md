@@ -1,6 +1,6 @@
 # Script oral : « L'intelligence artificielle à la rencontre du cerveau humain »
 
-IndabaX Guinée 2026 — Boubacar Sow
+IndabaX Guinée 2026 (13 novembre 2026) — Boubacar Sow
 
 Conventions :
 - **[clic]** = passer à l'étape suivante de la slide (une animation).
@@ -39,7 +39,7 @@ Quand on dit « intelligence artificielle » aujourd'hui, presque tout le monde 
 
 En biologie, par exemple, AlphaFold prédit la forme en trois dimensions des protéines à partir de leur séquence. Ce travail a reçu le prix Nobel de chimie en 2024.
 
-**[clic]** En médecine, un réseau de neurones a permis à une patiente paralysée, qui ne pouvait plus parler, de communiquer : il transforme son activité cérébrale en texte et en voix. On y reviendra à la fin.
+**[clic]** En médecine, un réseau de neurones a permis à une patiente qui ne pouvait plus parler de communiquer à nouveau : il transforme son activité cérébrale en texte à l'écran. On y reviendra à la fin.
 
 **[clic]** Et en neurosciences, ce qui nous intéresse aujourd'hui : les réseaux de neurones artificiels servent de modèles du cerveau. Ce sont des hypothèses que l'on peut tester.
 
@@ -68,7 +68,7 @@ Voici la question qui va nous guider : que nous apprend la comparaison entre un 
 L'exposé a cinq étapes :
 1. d'abord les bases, les deux systèmes qui traitent le langage ;
 2. ensuite, comment on les compare ;
-3. puis on ouvre la boîte, pour regarder les mécanismes : langage, mémoire, pensée ;
+3. puis on ouvre la boîte, pour regarder les mécanismes : langage, pensée, mémoire ;
 4. je vous présenterai mon propre travail ;
 5. et on finira par une application concrète : décoder le langage à partir du cerveau.
 
@@ -120,21 +120,36 @@ Le modèle nous donne un deuxième signal, très simple : la surprise. C'est cet
 
 ---
 
-## Slide 8 — Côté humain : le réseau du langage
+## Slide 8 — Pourquoi étudier le langage ? Pour soigner
 
-Passons au cerveau. Voici d'abord quelques repères anatomiques : les gyres, les « plis » du cortex, dans le lobe frontal et le lobe temporal. Le langage s'appuie sur des régions frontales et temporales, surtout dans l'hémisphère gauche.
+Voilà pour le côté IA. Avant de passer au cerveau, une question : pourquoi s'intéresser au langage dans le cerveau ? Il y a beaucoup de raisons ; je vais en retenir une : soigner.
+
+Après un accident vasculaire cérébral, un AVC, environ un patient sur trois perd une partie de sa capacité à parler ou à comprendre. C'est ce qu'on appelle l'aphasie.
+
+Comprendre comment le cerveau traite le langage permet :
+**[clic]** de mieux diagnostiquer ce qui est atteint,
+**[clic]** de mieux rééduquer,
+**[clic]** et même, on le verra à la fin, de redonner la parole.
+
+**[clic]** Pour réparer un système, il faut d'abord comprendre comment il fonctionne.
+
+Alors, que sait-on du langage dans le cerveau ?
+
+---
+
+## Slide 9 — Côté humain : le réseau du langage
+
+Voici d'abord quelques repères anatomiques : les gyres, les « plis » du cortex, dans le lobe frontal et le lobe temporal. Le langage s'appuie sur des régions frontales et temporales, surtout dans l'hémisphère gauche.
 
 **[clic]** En rouge, schématiquement, ce qu'on appelle le réseau du langage.
 
-**[clic]** Ce réseau répond au langage écrit comme parlé. Une étude l'a retrouvé dans les 45 langues testées.
-
-**[clic]** Et il répond peu au calcul mental, à la musique ou à la logique. Ces tâches utilisent un autre réseau. On y reviendra quand on parlera de la pensée.
+**[clic]** Ce réseau répond au langage écrit comme parlé. Une étude l'a retrouvé dans les 45 langues testées. Et il répond peu au calcul ou à la musique : on y reviendra quand on parlera de la pensée.
 
 **[clic]** C'est l'activité de ce réseau, pendant que les gens lisent ou écoutent, que l'on va chercher à prédire avec nos modèles.
 
 ---
 
-## Slide 9 — Mesurer le cerveau qui comprend
+## Slide 10 — Mesurer le cerveau qui comprend
 
 Comment mesure-t-on cette activité ? Il existe plusieurs techniques :
 - l'**IRMf** mesure le flux sanguin. Elle est précise dans l'espace, au millimètre, mais lente ;
@@ -146,7 +161,7 @@ Comment mesure-t-on cette activité ? Il existe plusieurs techniques :
 
 ---
 
-## Slide 10 — Mesurer le comportement : le temps de lecture
+## Slide 11 — Mesurer le comportement : le temps de lecture
 
 On peut aussi mesurer le comportement, sans regarder le cerveau : par exemple le temps qu'on met à lire chaque mot. Soit le lecteur appuie sur une touche pour faire apparaître chaque mot, soit une caméra suit le regard.
 
@@ -164,7 +179,7 @@ On a nos deux systèmes. Maintenant : comment les comparer, et qu'est-ce que la 
 
 ---
 
-## Slide 11 — Trois niveaux pour décrire un système qui calcule
+## Slide 12 — Trois niveaux pour décrire un système qui calcule
 
 Pour réfléchir à cette question, on utilise un cadre proposé par David Marr en 1982. Il distingue trois niveaux pour décrire un système qui calcule.
 
@@ -178,7 +193,7 @@ Le niveau **computationnel** : quel problème est résolu ? Par exemple, additio
 
 ---
 
-## Slide 12 — Humains et modèles : même algorithme ?
+## Slide 13 — Humains et modèles : même algorithme ?
 
 Appliquons cela au langage. Le modèle et le cerveau résolvent le même problème : comprendre et prédire la suite d'une phrase. Le support est clairement différent : des neurones d'un côté, des puces de l'autre.
 
@@ -190,7 +205,7 @@ Premier scénario : la **divergence**. Ils utilisent des procédures différente
 
 ---
 
-## Slide 13 — La méthode : prédire le cerveau à partir du modèle
+## Slide 14 — La méthode : prédire le cerveau à partir du modèle
 
 Concrètement, voici comment on compare. On prend une même histoire. On la fait lire ou écouter à des personnes, pendant qu'on enregistre leur cerveau ou leur lecture. On la donne aussi au modèle, dont on extrait les représentations et la surprise. Puis on apprend une correspondance, une régression, entre les deux.
 
@@ -200,7 +215,7 @@ Concrètement, voici comment on compare. On prend une même histoire. On la fait
 
 ---
 
-## Slide 14 — Ce que l'on sait, ce que l'on ne sait pas
+## Slide 15 — Ce que l'on sait, ce que l'on ne sait pas
 
 Où en est-on aujourd'hui ? Ce que l'on sait :
 - les modèles de langage prédisent une partie de l'activité du réseau du langage ;
@@ -216,63 +231,31 @@ Où en est-on aujourd'hui ? Ce que l'on sait :
 
 ---
 
-## Partie 3 — Ouvrir la boîte : langage, mémoire, pensée
+## Partie 3 — Ouvrir la boîte : langage, pensée, mémoire
 
-C'est ce qu'on va faire maintenant : ouvrir la boîte.
-
----
-
-## Slide 15 — Pourquoi étudier le langage ? Pour soigner
-
-Mais d'abord, pourquoi s'intéresser au langage ? Il y a beaucoup de raisons ; je vais en retenir une : soigner.
-
-Après un accident vasculaire cérébral, un AVC, environ un patient sur trois perd une partie de sa capacité à parler ou à comprendre. C'est ce qu'on appelle l'aphasie.
-
-Comprendre comment le cerveau traite le langage permet :
-**[clic]** de mieux diagnostiquer ce qui est atteint,
-**[clic]** de mieux rééduquer,
-**[clic]** et même, on le verra à la fin, de redonner la parole.
-
-**[clic]** Pour réparer un système, il faut d'abord comprendre comment il fonctionne.
-
-Or le langage est difficile à étudier directement dans le cerveau : il va très vite, nos mesures sont grossières, et on ne peut pas intervenir chez un volontaire. D'où l'intérêt d'un modèle, que l'on peut ouvrir entièrement. Le langage a plusieurs niveaux, des sons jusqu'au récit ; aujourd'hui, je vais me concentrer sur un seul : la structure de la phrase.
+C'est ce qu'on va faire maintenant : ouvrir la boîte. Le langage a plusieurs niveaux, des sons jusqu'au récit ; je vais me concentrer sur un seul : la structure de la phrase.
 
 ---
 
 ## Slide 16 — Un cas d'étude : l'accord sujet-verbe
 
-On part de la syntaxe, c'est-à-dire la structure de la phrase.
-
-**[clic]** Dans cette structure, il y a des dépendances à distance : des mots liés entre eux, même s'ils sont éloignés.
-
-**[clic]** Et l'exemple le plus simple de dépendance, c'est l'accord entre le sujet et le verbe.
-
-Pourquoi ce phénomène précis ?
-**[clic]** Parce qu'il dépend de la structure, pas seulement des mots voisins.
-**[clic]** Parce qu'il se mesure facilement : la bonne réponse est connue.
-**[clic]** Et parce qu'on peut poser exactement la même question à un humain et à un modèle.
-
-**[clic]** C'est un petit phénomène, bien choisi, pour tester une grande question : le modèle apprend-il la structure ?
-
----
-
-## Slide 17 — L'accord : une fenêtre sur la syntaxe
-
-Reprenons notre phrase, un peu plus longue : « Les clés que l'homme près de l'armoire tient sont… ».
+Notre cas d'étude, c'est l'accord entre le sujet et le verbe. Reprenons la phrase de tout à l'heure, en un peu plus long : « Les clés que l'homme près de l'armoire tient sont… ».
 
 **[clic]** Le verbe « sont » s'accorde avec « clés », au pluriel. Pas avec le mot le plus proche.
 
 **[clic]** Et il y a un piège : « l'armoire », au singulier, juste avant le verbe. On appelle ça un attracteur. Si on suivait l'ordre des mots, on écrirait « est ». L'accord suit la structure de la phrase, pas l'ordre des mots.
 
-**[clic]** Question : un réseau de neurones qui n'a vu que des phrases, sans aucune règle de grammaire, apprend-il cette structure ?
+**[clic]** Pourquoi ce phénomène ? Parce que la bonne réponse est connue, et qu'on peut poser exactement la même question à un humain et à un modèle.
 
-**[clic]** Et si oui, comment ? L'avantage du modèle, c'est qu'on peut regarder chaque neurone.
+**[clic]** La question devient : un réseau de neurones qui n'a vu que des phrases, sans aucune règle de grammaire, apprend-il cette structure ? Et si oui, comment ? L'avantage du modèle, c'est qu'on peut regarder chaque neurone.
+
+**[clic]** C'est un petit phénomène, bien choisi, pour tester une grande question.
 
 ---
 
-## Slide 18 — Dans le modèle : des « neurones du nombre »
+## Slide 17 — Dans le modèle : des « neurones du nombre »
 
-C'est ce qu'ont fait Yair Lakretz et ses collègues, notamment Stanislas Dehaene, en 2019. Dans un réseau de 1 300 unités, ils ont trouvé deux unités qui gardent en mémoire le nombre du sujet : une pour le pluriel, une pour le singulier. Regardez la courbe : l'unité « pluriel » s'active sur « clés » et reste active jusqu'au verbe.
+C'est ce qu'ont fait Yair Lakretz et ses collègues, notamment Stanislas Dehaene, en 2019. Dans un réseau de 1 300 unités, un LSTM, un type de réseau plus ancien et plus simple que ChatGPT, ils ont trouvé deux unités qui gardent en mémoire le nombre du sujet : une pour le pluriel, une pour le singulier. Regardez la courbe : l'unité « pluriel » s'active sur « clés » et reste active jusqu'au verbe.
 
 **[clic]** Un petit circuit, qu'on peut appeler syntaxique, décide à quel moment mettre ces unités à jour.
 
@@ -280,23 +263,13 @@ C'est ce qu'ont fait Yair Lakretz et ses collègues, notamment Stanislas Dehaene
 
 **[clic]** On a donc trouvé un mécanisme précis, testable et manipulable. C'est quelque chose qu'on ne peut pas faire dans un cerveau humain.
 
-Remarquez ce que font ces unités : elles gardent une information en mémoire, du sujet jusqu'au verbe. Ça nous amène à la mémoire.
+Ce mécanisme concerne la structure de la phrase. Mais le langage suffit-il pour penser ? C'est notre volet suivant.
 
 ---
 
-## Slide 19 — Mémoire : garder le sujet en tête jusqu'au verbe
+## Slide 18 — Pensée : le langage n'est pas la pensée
 
-Notre mémoire de travail est limitée. Plus le verbe est loin de son sujet, plus la lecture ralentit. Sur le schéma : en haut, sept mots entre le sujet et le verbe, c'est coûteux ; en bas, ils sont côte à côte, c'est facile.
-
-**[clic]** Si on donne à un modèle une mémoire imparfaite du contexte, comme la nôtre, il reproduit mieux ces difficultés humaines.
-
-**[clic]** Le raisonnement est simple : si un modèle à la mémoire limitée bute sur les mêmes phrases que nous, c'est que notre difficulté vient de la mémoire. Retenez cette idée de donner au modèle une limite « humaine » : c'est le point de départ de mon travail.
-
----
-
-## Slide 20 — Pensée : le langage n'est pas la pensée
-
-Dernier volet : la pensée. On a souvent l'impression que penser, c'est se parler dans sa tête. Mais le cerveau suggère autre chose.
+Deuxième volet : la pensée. On a souvent l'impression que penser, c'est se parler dans sa tête. Mais le cerveau suggère autre chose.
 
 En rouge, le réseau du langage : comprendre et produire des phrases.
 
@@ -306,6 +279,18 @@ En rouge, le réseau du langage : comprendre et produire des phrases.
 
 **[clic]** Chez l'humain, langage et pensée s'appuient donc sur des réseaux en grande partie distincts. Pour les IA comme ChatGPT, qui parlent très bien, la question de savoir si elles « pensent » reste ouverte.
 
+Revenons aux neurones du nombre : ils gardent une information en mémoire, du sujet jusqu'au verbe. Ça nous amène au dernier volet, la mémoire.
+
+---
+
+## Slide 19 — Mémoire : garder le sujet en tête jusqu'au verbe
+
+Notre mémoire de travail est limitée. Plus le verbe est loin de son sujet, plus la lecture ralentit. Sur le schéma : en haut, sept mots entre le sujet et le verbe, c'est coûteux ; en bas, ils sont côte à côte, c'est facile.
+
+**[clic]** Si on donne à un modèle une mémoire imparfaite du contexte, comme la nôtre, il reproduit mieux ces difficultés humaines.
+
+**[clic]** Le raisonnement est simple : si un modèle à la mémoire limitée bute sur les mêmes phrases que nous, c'est que notre difficulté vient de la mémoire. Cette idée, donner à un modèle une limite « humaine », c'est exactement ce que j'ai poussé plus loin dans mon travail.
+
 ---
 
 ## Partie 4 — Mon travail : des modèles plus humains ?
@@ -314,9 +299,9 @@ Je vais maintenant vous présenter mon propre travail.
 
 ---
 
-## Slide 21 — La question
+## Slide 20 — La question
 
-Ma question est la suivante : si l'on donne à un modèle des limites humaines, devient-il plus proche de l'humain ?
+Vous vous souvenez de ce qu'on ne savait pas : pourquoi les plus grands modèles ne sont pas toujours plus « humains ». C'est de là que part ma question : si l'on donne à un modèle des limites humaines, devient-il plus proche de l'humain ?
 
 **[clic]** Première limite : la mémoire. Le modèle oublie progressivement le contexte, comme notre mémoire de travail.
 
@@ -326,7 +311,7 @@ Ma question est la suivante : si l'on donne à un modèle des limites humaines, 
 
 ---
 
-## Slide 22 — Résultat : lecture et cerveau ne vont pas ensemble
+## Slide 21 — Résultat : lecture et cerveau ne vont pas ensemble
 
 Voici le résultat. Chaque point est un modèle. Plus il est à droite, plus il est proche du cerveau. Plus il est en haut, plus il est proche de la lecture humaine.
 
@@ -348,9 +333,9 @@ Pour finir, une application concrète, qui montre que tout cela n'est pas seulem
 
 ---
 
-## Slide 23 — Encoder, décoder : deux directions
+## Slide 22 — Encoder, décoder : deux directions
 
-Jusqu'ici, on a fait ce qu'on appelle de l'encodage : partir du langage et du modèle pour prédire l'activité du cerveau. Le but était de comprendre le cerveau.
+Jusqu'ici, on a comparé le modèle au cerveau, en partant du langage et du modèle pour prédire l'activité du cerveau : c'est ce qu'on appelle l'encodage. Le but était de comprendre le cerveau.
 
 **[clic]** On peut aussi faire l'inverse : décoder, c'est-à-dire partir de l'activité du cerveau pour retrouver les mots. Là, le but est d'aider des personnes.
 
@@ -362,7 +347,7 @@ Je vais vous montrer deux exemples :
 
 ---
 
-## Slide 24 — Redonner la parole : électrodes implantées
+## Slide 23 — Redonner la parole : électrodes implantées
 
 Premier exemple, publié dans *Nature* en 2023. Une patiente atteinte de SLA, une maladie qui paralyse progressivement les muscles, ne peut plus parler de façon intelligible. Des micro-électrodes ont été implantées dans les zones de son cerveau qui contrôlent la parole. Elle tente de prononcer des phrases.
 
@@ -372,11 +357,13 @@ Premier exemple, publié dans *Nature* en 2023. Une patiente atteinte de SLA, un
 
 **[clic]** Et la phrase s'affiche à l'écran.
 
-**[clic]** Les résultats : 9 % d'erreurs sur les mots avec un vocabulaire de 50 mots, et 24 % avec un vocabulaire de 125 000 mots. Et elle peut ainsi communiquer beaucoup plus vite qu'avec les méthodes précédentes.
+**[clic]** Les résultats : 9 % d'erreurs sur les mots avec un vocabulaire de 50 mots, et 24 % avec un vocabulaire de 125 000 mots.
+
+**[clic]** Et la vitesse : 62 mots par minute. C'est beaucoup plus rapide que les méthodes précédentes, mais encore loin des 160 mots par minute d'une conversation normale.
 
 ---
 
-## Slide 25 — Retrouver le sens d'une histoire avec l'IRMf
+## Slide 24 — Retrouver le sens d'une histoire avec l'IRMf
 
 Deuxième exemple, sans chirurgie cette fois : avec l'IRMf. Trois participants ont écouté 16 heures d'histoires dans l'IRM.
 
@@ -392,13 +379,13 @@ Le décodeur fonctionne comme une boucle. Un modèle de langage propose des suit
 
 **[clic]** Il marche même quand la personne imagine une histoire, ou regarde un film muet.
 
-**[clic]** Mais il faut la coopération de la personne : un décodeur entraîné sur quelqu'un ne marche pas sur une autre personne.
+**[clic]** Mais le décodeur est propre à chaque personne : celui entraîné sur quelqu'un ne marche pas sur une autre. Et si la personne résiste, par exemple en pensant à autre chose, il échoue.
 
 **[clic]** Et il faut un IRM : impossible à utiliser au quotidien.
 
 ---
 
-## Slide 26 — Limites et questions éthiques
+## Slide 25 — Limites et questions éthiques
 
 Ces résultats sont impressionnants, mais il faut être lucide.
 
@@ -418,7 +405,7 @@ La précision : on est encore loin d'une conversation fluide, surtout sans chiru
 
 ---
 
-## Slide 27 — Trois messages à retenir
+## Slide 26 — Trois messages à retenir
 
 Si vous ne retenez que trois choses de cet exposé.
 
@@ -430,11 +417,11 @@ Premièrement : l'IA, ce n'est pas que ChatGPT. C'est aussi un instrument scient
 
 ---
 
-## Slide 28 — Et pour la Guinée ?
+## Slide 27 — Et pour la Guinée ?
 
 Et pour nous, en Guinée ? Je pense qu'il y a de vraies opportunités.
 
-Nos langues, d'abord. Presque toutes les données sont en anglais. Le pular, le maninka, le soussou… sont absents. C'est une vraie place à prendre.
+Nos langues, d'abord. Vous vous souvenez : on ne sait pas ce qui vaut hors de l'anglais, parce que presque toutes les données sont en anglais. Le pular, le maninka, le soussou… sont absents. C'est une vraie place à prendre.
 
 **[clic]** Ensuite, ce type de recherche ne demande pas forcément beaucoup de matériel. L'EEG est portable et peu coûteux, et les temps de lecture se mesurent avec un simple ordinateur.
 
