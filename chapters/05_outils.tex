@@ -28,11 +28,10 @@
     \begin{itemize}
       \item<3-> \textbf{Électrodes implantées} : Willett et al.
       \item<4-> \textbf{IRMf} : Tang et al.
-      \item<5-> \textbf{MEG / EEG}, sans chirurgie : équipe de J.-R. King
     \end{itemize}
   \end{columns}
   \vspace{0.4em}
-  \visible<6->{\cle{Les mêmes outils (réseaux de neurones, modèles de langage) servent dans les deux sens.}}
+  \visible<5->{\cle{Les mêmes outils (réseaux de neurones, modèles de langage) servent dans les deux sens.}}
 \end{frame}
 
 % ---------------------------------------------------------------------
@@ -60,17 +59,7 @@
       \item<5-> Erreurs sur les mots : \textbf{9\,\%} avec 50 mots, \textbf{24\,\%} avec 125\,000 mots.
     \end{itemize}
   \end{columns}
-  \visible<6->{%
-  \hspace*{3.6cm}\begin{tikzpicture}[x=0.042cm, y=0.75cm,
-      lab/.style={anchor=east, font=\scriptsize, text=texte},
-      val/.style={anchor=west, font=\scriptsize, text=gris}]
-    \foreach \l/\v/\y/\c in {{Record précédent}/18/0/gris, {Willett et al. 2023}/62/-0.42/orange, {Metzger et al. 2023}/78/-0.84/orange, {Conversation naturelle}/160/-1.26/jaune}{
-      \node[lab] at (-2,\y) {\l};
-      \fill[\c] (0,\y-0.15) rectangle (\v,\y+0.15);
-      \node[val] at (\v+2,\y) {\v};}
-    \node[font=\scriptsize, text=gris, anchor=west] at (95,-0.2) {mots par minute};
-  \end{tikzpicture}}
-  \src{Willett et al., \emph{Nature} 2023 ; Metzger et al., \emph{Nature} 2023}
+  \src{Willett et al., \emph{Nature} 2023}
 \end{frame}
 
 % ---------------------------------------------------------------------
@@ -103,29 +92,6 @@
   \src{Tang, LeBel, Jain \& Huth, \emph{Nature Neuroscience} 2023}
 \end{frame}
 
-% ---------------------------------------------------------------------
-\begin{frame}{Décoder sans chirurgie : MEG et EEG}
-  \begin{columns}[T,onlytextwidth]
-    \column{.48\textwidth}
-    \carte[bleu]{Écouter : quel extrait est entendu ?}{%
-      175 volontaires écoutent des histoires. À partir de 3 s de signal, le modèle doit retrouver l'extrait parmi \textbf{plus de 1\,000}.\\[0.4em]
-      \begin{tikzpicture}[x=0.045cm]
-        \fill[gris] (0,0) rectangle (0.1,0.3); \node[anchor=west, font=\scriptsize, text=gris] at (2,0.15) {hasard : 0,1\,\%};
-        \fill[bleu] (0,-0.45) rectangle (41,-0.15); \node[anchor=west, font=\scriptsize, text=texte] at (43,-0.3) {MEG : jusqu'à 41\,\%};
-        \fill[jaune] (0,-0.9) rectangle (80,-0.6); \node[anchor=west, font=\scriptsize, text=texte] at (82,-0.75) {meilleurs : $>$80\,\%};
-      \end{tikzpicture}\\[0.2em]
-      {\scriptsize\color{gris}Défossez, Caucheteux, Rapin, Kabeli \& King, \emph{Nat. Mach. Intell.} 2023}}
-    \column{.48\textwidth}
-    \visible<2->{\carte[bleu]{Taper : quelle phrase est écrite ?}{%
-      35 volontaires tapent des phrases au clavier. Le modèle reconstruit le texte, lettre par lettre.\\[0.4em]
-      Erreur sur les lettres :\\
-      \textbf{32\,\%} en MEG, \textbf{67\,\%} en EEG.\\
-      Meilleur participant : \textbf{19\,\%}.\\[0.2em]
-      {\scriptsize\color{gris}Lévy, Zhang, Pinet, Rapin, Banville, d'Ascoli \& King, 2025 (Brain2Qwerty)}}}
-  \end{columns}
-  \vspace{0.2em}
-  \visible<3->{\cle{Moins précis que les électrodes, mais sans chirurgie ; l'EEG est portable.}}
-\end{frame}
 
 % ---------------------------------------------------------------------
 \begin{frame}{Limites et questions éthiques}
@@ -135,7 +101,7 @@
     \column{.235\textwidth}
     \visible<2->{\carte[rouge]{Vie privée mentale}{Qui a le droit d'accéder à ces données ? Pour quoi faire ?}}
     \column{.235\textwidth}
-    \visible<3->{\carte[rouge]{Consentement}{Aujourd'hui, le décodage ne marche que si la personne coopère. Il faut que cela reste ainsi.}}
+    \visible<3->{\carte[rouge]{Consentement}{Le décodage exige que la personne participe volontairement. Il ne doit jamais être imposé.}}
     \column{.235\textwidth}
     \visible<4->{\carte[rouge]{Accès équitable}{Ces technologies ne doivent pas être réservées à quelques pays.}}
   \end{columns}

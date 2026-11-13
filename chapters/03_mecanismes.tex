@@ -40,41 +40,7 @@
   \src{Berthier, \emph{Drugs \& Aging} 2005 (aphasie chez 21 à 38\,\% des patients après un AVC)}
 \end{frame}
 
-% ---------------------------------------------------------------------
-\begin{frame}{Pourquoi est-ce difficile à étudier dans le cerveau ?}
-  \begin{columns}[T,onlytextwidth]
-    \column{.235\textwidth}
-    \carte[rouge]{Très humain}{La syntaxe humaine n'a pas d'équivalent clair chez l'animal : on ne peut pas tout étudier chez le singe, comme pour la vision.}
-    \column{.235\textwidth}
-    \visible<2->{\carte[rouge]{Très rapide}{3 à 4 mots par seconde, alors que l'IRMf mesure à l'échelle de la seconde.}}
-    \column{.235\textwidth}
-    \visible<3->{\carte[rouge]{Mesures grossières}{Un point d'IRMf regroupe des centaines de milliers de neurones.}}
-    \column{.235\textwidth}
-    \visible<4->{\carte[rouge]{Pas d'intervention}{On ne peut pas éteindre une région chez un volontaire pour voir ce qui change.}}
-  \end{columns}
-  \vspace{1.0em}
-  \visible<5->{\cle{Il nous faut un système qui traite le langage et que l'on peut ouvrir entièrement : un modèle.}}
-\end{frame}
 
-% ---------------------------------------------------------------------
-\begin{frame}{Le langage, du son au récit : chaque niveau a ses modèles}
-  \centering
-  \begin{tikzpicture}[
-      niv/.style={rounded corners=4pt, fill=fondclair, text=texte, align=left, text width=2.9cm, minimum height=1.75cm, font=\small, inner sep=5pt, anchor=north},
-      res/.style={align=left, text width=3.0cm, font=\scriptsize, text=texte, anchor=north},
-      ref/.style={align=left, text width=3.0cm, font=\fontsize{6.5}{8}\selectfont, text=gris, anchor=north}]
-    \foreach \k/\x/\c/\t/\e/\r/\f in {
-        1/0/bleu/{Les sons}/{« b » ou « p » ?}/{Un modèle qui apprend seul à partir de 600\,h de parole s'organise en couches comme le cortex auditif.}/{Millet et al., NeurIPS 2022},
-        2/3.45/vert/{Les mots et leur sens}/{« chien » est proche de « chat »}/{Les catégories de sens se répartissent en une carte sur tout le cortex.}/{Huth et al., \emph{Nature} 2016},
-        3/6.9/jaune/{La structure de la phrase}/{qui fait quoi à qui ?}/{Des unités précises du modèle portent l'accord du verbe.}/{Lakretz et al., NAACL 2019},
-        4/10.35/orange/{Le récit}/{suivre une histoire}/{Le cerveau anticipe plus loin et plus abstrait qu'un modèle comme GPT-2.}/{Caucheteux, Gramfort \& King, \emph{Nat. Hum. Behav.} 2023}}{
-      \visible<\k->{\node[niv, draw=\c, line width=1pt] (n) at (\x,0) {{\color{\c}\bfseries\t}\par\vspace{0.2em}{\scriptsize\color{gris}\e}};
-      \node[res] (r) at (\x,-1.95) {\r};
-      \node[ref] at (\x,-3.85) {\f};}}
-    \draw[-{Stealth}, gris, line width=1pt] (-1.6,-4.6) -- (12.0,-4.6) node[midway, below, font=\scriptsize, text=gris] {des unités les plus petites aux plus grandes};
-    \visible<5->{\node[font=\scriptsize\bfseries, text=jaune] at (6.9,0.35) {notre cas d'étude};}
-  \end{tikzpicture}
-\end{frame}
 
 % ---------------------------------------------------------------------
 \begin{frame}{Un cas d'étude : l'accord sujet-verbe}
@@ -167,29 +133,6 @@
   \src{Lakretz et al., NAACL 2019}
 \end{frame}
 
-% ---------------------------------------------------------------------
-\begin{frame}{Du modèle à une prédiction sur l'humain}
-  \centering
-  \begin{tikzpicture}[node distance=0.4cm, font=\small,
-      pb/.style={rounded corners=4pt, fill=fondclair, text=texte, align=center, text width=2.5cm, minimum height=1.55cm},
-      ar/.style={-{Stealth}, jaune, line width=1.2pt}]
-    \node[pb, draw=orange] (a) {\textcolor{orange}{\textbf{1.}} Mécanisme trouvé dans le modèle};
-    \node[pb, right=of a] (b) {\textcolor{jaune}{\textbf{2.}} Il prédit des erreurs sur les phrases \textbf{imbriquées}};
-    \node[pb, right=of b, draw=bleu] (c) {\textcolor{bleu}{\textbf{3.}} Test chez des participants humains};
-    \node[pb, right=of c] (d) {\textcolor{vert}{\textbf{4.}} Confirmé \dots en partie};
-    \draw[ar] (a)--(b); \draw[ar] (b)--(c); \draw[ar] (c)--(d);
-  \end{tikzpicture}
-
-  \vspace{0.8em}
-  \small
-  \begin{itemize}
-    \item<2-> Les humains font \textbf{plus d'erreurs} exactement là où le modèle l'annonçait.
-    \item<3-> Mais les humains restent \textbf{au-dessus du hasard}, le modèle tombe \textbf{en dessous}.
-  \end{itemize}
-  \vspace{0.3em}
-  \visible<4->{\cle{Le modèle dit où regarder. Et ces erreurs viennent toutes d'une même limite : retenir le sujet assez longtemps. C'est une question de mémoire.}}
-  \src{Lakretz et al., \emph{Cognition} 2021}
-\end{frame}
 
 % ---------------------------------------------------------------------
 \begin{frame}{Mémoire : garder le sujet en tête jusqu'au verbe}
@@ -213,12 +156,11 @@
     \begin{itemize}
       \item<1-> Notre mémoire de travail est \textbf{limitée} : plus le verbe est loin de son sujet, plus la lecture ralentit.
       \item<2-> Un modèle à qui l'on donne une mémoire \textbf{imparfaite} du contexte reproduit mieux ces difficultés.
-      \item<3-> Trace dans les langues du monde : sur 37 langues, les mots liés sont \jaun{plus proches} que par hasard.
     \end{itemize}
   \end{columns}
   \vspace{0.6em}
-  \visible<4->{\cle{Donner au modèle une limite « humaine » permet de tester d'où vient la difficulté.}}
-  \src{Gibson, \emph{Cognition} 1998 ; Futrell, Mahowald \& Gibson, \emph{PNAS} 2015 ; Futrell, Gibson \& Levy, \emph{Cognitive Science} 2020}
+  \visible<3->{\cle{Si un modèle à la mémoire limitée bute sur les mêmes phrases que nous, c'est que notre difficulté vient de la mémoire.}}
+  \src{Gibson, \emph{Cognition} 1998 ; Futrell, Gibson \& Levy, \emph{Cognitive Science} 2020}
 \end{frame}
 
 % ---------------------------------------------------------------------

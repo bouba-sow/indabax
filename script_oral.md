@@ -235,41 +235,11 @@ Comprendre comment le cerveau traite le langage permet :
 
 **[clic]** Pour réparer un système, il faut d'abord comprendre comment il fonctionne.
 
----
-
-## Slide 16 — Pourquoi est-ce difficile à étudier dans le cerveau ?
-
-Mais le langage est particulièrement difficile à étudier dans le cerveau. Pour quatre raisons.
-
-C'est très humain : la syntaxe humaine n'a pas d'équivalent clair chez l'animal. On ne peut pas tout étudier chez le singe, comme on le fait pour la vision.
-
-**[clic]** C'est très rapide : on traite 3 à 4 mots par seconde, alors que l'IRMf mesure à l'échelle de la seconde.
-
-**[clic]** Les mesures sont grossières : un seul point d'IRMf regroupe des centaines de milliers de neurones.
-
-**[clic]** Et on ne peut pas intervenir : on ne va pas éteindre une région du cerveau chez un volontaire pour voir ce qui change.
-
-**[clic]** Il nous faut donc un système qui traite le langage et que l'on peut ouvrir entièrement. Ce système, c'est un modèle.
+Or le langage est difficile à étudier directement dans le cerveau : il va très vite, nos mesures sont grossières, et on ne peut pas intervenir chez un volontaire. D'où l'intérêt d'un modèle, que l'on peut ouvrir entièrement. Le langage a plusieurs niveaux, des sons jusqu'au récit ; aujourd'hui, je vais me concentrer sur un seul : la structure de la phrase.
 
 ---
 
-## Slide 17 — Le langage, du son au récit
-
-Le langage, ce n'est pas une seule chose. Il y a plusieurs niveaux, et à chaque niveau, des chercheurs ont utilisé des modèles d'IA.
-
-Les sons : un modèle qui apprend seul, à partir de 600 heures de parole, s'organise en couches qui ressemblent à la hiérarchie du cortex auditif.
-
-**[clic]** Les mots et leur sens : en faisant écouter des histoires, on a montré que les catégories de sens se répartissent en une véritable carte sur tout le cortex.
-
-**[clic]** La structure de la phrase : qui fait quoi à qui. Là, on a trouvé dans un modèle des unités précises qui portent l'accord du verbe.
-
-**[clic]** Le récit : en suivant une histoire, le cerveau anticipe plus loin et de façon plus abstraite qu'un modèle comme GPT-2.
-
-**[clic]** Aujourd'hui, je vais zoomer sur le troisième niveau, la structure de la phrase. C'est notre cas d'étude.
-
----
-
-## Slide 18 — Un cas d'étude : l'accord sujet-verbe
+## Slide 16 — Un cas d'étude : l'accord sujet-verbe
 
 On part de la syntaxe, c'est-à-dire la structure de la phrase.
 
@@ -286,7 +256,7 @@ Pourquoi ce phénomène précis ?
 
 ---
 
-## Slide 19 — L'accord : une fenêtre sur la syntaxe
+## Slide 17 — L'accord : une fenêtre sur la syntaxe
 
 Reprenons notre phrase, un peu plus longue : « Les clés que l'homme près de l'armoire tient sont… ».
 
@@ -300,7 +270,7 @@ Reprenons notre phrase, un peu plus longue : « Les clés que l'homme près de l
 
 ---
 
-## Slide 20 — Dans le modèle : des « neurones du nombre »
+## Slide 18 — Dans le modèle : des « neurones du nombre »
 
 C'est ce qu'ont fait Yair Lakretz et ses collègues, notamment Stanislas Dehaene, en 2019. Dans un réseau de 1 300 unités, ils ont trouvé deux unités qui gardent en mémoire le nombre du sujet : une pour le pluriel, une pour le singulier. Regardez la courbe : l'unité « pluriel » s'active sur « clés » et reste active jusqu'au verbe.
 
@@ -310,33 +280,21 @@ C'est ce qu'ont fait Yair Lakretz et ses collègues, notamment Stanislas Dehaene
 
 **[clic]** On a donc trouvé un mécanisme précis, testable et manipulable. C'est quelque chose qu'on ne peut pas faire dans un cerveau humain.
 
----
-
-## Slide 21 — Du modèle à une prédiction sur l'humain
-
-Et ce mécanisme permet de faire une prédiction sur l'humain. Le raisonnement suit quatre étapes : on trouve un mécanisme dans le modèle ; ce mécanisme prédit des erreurs sur certaines phrases, les phrases imbriquées ; on teste ces phrases chez des participants humains ; et c'est confirmé… en partie.
-
-**[clic]** Les humains font effectivement plus d'erreurs exactement là où le modèle l'annonçait.
-
-**[clic]** Mais il y a une différence : les humains restent au-dessus du hasard, alors que le modèle tombe en dessous. Les différences sont aussi instructives que les ressemblances.
-
-**[clic]** Le modèle nous dit où regarder. Et ces erreurs ont toutes une même origine : il faut retenir le sujet assez longtemps, jusqu'au verbe. C'est donc une question de mémoire.
+Remarquez ce que font ces unités : elles gardent une information en mémoire, du sujet jusqu'au verbe. Ça nous amène à la mémoire.
 
 ---
 
-## Slide 22 — Mémoire : garder le sujet en tête jusqu'au verbe
+## Slide 19 — Mémoire : garder le sujet en tête jusqu'au verbe
 
 Notre mémoire de travail est limitée. Plus le verbe est loin de son sujet, plus la lecture ralentit. Sur le schéma : en haut, sept mots entre le sujet et le verbe, c'est coûteux ; en bas, ils sont côte à côte, c'est facile.
 
 **[clic]** Si on donne à un modèle une mémoire imparfaite du contexte, comme la nôtre, il reproduit mieux ces difficultés humaines.
 
-**[clic]** Et on retrouve la trace de cette limite dans les langues elles-mêmes. Sur 37 langues étudiées, les mots liés entre eux sont plus proches que ce qu'on attendrait par hasard. Les langues semblent s'être organisées pour ménager notre mémoire.
-
-**[clic]** Donner au modèle une limite « humaine », c'est une façon de tester d'où vient la difficulté. Retenez cette idée : c'est le point de départ de mon travail.
+**[clic]** Le raisonnement est simple : si un modèle à la mémoire limitée bute sur les mêmes phrases que nous, c'est que notre difficulté vient de la mémoire. Retenez cette idée de donner au modèle une limite « humaine » : c'est le point de départ de mon travail.
 
 ---
 
-## Slide 23 — Pensée : le langage n'est pas la pensée
+## Slide 20 — Pensée : le langage n'est pas la pensée
 
 Dernier volet : la pensée. On a souvent l'impression que penser, c'est se parler dans sa tête. Mais le cerveau suggère autre chose.
 
@@ -356,7 +314,7 @@ Je vais maintenant vous présenter mon propre travail.
 
 ---
 
-## Slide 24 — La question
+## Slide 21 — La question
 
 Ma question est la suivante : si l'on donne à un modèle des limites humaines, devient-il plus proche de l'humain ?
 
@@ -368,7 +326,7 @@ Ma question est la suivante : si l'on donne à un modèle des limites humaines, 
 
 ---
 
-## Slide 25 — Résultat : lecture et cerveau ne vont pas ensemble
+## Slide 22 — Résultat : lecture et cerveau ne vont pas ensemble
 
 Voici le résultat. Chaque point est un modèle. Plus il est à droite, plus il est proche du cerveau. Plus il est en haut, plus il est proche de la lecture humaine.
 
@@ -390,22 +348,21 @@ Pour finir, une application concrète, qui montre que tout cela n'est pas seulem
 
 ---
 
-## Slide 26 — Encoder, décoder : deux directions
+## Slide 23 — Encoder, décoder : deux directions
 
 Jusqu'ici, on a fait ce qu'on appelle de l'encodage : partir du langage et du modèle pour prédire l'activité du cerveau. Le but était de comprendre le cerveau.
 
 **[clic]** On peut aussi faire l'inverse : décoder, c'est-à-dire partir de l'activité du cerveau pour retrouver les mots. Là, le but est d'aider des personnes.
 
-Je vais vous montrer trois exemples :
+Je vais vous montrer deux exemples :
 **[clic]** avec des électrodes implantées dans le cerveau, les travaux de Willett et collègues ;
-**[clic]** avec l'IRMf, les travaux de Tang et collègues ;
-**[clic]** et sans chirurgie, avec la MEG et l'EEG, les travaux de l'équipe de Jean-Rémi King.
+**[clic]** et sans chirurgie, avec l'IRMf, les travaux de Tang et collègues.
 
 **[clic]** Le point commun : ce sont les mêmes outils, réseaux de neurones et modèles de langage, qui servent dans les deux sens.
 
 ---
 
-## Slide 27 — Redonner la parole : électrodes implantées
+## Slide 24 — Redonner la parole : électrodes implantées
 
 Premier exemple, publié dans *Nature* en 2023. Une patiente atteinte de SLA, une maladie qui paralyse progressivement les muscles, ne peut plus parler de façon intelligible. Des micro-électrodes ont été implantées dans les zones de son cerveau qui contrôlent la parole. Elle tente de prononcer des phrases.
 
@@ -415,13 +372,11 @@ Premier exemple, publié dans *Nature* en 2023. Une patiente atteinte de SLA, un
 
 **[clic]** Et la phrase s'affiche à l'écran.
 
-**[clic]** Les résultats : 9 % d'erreurs sur les mots avec un vocabulaire de 50 mots, et 24 % avec un vocabulaire de 125 000 mots.
-
-**[clic]** Et surtout la vitesse : 62 mots par minute, plus de trois fois le record précédent. Une autre équipe, celle de Metzger, a atteint 78 mots par minute la même année. On s'approche d'une conversation naturelle, autour de 160 mots par minute.
+**[clic]** Les résultats : 9 % d'erreurs sur les mots avec un vocabulaire de 50 mots, et 24 % avec un vocabulaire de 125 000 mots. Et elle peut ainsi communiquer beaucoup plus vite qu'avec les méthodes précédentes.
 
 ---
 
-## Slide 28 — Retrouver le sens d'une histoire avec l'IRMf
+## Slide 25 — Retrouver le sens d'une histoire avec l'IRMf
 
 Deuxième exemple, sans chirurgie cette fois : avec l'IRMf. Trois participants ont écouté 16 heures d'histoires dans l'IRM.
 
@@ -443,19 +398,7 @@ Le décodeur fonctionne comme une boucle. Un modèle de langage propose des suit
 
 ---
 
-## Slide 29 — Décoder sans chirurgie : MEG et EEG
-
-Troisième exemple : l'équipe de Jean-Rémi King, à Paris, avec la MEG et l'EEG, des techniques sans chirurgie et beaucoup plus rapides que l'IRMf.
-
-Première étude : 175 volontaires écoutent des histoires. À partir de 3 secondes de signal cérébral, le modèle doit retrouver quel extrait la personne écoutait, parmi plus de mille. Le hasard, c'est 0,1 %. En MEG, le modèle atteint jusqu'à 41 %, et plus de 80 % chez les meilleurs participants.
-
-**[clic]** Deuxième étude, Brain2Qwerty : 35 volontaires tapent des phrases au clavier, et le modèle reconstruit le texte lettre par lettre à partir de leur activité cérébrale. L'erreur sur les lettres est de 32 % en MEG et 67 % en EEG. Pour le meilleur participant, elle descend à 19 %.
-
-**[clic]** C'est moins précis qu'avec des électrodes implantées, mais sans chirurgie. Et l'EEG est portable, ce qui ouvre la voie à des usages beaucoup plus larges.
-
----
-
-## Slide 30 — Limites et questions éthiques
+## Slide 26 — Limites et questions éthiques
 
 Ces résultats sont impressionnants, mais il faut être lucide.
 
@@ -463,7 +406,7 @@ La précision : on est encore loin d'une conversation fluide, surtout sans chiru
 
 **[clic]** La vie privée mentale : qui a le droit d'accéder à ces données, et pour en faire quoi ?
 
-**[clic]** Le consentement : aujourd'hui, le décodage ne marche que si la personne coopère. Il faut que cela reste ainsi.
+**[clic]** Le consentement : le décodage exige que la personne participe volontairement. Il ne doit jamais être imposé.
 
 **[clic]** L'accès équitable : ces technologies ne doivent pas être réservées à quelques pays.
 
@@ -475,7 +418,7 @@ La précision : on est encore loin d'une conversation fluide, surtout sans chiru
 
 ---
 
-## Slide 31 — Trois messages à retenir
+## Slide 27 — Trois messages à retenir
 
 Si vous ne retenez que trois choses de cet exposé.
 
@@ -487,7 +430,7 @@ Premièrement : l'IA, ce n'est pas que ChatGPT. C'est aussi un instrument scient
 
 ---
 
-## Slide 32 — Et pour la Guinée ?
+## Slide 28 — Et pour la Guinée ?
 
 Et pour nous, en Guinée ? Je pense qu'il y a de vraies opportunités.
 
